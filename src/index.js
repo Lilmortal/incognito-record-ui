@@ -2,8 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 const Index = () => {
-  return <div>Hello React!</div>;
+  return <div>Hello Reacssst!</div>;
 };
 
-console.log("test");
+if (__DEV__) {
+  console.log("Dev mode");
+}
+
 ReactDOM.render(<Index />, document.getElementById("index"));

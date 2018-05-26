@@ -3,18 +3,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
-console.log(
-  path.resolve(__dirname),
-  path.resolve(__dirname, "..", "src/index.js")
-);
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "..", "src/index.js"),
-    vendor: ["react"]
-  },
-  output: {
-    filename: "[name].[hash].bundle.js",
-    path: path.resolve(__dirname, "..", "dist")
+    app: path.resolve(__dirname, "..", "src/index.js")
   },
   module: {
     rules: [
@@ -55,7 +46,7 @@ module.exports = {
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: "vendors.[hash].js",
+          name: "vendors",
           chunks: "all"
         }
       }

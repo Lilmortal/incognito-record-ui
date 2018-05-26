@@ -11,6 +11,10 @@ module.exports = merge(common, {
     hot: true,
     port: 3000
   },
+  output: {
+    filename: "[name].[hash].bundle.js",
+    path: path.resolve(__dirname, "..", "dist")
+  },
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
