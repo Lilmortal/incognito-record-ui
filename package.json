@@ -2,10 +2,11 @@
   "name": "@jacktan/incognito-record-ui",
   "version": "1.0.0",
   "description": "Incognito record UI",
-  "main": "index.js",
+  "main": "config/webpack.dev.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack"
+    "start": "webpack-dev-server --open --config ./config/webpack.dev.js",
+    "build": "webpack --config ./config/webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,9 @@
   "homepage": "https://github.com/Lilmortal/incognito-record-ui#readme",
   "devDependencies": {
     "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",

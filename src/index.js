@@ -1,3 +1,9 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
-const Component = () => <div>Test</div>;
+const Index = () => {
+  return <div>Hello React!</div>;
+};
+
+console.log("test");
+ReactDOM.render(<Index />, document.getElementById("index"));
