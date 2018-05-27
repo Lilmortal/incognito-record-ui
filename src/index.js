@@ -3,7 +3,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const Index = () => <div>Hello Reacssst!</div>;
+import Timer from "./timer";
+
+const Index = () => (
+  <React.Fragment>
+    <div>Test</div>
+    <Timer />
+  </React.Fragment>
+);
 
 if (__DEV__) {
   // eslint-disable-next-line no-console

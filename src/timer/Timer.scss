@@ -1,0 +1,8 @@
+@import "../styles/styles.scss";
+// TODO: It seems like I have to do relative path a.k.a '../'.
+// It can be really annoying; it looks like we might have to put styles inside node_modules
+// so I can type @import "~/incognito-record/styles.scss".
+
+.Incognito-timer {
+  font-family: "Orbitron";
+}

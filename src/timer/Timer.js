@@ -1,5 +1,7 @@
 import React from "react";
 
-const Timer = () => <div>Timer</div>;
+import "./Timer.scss";
+
+const Timer = () => <div className="Incognito-timer">Timer</div>;
 
 export default Timer;

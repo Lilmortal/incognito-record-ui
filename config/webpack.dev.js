@@ -1,7 +1,9 @@
 const path = require("path");
 const merge = require("webpack-merge");
-const common = require("./webpack.common");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const common = require("./webpack.common");
 
 module.exports = merge(common, {
   mode: "development",
@@ -10,6 +12,14 @@ module.exports = merge(common, {
     contentBase: path.resolve(__dirname, "..", "dist"),
     hot: true,
     port: 3000
+  },
+  module: {
+    rules: [
+      {
+        test: /\.s?[ac]ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
+      }
+    ]
   },
   // We can't use [chunkhash] in dev mode is because it is not compatible with webpack-dev-server,
   // as well as severely increases build time in dev.
@@ -31,6 +41,11 @@ module.exports = merge(common, {
     // This sets the global variables
     new webpack.DefinePlugin({
       __DEV__: true
+    }),
+    // Extract css files into a seperate bundle
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
     })
   ]
 });
