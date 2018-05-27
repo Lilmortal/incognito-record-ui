@@ -1,12 +1,12 @@
+/* global __DEV__ */
+
 import React from "react";
 import ReactDOM from "react-dom";
 
-const Index = () => {
-  return <div>Hello Reacssst!</div>;
-};
+const Index = () => <div>Hello Reacssst!</div>;
 
 if (__DEV__) {
-  console.log("Dev mode");
+  // eslint-disable-next-line no-console
+  console.log("Currently running in DEV mode.");
 }
-
 ReactDOM.render(<Index />, document.getElementById("index"));

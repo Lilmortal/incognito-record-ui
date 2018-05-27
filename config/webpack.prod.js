@@ -15,7 +15,8 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("production")
     }),
-    // To make sure vendor cache does not change, this plugin will hash the relative path of the module instead of using module.id.
+    // To make sure vendor cache does not change, this plugin will hash the relative path of the module
+    // instead of using module.id.
     new webpack.HashedModuleIdsPlugin()
   ]
 });
