@@ -29,21 +29,20 @@ module.exports = {
     ]
   },
   plugins: [
+    // Get the template and create an index.html with the <script> tags that points to our bundle files injected. This is useful because we don't want the hassle of
+    // changing the <script> location when we rename/add/remove our bundle names.
     new HtmlWebpackPlugin({
       title: "Incognito Record",
       filename: "index.html",
       template: path.resolve(__dirname, "..", "template/index.html")
     }),
-    new CleanWebpackPlugin(["dist"], { root: path.resolve(__dirname, "..") }),
-    new webpack.HashedModuleIdsPlugin({
-      hashFunction: "sha256",
-      hashDigest: "hex",
-      hashDigestLength: 20
-    })
+    // Sometimes our /dist folder might have unused files. This plugin deletes the folder before we start building our bundles.
+    new CleanWebpackPlugin(["dist"], { root: path.resolve(__dirname, "..") })
   ],
   optimization: {
     splitChunks: {
       cacheGroups: {
+        // This moves all our vendor files into a seperate bundle (e.g. lodash, react). This bundle rarely changes, hence we should cache this more often.
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: "vendors",
