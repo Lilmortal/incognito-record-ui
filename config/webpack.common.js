@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
+// TODO: Read up more about polyfills
+// TODO: Read up more about PWA, e.g. using WorkboxWebpackPlugin
+
 module.exports = {
   entry: {
     app: path.resolve(__dirname, "..", "src/index.js")
