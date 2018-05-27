@@ -4,7 +4,7 @@
   "description": "Incognito record UI",
   "main": "config/webpack.dev.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack-dev-server --open --config ./config/webpack.dev.js",
     "build": "webpack --config ./config/webpack.prod.js",
     "storybook": "start-storybook -p 9001 -c .storybook"
@@ -13,11 +13,17 @@
     "type": "git",
     "url": "git+https://github.com/Lilmortal/incognito-record-ui.git"
   },
-  "keywords": ["incognito-record", "incognito"],
+  "keywords": [
+    "incognito-record",
+    "incognito"
+  ],
   "author": "Jack Tan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Lilmortal/incognito-record-ui/issues"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./config/enzyme/config.js"
   },
   "homepage": "https://github.com/Lilmortal/incognito-record-ui#readme",
   "devDependencies": {
@@ -30,6 +36,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
