@@ -25,6 +25,11 @@ TODO
 
 * prettier does not automatically fix comments that are larger than max-length
 
+## Why is this blog called Incognito Record
+
+Because I don't want a generic name like Jack/Kai blog. I choose incognito because I like being anonymous, but I prefer a different
+name than "incognito blog"; so I googled synonyms for "blog", and "record" shows up. So far I'm ok with this pretentious name.
+
 ## Authors
 
 * Jack Tan
