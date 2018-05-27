@@ -17,7 +17,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.s?[ac]ss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"]
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       },
       {
         test: /\.css$/,
@@ -35,8 +35,8 @@ module.exports = merge(common, {
     new webpack.HashedModuleIdsPlugin(),
     // Extract css files into a seperate bundle
     new MiniCssExtractPlugin({
-      filename: "[name].[hash].css",
-      chunkFilename: "[id].[hash].css"
+      filename: "[name].[hash].bundle.css",
+      chunkFilename: "[id].[hash].bundle.css"
     })
   ],
   optimization: {

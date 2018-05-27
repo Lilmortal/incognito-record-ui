@@ -17,6 +17,8 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.s?[ac]ss$/,
+        // We cannot use MiniCssExtractPlugin.loader because as of now, it does not support HMR.
+        // It will support it in the future but for now this is the fallback.
         use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
