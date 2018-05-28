@@ -11,6 +11,13 @@
   "parser": "babel-eslint",
   "extends": ["airbnb", "prettier", "plugin:jsx-a11y/recommended"],
   "plugins": ["react", "jsx-a11y", "import", "prettier"],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./config/webpack.common.js"
+      }
+    }
+  },
   "rules": {
     "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
     "react/jsx-filename-extension": 0,

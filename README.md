@@ -30,6 +30,10 @@ TODO
 I choose incognito because why not, but I prefer a different
 name than "incognito blog"; so I googled synonyms for "blog", and "record" shows up.
 
+## I want to contribute, what should I know before I get started?
+
+Read `CONTRIBUTING.md`
+
 ## Authors
 
 * Jack Tan
