@@ -8,7 +8,8 @@
     "test:ci": "jest",
     "start": "webpack-dev-server --open --config ./config/webpack.dev.js",
     "build": "webpack --config ./config/webpack.prod.js",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "stylelint": "stylelint '**/*.scss'"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test:ci"
+      "pre-commit": "yarn test:ci && yarn stylelint"
     }
   },
   "homepage": "https://github.com/Lilmortal/incognito-record-ui#readme",
@@ -70,12 +71,12 @@
     "postcss-loader": "^2.1.5",
     "prettier": "^1.12.1",
     "prettier-eslint": "^8.8.1",
+    "prettier-stylelint": "^0.4.2",
     "react-hot-loader": "^4.2.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
-    "stylefmt": "^6.0.0",
-    "stylefmt-loader": "^1.2.3",
     "stylelint": "^9.2.1",
+    "stylelint-config-prettier": "^3.2.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-webpack-plugin": "^0.10.5",
     "webpack": "^4.9.1",
