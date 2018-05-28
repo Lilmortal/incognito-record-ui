@@ -14,10 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/Lilmortal/incognito-record-ui.git"
   },
-  "keywords": [
-    "incognito-record",
-    "incognito"
-  ],
+  "keywords": ["incognito-record", "incognito"],
   "author": "Jack Tan",
   "license": "ISC",
   "bugs": {
@@ -27,7 +24,8 @@
     "setupTestFrameworkScriptFile": "./config/enzyme/config.js",
     "moduleNameMapper": {
       "\\.(css|sass|scss)$": "<rootDir>/stubs/__mocks__/styleMock.js",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/stubs/__mocks__/fileMock.js"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/stubs/__mocks__/fileMock.js"
     }
   },
   "husky": {
@@ -70,7 +68,6 @@
     "prettier": "^1.12.1",
     "prettier-eslint": "^8.8.1",
     "react-hot-loader": "^4.2.0",
-    "resolve-url-loader": "^2.3.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.9.1",
