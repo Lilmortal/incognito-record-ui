@@ -32,7 +32,7 @@ name than "incognito blog"; so I googled synonyms for "blog", and "record" shows
 
 ## I want to contribute, what should I know before I get started?
 
-Read `CONTRIBUTING.md` (CONTRIBUTING.md)
+Read [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ## Authors
 
