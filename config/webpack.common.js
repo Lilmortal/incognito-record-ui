@@ -17,7 +17,7 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ["file-loader"]
+        use: ["file-loader", "resolve-url-loader"]
       },
       {
         test: /\.js$/,
@@ -50,6 +50,12 @@ module.exports = {
           chunks: "all"
         }
       }
+    }
+  },
+  resolve: {
+    alias: {
+      // @import "~" means @import "src/styles/styles.scss"
+      "~": path.resolve(__dirname, "../src/styles/styles.scss")
     }
   }
 };

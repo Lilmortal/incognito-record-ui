@@ -12,5 +12,9 @@ module.exports = (baseConfig, env, defaultConfig) => {
     }
   );
 
+  defaultConfig.resolve.alias = {
+    "~": path.resolve(__dirname, "../src/styles/styles.scss")
+  };
+
   return defaultConfig;
 };

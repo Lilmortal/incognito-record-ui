@@ -1,5 +1,12 @@
-// TODO: It looks like this @font-face is not even needed! Find out why!
+// TODO: Why url("/styles/fonts...") works but url("fonts/Orbitron...") doesn't?
 @font-face {
   font-family: "Orbitron";
-  src: local(Orbitron) url("/fonts/Orbitron/Orbitron-Black.ttf") format("ttf");
+  src: local(Orbitron) url("/styles/fonts/Orbitron/Orbitron-Regular.woff")
+    format("woff");
+  src: local(Orbitron) url("/styles/fonts/Orbitron/Orbitron-Medium.woff")
+    format("woff");
+  src: local(Orbitron) url("/styles/fonts/Orbitron/Orbitron-Bold.woff")
+    format("woff");
+  src: local(Orbitron) url("/styles/fonts/Orbitron/Orbitron-Black.woff")
+    format("woff");
 }
