@@ -2,6 +2,7 @@ const path = require("path");
 const merge = require("webpack-merge");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const StyleLintPlugin = require("stylelint-webpack-plugin");
 
 const common = require("./webpack.common");
 
@@ -19,7 +20,7 @@ module.exports = merge(common, {
         test: /\.s?[ac]ss$/,
         // We cannot use MiniCssExtractPlugin.loader because as of now, it does not support HMR.
         // It will support it in the future but for now this is the fallback.
-        use: ["style-loader", "css-loader", "sass-loader", "resolve-url-loader"]
+        use: ["style-loader", "css-loader", "sass-loader", "stylefmt-loader"]
       },
       {
         test: /\.css$/,
@@ -52,6 +53,8 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
-    })
+    }),
+    // Setup stylelint
+    new StyleLintPlugin()
   ]
 });
