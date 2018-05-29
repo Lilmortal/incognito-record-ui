@@ -13,8 +13,8 @@ module.exports = (baseConfig, env, defaultConfig) => {
   );
 
   defaultConfig.resolve.alias = {
-    "~": path.resolve(__dirname, "../src/styles/styles.scss"),
-    "@utils": path.resolve(__dirname, "../src/utils")
+    "~styles": path.resolve(__dirname, "../src/styles/styles.scss"),
+    "~utils": path.resolve(__dirname, "../src/utils")
   };
 
   return defaultConfig;
