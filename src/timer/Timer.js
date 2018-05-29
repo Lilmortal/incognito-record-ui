@@ -1,4 +1,5 @@
 import React from "react";
+// import { Transition } from "react-spring";
 
 import createBem from "~utils/createBem";
 import "./Timer.scss";
@@ -7,7 +8,7 @@ const bem = createBem("incognito-timer");
 
 class Timer extends React.Component {
   state = {
-    currentTime: new Date()
+    currentTime: undefined
   };
 
   componentDidMount() {
@@ -31,7 +32,11 @@ class Timer extends React.Component {
   }
 
   render() {
-    return <div className={bem()}>{this.state.currentTime.toUTCString().slice(0, -4)}</div>;
+    return (
+      // <Transition key="1" from={{ opacity: 0 }} enter={{ opacity: 1 }} leave={{ opacity: 0 }}>
+      <div className={bem()}>{this.state.currentTime && this.state.currentTime.toLocaleString()}</div>
+      // </Transition>
+    );
   }
 }
 
