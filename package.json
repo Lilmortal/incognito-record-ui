@@ -15,10 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/Lilmortal/incognito-record-ui.git"
   },
-  "keywords": [
-    "incognito-record",
-    "incognito"
-  ],
+  "keywords": ["incognito-record", "incognito"],
   "author": "Jack Tan",
   "license": "ISC",
   "bugs": {
@@ -28,7 +25,10 @@
     "setupTestFrameworkScriptFile": "./config/enzyme/config.js",
     "moduleNameMapper": {
       "\\.(css|sass|scss)$": "<rootDir>/stubs/__mocks__/styleMock.js",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/stubs/__mocks__/fileMock.js"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/stubs/__mocks__/fileMock.js",
+      "~styles": "<rootDir>/src/styles/styles.scss",
+      "~utils/(.*)$": "<rootDir>/src/utils/$1"
     }
   },
   "husky": {
@@ -46,6 +46,7 @@
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
@@ -61,6 +62,7 @@
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.8.2",
     "file-loader": "^1.1.11",
+    "flow-bin": "^0.73.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.0.0-rc.8",
