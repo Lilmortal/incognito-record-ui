@@ -1,5 +1,18 @@
 @import "~styles";
 
 .incognito-timer {
-  font-family: Orbitron, Helvetica, sans-serif;
+  &-enter,
+  &-appear {
+    opacity: 0.1;
+  }
+
+  &-enter-active,
+  &-appear-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+  }
+
+  &__timer {
+    font-family: Orbitron, Helvetica, sans-serif;
+  }
 }

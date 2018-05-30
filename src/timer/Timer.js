@@ -1,5 +1,5 @@
 import React from "react";
-// import { Transition } from "react-spring";
+import { CSSTransition } from "react-transition-group";
 
 import createBem from "~utils/createBem";
 import "./Timer.scss";
@@ -33,9 +33,9 @@ class Timer extends React.Component {
 
   render() {
     return (
-      // <Transition key="1" from={{ opacity: 0 }} enter={{ opacity: 1 }} leave={{ opacity: 0 }}>
-      <div className={bem()}>{this.state.currentTime && this.state.currentTime.toLocaleString()}</div>
-      // </Transition>
+      <CSSTransition in={!!this.state.currentTime} classNames={bem()}>
+        <div className={bem("timer")}>{this.state.currentTime && this.state.currentTime.toLocaleString()}</div>
+      </CSSTransition>
     );
   }
 }
