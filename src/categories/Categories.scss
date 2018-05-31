@@ -1,0 +1,10 @@
+@import "../styles/styles";
+
+.incognito-categories {
+  width: 200px;
+  height: 50px;
+
+  &__rope {
+    background-image: url("./rope.svg");
+  }
+}
