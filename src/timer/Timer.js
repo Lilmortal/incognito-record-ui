@@ -1,7 +1,7 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
 
-import createBem from "~utils/createBem";
+import createBem from "../utils/createBem";
 import "./Timer.scss";
 
 const bem = createBem("incognito-timer");
@@ -33,7 +33,7 @@ class Timer extends React.Component {
 
   render() {
     return (
-      <CSSTransition in={!!this.state.currentTime} classNames={bem()}>
+      <CSSTransition in={!!this.state.currentTime} classNames={bem()} timeout={300}>
         <div className={bem("timer")}>{this.state.currentTime && this.state.currentTime.toLocaleString()}</div>
       </CSSTransition>
     );

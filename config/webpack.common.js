@@ -51,12 +51,5 @@ module.exports = {
         }
       }
     }
-  },
-  resolve: {
-    alias: {
-      // @import "~" means @import "src/styles/styles.scss"
-      "~styles": path.resolve(__dirname, "../src/styles/styles.scss"),
-      "~utils": path.resolve(__dirname, "../src/utils")
-    }
   }
 };

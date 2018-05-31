@@ -26,9 +26,7 @@
     "moduleNameMapper": {
       "\\.(css|sass|scss)$": "<rootDir>/stubs/__mocks__/styleMock.js",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/stubs/__mocks__/fileMock.js",
-      "~styles": "<rootDir>/src/styles/styles.scss",
-      "~utils/(.*)$": "<rootDir>/src/utils/$1"
+        "<rootDir>/stubs/__mocks__/fileMock.js"
     }
   },
   "husky": {

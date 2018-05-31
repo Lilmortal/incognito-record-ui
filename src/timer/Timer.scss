@@ -1,4 +1,4 @@
-@import "~styles";
+@import "../styles/styles";
 
 .incognito-timer {
   &-enter,
@@ -9,7 +9,7 @@
   &-enter-active,
   &-appear-active {
     opacity: 1;
-    transition: opacity 500ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
   }
 
   &__timer {
