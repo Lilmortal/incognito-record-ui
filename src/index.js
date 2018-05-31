@@ -3,12 +3,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Timer from "./timer";
+import BlogPage from "./page/blog";
+
+import "./Root.scss";
 
 const Index = () => (
   <React.Fragment>
-    <div>Test</div>
-    <Timer />
+    <BlogPage />
   </React.Fragment>
 );
 

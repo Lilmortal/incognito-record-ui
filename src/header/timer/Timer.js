@@ -1,7 +1,7 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
 
-import createBem from "../utils/createBem";
+import createBem from "../../util/createBem";
 import "./Timer.scss";
 
 const bem = createBem("incognito-timer");

@@ -1,0 +1,17 @@
+@import "./src/styles/styles";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 100%;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+#index {
+  height: 100%;
+}

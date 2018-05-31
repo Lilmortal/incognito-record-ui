@@ -1,4 +1,4 @@
-@import "../styles/styles";
+@import "../../styles/styles";
 
 .incognito-timer {
   &-enter,
@@ -9,10 +9,10 @@
   &-enter-active,
   &-appear-active {
     opacity: 1;
-    transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in;
   }
 
   &__timer {
-    font-family: Orbitron, Helvetica, sans-serif;
+    font-family: Orbitron, sans-serif;
   }
 }

@@ -1,0 +1,29 @@
+@import "../../styles/styles";
+
+.incognito-navigation {
+  font-size: 1.3em;
+
+  &__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    & li {
+      & a {
+        padding: 10px 30px;
+        text-decoration: none;
+        color: hsla(0, 0%, 100%, 0.8);
+
+        &--active {
+          border-bottom: 2px solid hsla(0, 0%, 100%, 0.8);
+        }
+
+        &:hover {
+          border-bottom: 2px solid hsla(0, 0%, 100%, 0.8);
+          transition: border-bottom 200ms ease-in;
+        }
+      }
+    }
+  }
+}
