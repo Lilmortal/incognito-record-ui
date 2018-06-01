@@ -8,7 +8,7 @@ const common = require("./webpack.common");
 
 module.exports = merge(common, {
   mode: "development",
-  devtool: "inline-source-map",
+  // devtool: "inline-source-map",
   devServer: {
     contentBase: path.resolve(__dirname, "..", "dist"),
     hot: true,
@@ -20,11 +20,34 @@ module.exports = merge(common, {
         test: /\.s?[ac]ss$/,
         // We cannot use MiniCssExtractPlugin.loader because as of now, it does not support HMR.
         // It will support it in the future but for now this is the fallback.
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              config: {
+                path: "./postcss.config.js"
+              }
+            }
+          },
+          "sass-loader"
+        ]
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              config: {
+                path: "./postcss.config.js"
+              }
+            }
+          }
+        ]
       }
     ]
   },

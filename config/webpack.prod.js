@@ -17,7 +17,20 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.s?[ac]ss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+        use: [
+          "style-loader",
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              config: {
+                path: "./postcss.config.js"
+              }
+            }
+          },
+          "sass-loader"
+        ]
       },
       {
         test: /\.css$/,
@@ -35,8 +48,8 @@ module.exports = merge(common, {
     new webpack.HashedModuleIdsPlugin(),
     // Extract css files into a seperate bundle
     new MiniCssExtractPlugin({
-      filename: "[name].[hash].bundle.css",
-      chunkFilename: "[id].[hash].bundle.css"
+      filename: "[name].[contenthash].bundle.css",
+      chunkFilename: "[id].[contenthash].bundle.css"
     })
   ],
   optimization: {

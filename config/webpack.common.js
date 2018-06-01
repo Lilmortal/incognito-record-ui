@@ -12,12 +12,38 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: ["file-loader"]
+        test: /\.inline.svg$/,
+        use: ["svg-react-loader"]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[hash].[ext]",
+              publicPath: "/"
+            }
+          },
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ["file-loader"]
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[hash].[ext]",
+              publicPath: "/"
+            }
+          }
+        ]
       },
       {
         test: /\.js$/,
@@ -31,6 +57,7 @@ module.exports = {
     // This is useful because we don't want the hassle of changing the <script> location when we rename/add/remove
     // our bundle names.
     new HtmlWebpackPlugin({
+      hash: true,
       title: "Incognito Record",
       filename: "index.html",
       template: path.resolve(__dirname, "..", "template/index.html")

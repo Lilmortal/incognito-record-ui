@@ -21,10 +21,6 @@ Here are a list of commands:
 
 TODO
 
-## Known Issues
-
-* prettier does not automatically fix comments that are larger than max-length
-
 ## Why is this blog called Incognito Record
 
 I choose incognito because why not, but I prefer a different
@@ -33,7 +29,3 @@ name than "incognito blog"; so I googled synonyms for "blog", and "record" shows
 ## I want to contribute, what should I know before I get started?
 
 Read [`CONTRIBUTING.md`](CONTRIBUTING.md)
-
-## Authors
-
-* Jack Tan
