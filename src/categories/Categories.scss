@@ -1,15 +1,15 @@
 @import "../styles/styles";
 
 .incognito-categories {
-  padding: 20px 0;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
   &__category {
-    display: flex;
-    margin: 15px 0;
-    cursor: pointer;
-
-    // &:hover {
-    //   color: red;
-    // }
+    &:hover {
+      cursor: pointer;
+      color: red;
+    }
   }
 }
