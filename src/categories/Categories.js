@@ -29,7 +29,7 @@ export default class Categories extends React.PureComponent {
         <Trail
           native
           from={{ x: 100, opacity: 0.4 }}
-          to={{ x: toggle ? -100 : 100, opacity: toggle ? 1 : 0.4 }}
+          to={{ x: toggle ? 0 : 100, opacity: toggle ? 1 : 0.4 }}
           keys={categories.map(category => category.key)}
         >
           {categories.map(category => ({ x, opacity }) => (
