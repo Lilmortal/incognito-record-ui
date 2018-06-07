@@ -14,9 +14,9 @@ export default class DateTime extends React.PureComponent {
   render() {
     return (
       <div className={bem()}>
-        <Transition>{() => <div className={bem("topLine")} />}</Transition>
-        <div className={bem("date")}>{this.state.date}</div>
-        <Transition>{() => <div className={bem("bottomLine")} />}</Transition>
+        <Transition from={{ borderTop: 0 }} enter={{ borderTop: 200 }} update={{ opacity: 0.5 }}>
+          {() => <div className={bem("date")}>{this.state.date}</div>}
+        </Transition>
       </div>
     );
   }
