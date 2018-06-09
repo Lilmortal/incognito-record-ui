@@ -23,6 +23,7 @@
     "react/jsx-filename-extension": 0,
     "max-len": [2, 120],
     "no-console": 2,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "no-return-assign": 0
   }
 }
