@@ -8,10 +8,18 @@ const bem = createBem("wifi-DateTime");
 
 const BLOCK = 5;
 
+const dates = [];
+for (let i = 1; i <= 31; i += 1) {
+  dates.push(
+    <span className={bem("date")} key={i}>
+      {i}
+    </span>
+  );
+}
+
 export default class DateTime extends React.PureComponent {
   state = {
-    loaded: false,
-    prevDate: undefined
+    loaded: false
   };
 
   componentDidMount() {
@@ -20,36 +28,31 @@ export default class DateTime extends React.PureComponent {
     }, 0);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.date !== this.props.date) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({ prevDate: prevProps.date });
-    }
+  componentDidUpdate() {
+    this.prevDate = this.props.date;
   }
 
   get prevDateLocation() {
-    return BLOCK * (this.state.prevDate || 0);
+    return BLOCK * (this.prevDate || 0) - BLOCK;
   }
 
   get currentDateLocation() {
-    return BLOCK * (this.props.date - (this.state.prevDate || 0));
+    return BLOCK * (this.props.date || 0) - BLOCK;
   }
 
+  prevDate: undefined;
+
   render() {
-    const dates = [];
     const { date } = this.props;
 
-    for (let i = 1; i <= 31; i += 1) {
-      dates.push(
-        <span className={bem("date")} key={i}>
-          {i}
-        </span>
-      );
-    }
-
     return (
-      <Transition native from={{ borderLength: this.state.loaded ? 200 : 0 }} enter={{ borderLength: 200 }} keys={date}>
-        {({ borderLength }) => (
+      <Transition
+        native
+        from={{ borderLength: this.state.loaded ? 200 : 0, y: this.prevDateLocation }}
+        enter={{ borderLength: 200, y: this.currentDateLocation }}
+        keys={date}
+      >
+        {({ borderLength, y }) => (
           <animated.div
             className={bem()}
             style={{
@@ -57,23 +60,14 @@ export default class DateTime extends React.PureComponent {
               borderBottom: borderLength.interpolate(length => `${length}px solid black`)
             }}
           >
-            <Transition
-              native
-              from={{ y: this.prevDateLocation }}
-              enter={{ y: this.prevDateLocation + this.currentDateLocation - BLOCK }}
-              keys={date}
+            <animated.div
+              className={bem("dates")}
+              style={{
+                transform: y.interpolate(pos => `translateY(${pos}em)`)
+              }}
             >
-              {({ y }) => (
-                <animated.div
-                  className={bem("dates")}
-                  style={{
-                    transform: y.interpolate(pos => `translateY(${pos}em)`)
-                  }}
-                >
-                  {dates}
-                </animated.div>
-              )}
-            </Transition>
+              {dates}
+            </animated.div>
           </animated.div>
         )}
       </Transition>

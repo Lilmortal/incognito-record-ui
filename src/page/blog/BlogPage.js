@@ -20,7 +20,18 @@ class BlogPage extends React.Component {
         <Header />
         <div className={bem("body")}>
           <DateTime date={this.state.date} loaded />
-          <button onClick={() => this.setState({ date: 1 })}>Increment date</button>
+          <button
+            onClick={() => {
+              if (this.state.date >= 31) {
+                this.setState({ date: 1 });
+              } else {
+                this.setState({ date: (this.state.date += 2) });
+              }
+            }}
+            className={bem("button")}
+          >
+            Increment date
+          </button>
         </div>
         <div className={bem("categories")}>
           <Categories
