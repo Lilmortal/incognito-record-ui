@@ -7,10 +7,27 @@ import "./Calendar.scss";
 
 const bem = createBem("wifi-Calendar");
 
-const BLOCK = 5;
+const BLOCK = 3;
 
-let months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-months = months.map(month => <span className={bem("month")}>{month}</span>);
+let months = [
+  { month: "JAN", id: 0 },
+  { month: "FEB", id: 1 },
+  { month: "MAR", id: 2 },
+  { month: "APR", id: 3 },
+  { month: "MAY", id: 4 },
+  { month: "JUN", id: 5 },
+  { month: "JUL", id: 6 },
+  { month: "AUG", id: 7 },
+  { month: "SEP", id: 8 },
+  { month: "OCT", id: 9 },
+  { month: "NOV", id: 10 },
+  { month: "DEC", id: 11 }
+];
+months = months.map(monthDetails => (
+  <span className={bem("month")} key={monthDetails.id}>
+    {monthDetails.month}
+  </span>
+));
 
 const dates = [];
 for (let i = 1; i <= 31; i += 1) {
@@ -59,26 +76,28 @@ export default class Calendar extends React.PureComponent {
   }
 
   get prevMonthLocation() {
-    return BLOCK * (this.prevMonth || 0) - BLOCK;
+    return BLOCK * (this.prevMonth || 0);
   }
 
   get currentMonthLocation() {
-    return BLOCK * (this.currentMonth || 0) - BLOCK;
+    return BLOCK * (this.currentMonth || 0);
+  }
+
+  get isCurrentDateChanged() {
+    return this.prevDate !== this.currentDate;
+  }
+
+  get isCurrentMonthChanged() {
+    return this.prevMonth !== this.currentMonth;
   }
 
   get isCurrentYearChanged() {
     return this.prevYear !== this.currentYear;
   }
 
-  prevDate: undefined;
-
-  prevMonth: undefined;
-
-  prevYear: undefined;
-
   render() {
     return (
-      <React.Fragment>
+      <div className={bem()}>
         <Transition
           native
           from={{ opacity: this.isCurrentYearChanged ? 0 : 1 }}
@@ -98,17 +117,17 @@ export default class Calendar extends React.PureComponent {
             y: this.prevDateLocation,
             monthY: this.prevMonthLocation
           }}
-          enter={{ borderLength: 200, y: this.currentDateLocation, monthY: this.currentMonth }}
+          enter={{ borderLength: 200, y: this.currentDateLocation, monthY: this.currentMonthLocation }}
           keys={this.currentDate + this.currentMonth}
         >
           {({ borderLength, y, monthY }) => (
-            <animated.div
-              className={bem()}
-              style={{
-                borderTop: borderLength.interpolate(length => `${length}px solid black`),
-                borderBottom: borderLength.interpolate(length => `${length}px solid black`)
-              }}
-            >
+            <div className={bem("dateMonth")}>
+              <animated.div
+                className={bem("borderTop")}
+                style={{
+                  borderTop: borderLength.interpolate(length => `${length}px solid black`)
+                }}
+              />
               <div className={bem("monthsBody")}>
                 <animated.div
                   className={bem("months")}
@@ -127,10 +146,16 @@ export default class Calendar extends React.PureComponent {
                   {dates}
                 </animated.div>
               </div>
-            </animated.div>
+              <animated.div
+                className={bem("borderBottom")}
+                style={{
+                  borderBottom: borderLength.interpolate(length => `${length}px solid black`)
+                }}
+              />
+            </div>
           )}
         </Transition>
-      </React.Fragment>
+      </div>
     );
   }
 }

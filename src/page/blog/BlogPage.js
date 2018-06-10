@@ -12,7 +12,7 @@ const bem = createBem("incognito-blogPage");
 
 class BlogPage extends React.Component {
   state = {
-    date: new Date(2010, 8, 13)
+    date: moment("30/12/2018", "DD/MM/YYYY")
   };
 
   render() {
@@ -20,14 +20,11 @@ class BlogPage extends React.Component {
       <div className={bem()}>
         <Header />
         <div className={bem("body")}>
-          <Calendar fullDate={this.state.date} loaded />
+          <Calendar fullDate={this.state.date} />
           <button
             onClick={() => {
-              if (this.state.date.date >= 31) {
-                this.setState({ date: this.state.date.date(1) });
-              } else {
-                this.setState({ date: new Date(2010, 12, 1) });
-              }
+              this.state.date.add(1, "days");
+              this.setState({ date: moment(this.state.date) });
             }}
             className={bem("button")}
           >
