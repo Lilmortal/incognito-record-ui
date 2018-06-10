@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 
 import Header from "../../header";
 import Categories from "../../categories";
@@ -10,27 +9,12 @@ import "./BlogPage.scss";
 
 const bem = createBem("incognito-blogPage");
 
-class BlogPage extends React.Component {
-  state = {
-    date: moment("30/12/2018", "DD/MM/YYYY")
-  };
-
+export default class BlogPage extends React.Component {
   render() {
     return (
       <div className={bem()}>
         <Header />
-        <div className={bem("body")}>
-          <Calendar fullDate={this.state.date} />
-          <button
-            onClick={() => {
-              this.state.date.add(1, "days");
-              this.setState({ date: moment(this.state.date) });
-            }}
-            className={bem("button")}
-          >
-            Increment date
-          </button>
-        </div>
+        <Calendar fullDate={this.state.date} />
         <div className={bem("categories")}>
           <Categories
             categories={[
@@ -44,5 +28,3 @@ class BlogPage extends React.Component {
     );
   }
 }
-
-export default BlogPage;

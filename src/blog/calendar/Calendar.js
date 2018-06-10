@@ -96,6 +96,7 @@ export default class Calendar extends React.PureComponent {
   }
 
   render() {
+    console.log(this.props.fullDate);
     return (
       <div className={bem()}>
         <Transition
