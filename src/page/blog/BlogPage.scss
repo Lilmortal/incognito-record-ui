@@ -8,10 +8,9 @@
   color: hsla(0, 0%, 100%, 0.8);
 
   &__body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
     flex: 1 1 auto;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
   }
 
   &__categories {
@@ -20,7 +19,9 @@
     right: 0;
   }
 
-  &__button {
-    margin-left: 20px;
+  &__calendar {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 2em;
   }
 }
