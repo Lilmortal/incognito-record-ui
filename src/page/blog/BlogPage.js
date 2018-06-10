@@ -13,10 +13,14 @@ const bem = createBem("incognito-blogPage");
 const BlogPage = () => (
   <div className={bem()}>
     <Header />
-    <div className={bem("body")}>
-      <div className={bem('placeholder')} />
-      <div className={bem("calendar")}>
-        <Calendar />
+    <div className={bem("wrapper")}>
+      <div className={bem("placeholder")} />
+      <div className={bem("calendarWrapper")}>
+        <div className={bem("calendar")}>
+          <div className={bem("calendarSticky")}>
+            <Calendar />
+          </div>
+        </div>
         <div className={bem("posts")}>
           <Post post="This is an introduction post 1" />
           <Post post="This is an introduction post 2" />

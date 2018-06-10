@@ -7,7 +7,7 @@
   background-color: #2c323d;
   color: hsla(0, 0%, 100%, 0.8);
 
-  &__body {
+  &__wrapper {
     display: grid;
     flex: 1 1 auto;
     grid-template-columns: 1fr 50% 2fr;
@@ -19,9 +19,17 @@
     right: 0;
   }
 
-  &__calendar {
+  &__calendarWrapper {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 2em;
+  }
+
+  &__calendar {
+    display: grid;
+  }
+
+  &__calendarSticky {
+    position: fixed;
   }
 }
