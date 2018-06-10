@@ -1,8 +1,9 @@
 import React from "react";
+import moment from "moment";
 
 import Header from "../../header";
 import Categories from "../../categories";
-import DateTime from "../../blog/datetime";
+import Calendar from "../../blog/calendar";
 
 import createBem from "../../util/createBem";
 import "./BlogPage.scss";
@@ -11,7 +12,7 @@ const bem = createBem("incognito-blogPage");
 
 class BlogPage extends React.Component {
   state = {
-    date: 23
+    date: new Date(2010, 8, 13)
   };
 
   render() {
@@ -19,13 +20,13 @@ class BlogPage extends React.Component {
       <div className={bem()}>
         <Header />
         <div className={bem("body")}>
-          <DateTime date={this.state.date} loaded />
+          <Calendar fullDate={this.state.date} loaded />
           <button
             onClick={() => {
-              if (this.state.date >= 31) {
-                this.setState({ date: 1 });
+              if (this.state.date.date >= 31) {
+                this.setState({ date: this.state.date.date(1) });
               } else {
-                this.setState({ date: (this.state.date += 2) });
+                this.setState({ date: new Date(2010, 12, 1) });
               }
             }}
             className={bem("button")}

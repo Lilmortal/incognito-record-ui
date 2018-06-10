@@ -1,0 +1,39 @@
+@import "../../styles/styles";
+
+.wifi-Calendar {
+  &__datesBody {
+    line-height: 3em;
+    max-height: 3em;
+    overflow-y: hidden;
+  }
+
+  &__dates {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__date {
+    height: 3em;
+  }
+
+  &__monthsBody {
+    line-height: 3em;
+    max-height: 3em;
+    overflow-y: hidden;
+  }
+
+  &__months {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__month {
+    height: 3em;
+  }
+
+  &__years {
+    transform: rotate(270deg);
+  }
+}
