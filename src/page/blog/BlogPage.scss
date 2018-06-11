@@ -3,7 +3,7 @@
 .incognito-blogPage {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100vh;
   background-color: #2c323d;
   color: hsla(0, 0%, 100%, 0.8);
 
@@ -11,12 +11,6 @@
     display: grid;
     flex: 1 1 auto;
     grid-template-columns: 1fr 50% 2fr;
-  }
-
-  &__categories {
-    height: 100%;
-    position: absolute;
-    right: 0;
   }
 
   &__calendarWrapper {
@@ -31,5 +25,9 @@
 
   &__calendarSticky {
     position: fixed;
+  }
+
+  &__posts {
+    min-height: 100vh;
   }
 }

@@ -26,21 +26,23 @@ export default class Categories extends React.PureComponent {
     // TODO: Can choose between marginLeft and marginRight
     return (
       <div className={bem()} onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseLeave}>
-        <Trail
-          native
-          from={{ x: 100, opacity: 0.4 }}
-          to={{ x: toggle ? 0 : 100, opacity: toggle ? 1 : 0.4 }}
-          keys={categories.map(category => category.key)}
-        >
-          {categories.map(category => ({ x, opacity }) => (
-            <animated.div
-              className={bem("category")}
-              style={{ opacity, transform: x.interpolate(marginRight => `translateX(${marginRight}%)`) }}
-            >
-              {category.text}
-            </animated.div>
-          ))}
-        </Trail>
+        <div className={bem("categoriesWrapper")}>
+          <Trail
+            native
+            from={{ x: 100, opacity: 0.4 }}
+            to={{ x: toggle ? 0 : 100, opacity: toggle ? 1 : 0.4 }}
+            keys={categories.map(category => category.key)}
+          >
+            {categories.map(category => ({ x, opacity }) => (
+              <animated.div
+                className={bem("category")}
+                style={{ opacity, transform: x.interpolate(marginRight => `translateX(${marginRight}%)`) }}
+              >
+                {category.text}
+              </animated.div>
+            ))}
+          </Trail>
+        </div>
       </div>
     );
   }

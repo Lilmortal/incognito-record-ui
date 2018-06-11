@@ -1,11 +1,17 @@
 @import "../styles/styles";
 
 .incognito-categories {
-  height: inherit;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  min-width: 100px;
+  height: 100%;
+  position: fixed;
+  right: 0;
+
+  &__categoriesWrapper {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-width: 100px;
+  }
 
   &__category {
     &:hover {
