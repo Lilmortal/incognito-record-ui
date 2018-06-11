@@ -5,4 +5,10 @@
   padding: 30px 15px;
   width: 100%;
   min-height: 500px;
+  box-shadow: none;
+
+  &--view {
+    box-shadow: 5px 10px 8px #888;
+    transition: box-shadow 0.5s;
+  }
 }
