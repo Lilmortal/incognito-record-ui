@@ -5,18 +5,18 @@
   align-items: center;
   font-size: 1.5em;
 
-  &__dateMonth {
+  &__dateSlider {
     display: flex;
     flex-direction: column;
   }
 
-  &__borderTop,
-  &__borderBottom {
+  &__dateSliderBorderTop,
+  &__dateSliderBorderBottom {
     width: 10%;
     margin: 0 auto;
   }
 
-  &__datesBody {
+  &__datesWrapper {
     line-height: 3em;
     max-height: 3em;
     overflow-y: hidden;
@@ -36,7 +36,7 @@
     font-family: Orbitron, sans-serif;
   }
 
-  &__monthsBody {
+  &__monthsWrapper {
     line-height: 3em;
     max-height: 3em;
     overflow-y: hidden;

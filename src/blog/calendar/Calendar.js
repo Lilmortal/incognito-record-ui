@@ -7,7 +7,7 @@ import "./Calendar.scss";
 
 const bem = createBem("wifi-Calendar");
 
-const BLOCK = 3;
+const CONTAINER_SPACES = 3;
 
 let months = [
   { month: "JAN", id: 0 },
@@ -56,31 +56,32 @@ export default class Calendar extends React.PureComponent {
   }
 
   get currentDate() {
-    return moment(this.props.fullDate).date();
+    return moment(this.props.date).date();
   }
 
   get currentMonth() {
-    return moment(this.props.fullDate).month();
+    return moment(this.props.date).month();
   }
 
   get currentYear() {
-    return moment(this.props.fullDate).year();
+    return moment(this.props.date).year();
   }
 
   get prevDateLocation() {
-    return BLOCK * (this.prevDate || 0) - BLOCK;
+    // TODO: Why do I have to minus 1 CONTAINER_SPACES here to get it working
+    return CONTAINER_SPACES * (this.prevDate || 0) - CONTAINER_SPACES;
   }
 
   get currentDateLocation() {
-    return BLOCK * (this.currentDate || 0) - BLOCK;
+    return CONTAINER_SPACES * (this.currentDate || 0) - CONTAINER_SPACES;
   }
 
   get prevMonthLocation() {
-    return BLOCK * (this.prevMonth || 0);
+    return CONTAINER_SPACES * (this.prevMonth || 0);
   }
 
   get currentMonthLocation() {
-    return BLOCK * (this.currentMonth || 0);
+    return CONTAINER_SPACES * (this.currentMonth || 0);
   }
 
   get isCurrentDateChanged() {
@@ -114,40 +115,44 @@ export default class Calendar extends React.PureComponent {
           native
           from={{
             borderLength: this.state.loaded ? 200 : 0,
-            y: this.prevDateLocation,
-            monthY: this.prevMonthLocation
+            dateLongitude: this.prevDateLocation,
+            monthLongitude: this.prevMonthLocation
           }}
-          enter={{ borderLength: 200, y: this.currentDateLocation, monthY: this.currentMonthLocation }}
+          enter={{
+            borderLength: 200,
+            dateLongitude: this.currentDateLocation,
+            monthLongitude: this.currentMonthLocation
+          }}
           keys={this.currentDate + this.currentMonth}
         >
-          {({ borderLength, y, monthY }) => (
-            <div className={bem("dateMonth")}>
+          {({ borderLength, dateLongitude, monthLongitude }) => (
+            <div className={bem("dateSlider")}>
               <animated.div
-                className={bem("borderTop")}
+                className={bem("dateSliderBorderTop")}
                 style={{
                   borderTop: borderLength.interpolate(length => `${length}px solid black`)
                 }}
               />
-              <div className={bem("monthsBody")}>
+              <div className={bem("monthsWrapper")}>
                 <animated.div
                   className={bem("months")}
-                  style={{ transform: monthY.interpolate(pos => `translateY(-${pos}em`) }}
+                  style={{ transform: monthLongitude.interpolate(pos => `translateY(-${pos}em`) }}
                 >
                   {months}
                 </animated.div>
               </div>
-              <div className={bem("datesBody")}>
+              <div className={bem("datesWrapper")}>
                 <animated.div
                   className={bem("dates")}
                   style={{
-                    transform: y.interpolate(pos => `translateY(-${pos}em)`)
+                    transform: dateLongitude.interpolate(pos => `translateY(-${pos}em)`)
                   }}
                 >
                   {dates}
                 </animated.div>
               </div>
               <animated.div
-                className={bem("borderBottom")}
+                className={bem("dateSliderBorderBottom")}
                 style={{
                   borderBottom: borderLength.interpolate(length => `${length}px solid black`)
                 }}

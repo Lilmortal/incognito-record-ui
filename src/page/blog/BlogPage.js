@@ -10,6 +10,7 @@ import "./BlogPage.scss";
 
 const bem = createBem("incognito-blogPage");
 
+// TODO: Fix CSS Grid
 const BlogPage = () => (
   <div className={bem()}>
     <Header />

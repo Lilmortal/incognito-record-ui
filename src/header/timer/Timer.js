@@ -36,7 +36,7 @@ class Timer extends React.Component {
       <Transition from={{ opacity: 0 }} enter={{ opacity: 1 }}>
         {this.state.currentTime &&
           (styles => (
-            <div className={bem("timer")} style={styles}>
+            <div className={bem()} style={styles}>
               {this.state.currentTime.toLocaleString()}
             </div>
           ))}
