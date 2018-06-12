@@ -5,6 +5,10 @@ import "./Post.scss";
 
 const bem = createBem("incognito-Post");
 
-const Post = ({ post, isBeingViewed }) => <div className={bem("", isBeingViewed ? "view" : "")}>{post}</div>;
+const Post = ({ post, isBeingViewed, ...props }) => (
+  <div className={bem("", isBeingViewed ? "view" : "")} {...props}>
+    {post}
+  </div>
+);
 
 export default Post;

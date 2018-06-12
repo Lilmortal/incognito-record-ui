@@ -17,6 +17,22 @@ export default class BlogPage extends React.Component {
     posts: [Array.from({ length: 5 })]
   };
 
+  componentDidMount() {
+    const options = {
+      root: this.interceptor,
+      rootMargin: "0px",
+      threshold: 1
+    };
+
+    this.observer = new window.IntersectionObserver(this.handleObserver, options);
+
+    // this.observer.observe(this.post0);
+  }
+
+  handleObserver = (entities, observer) => {
+    console.log(entities, observer);
+  };
+
   fetchMoreData = () => {
     setTimeout(() => {
       this.setState({ posts: this.state.posts.concat(Array.from({ length: 5 })) });
@@ -27,6 +43,8 @@ export default class BlogPage extends React.Component {
     return (
       <div className={bem()}>
         <Header />
+        <div className={bem("interceptor")} ref={interceptor => (this.interceptor = interceptor)} />
+
         <div className={bem("wrapper")}>
           <div className={bem("placeholder")} />
           <div className={bem("calendarWrapper")}>
@@ -43,7 +61,9 @@ export default class BlogPage extends React.Component {
                 loader={<h3>Loading...</h3>}
                 style={{ height: "inherit", overflow: "inherit" }}
               >
-                {this.state.posts.map((post, index) => <Post post={`post ${index}`} key={post} />)}
+                {this.state.posts.map((post, index) => (
+                  <Post post={`post ${index}`} key={post} ref={postRef => (this[`post${index}`] = postRef)} />
+                ))}
               </InfiniteScroll>
             </div>
           </div>
