@@ -26,7 +26,10 @@ export default class BlogPage extends React.Component {
 
     this.observer = new window.IntersectionObserver(this.handleObserver, options);
 
-    // this.observer.observe(this.post0);
+    console.log(this.post0);
+    for (let i = 0; i < 5; i += 1) {
+      this.observer.observe(this[`post${i}`]);
+    }
   }
 
   handleObserver = (entities, observer) => {
@@ -36,6 +39,9 @@ export default class BlogPage extends React.Component {
   fetchMoreData = () => {
     setTimeout(() => {
       this.setState({ posts: this.state.posts.concat(Array.from({ length: 5 })) });
+      for (let i = this.state.posts.length - 5; i < this.state.posts; i += 1) {
+        this.observer.observe(this[`post${i}`]);
+      }
     }, 1000);
   };
 
