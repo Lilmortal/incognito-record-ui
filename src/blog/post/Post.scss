@@ -6,8 +6,9 @@
   width: 100%;
   min-height: 500px;
   box-shadow: none;
+  transition: box-shadow 0.5s;
 
-  &--view {
+  &:hover {
     box-shadow: 5px 10px 8px #888;
     transition: box-shadow 0.5s;
   }

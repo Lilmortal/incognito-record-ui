@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import Header from "../../header";
@@ -14,34 +15,23 @@ const bem = createBem("incognito-blogPage");
 // TODO: Fix CSS Grid
 export default class BlogPage extends React.Component {
   state = {
-    posts: [Array.from({ length: 5 })]
+    posts: [{ date: moment("11/02/2017", "DD/MM/YYYY"), post: "Post 0" }],
+    date: moment()
   };
 
-  componentDidMount() {
-    const options = {
-      root: this.interceptor,
-      rootMargin: "0px",
-      threshold: 1
-    };
-
-    this.observer = new window.IntersectionObserver(this.handleObserver, options);
-
-    console.log(this.post0);
-    for (let i = 0; i < 5; i += 1) {
-      this.observer.observe(this[`post${i}`]);
-    }
-  }
-
-  handleObserver = (entities, observer) => {
-    console.log(entities, observer);
+  onPostHover = date => {
+    this.setState({ date });
   };
 
   fetchMoreData = () => {
     setTimeout(() => {
-      this.setState({ posts: this.state.posts.concat(Array.from({ length: 5 })) });
-      for (let i = this.state.posts.length - 5; i < this.state.posts; i += 1) {
-        this.observer.observe(this[`post${i}`]);
-      }
+      this.setState({
+        posts: this.state.posts.concat([
+          { date: moment("31/12/2018", "DD/MM/YYYY"), post: "Post 1" },
+          { date: moment("14/08/2020", "DD/MM/YYYY"), post: "Post 2" },
+          { date: moment("12/09/2021", "DD/MM/YYYY"), post: "Post 3" }
+        ])
+      });
     }, 1000);
   };
 
@@ -49,14 +39,12 @@ export default class BlogPage extends React.Component {
     return (
       <div className={bem()}>
         <Header />
-        <div className={bem("interceptor")} ref={interceptor => (this.interceptor = interceptor)} />
-
         <div className={bem("wrapper")}>
           <div className={bem("placeholder")} />
           <div className={bem("calendarWrapper")}>
             <div className={bem("calendar")}>
               <div className={bem("calendarSticky")}>
-                <Calendar />
+                <Calendar date={this.state.date} />
               </div>
             </div>
             <div className={bem("posts")}>
@@ -67,9 +55,7 @@ export default class BlogPage extends React.Component {
                 loader={<h3>Loading...</h3>}
                 style={{ height: "inherit", overflow: "inherit" }}
               >
-                {this.state.posts.map((post, index) => (
-                  <Post post={`post ${index}`} key={post} ref={postRef => (this[`post${index}`] = postRef)} />
-                ))}
+                {this.state.posts.map((post, index) => <Post post={post} key={index} onPostHover={this.onPostHover} />)}
               </InfiniteScroll>
             </div>
           </div>

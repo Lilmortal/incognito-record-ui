@@ -5,10 +5,18 @@ import "./Post.scss";
 
 const bem = createBem("incognito-Post");
 
-const Post = ({ post, isBeingViewed, ...props }) => (
-  <div className={bem("", isBeingViewed ? "view" : "")} {...props}>
-    {post}
-  </div>
-);
+export default class Post extends React.Component {
+  onPostHover = () => {
+    this.props.onPostHover(this.props.post.date);
+  };
 
-export default Post;
+  render() {
+    const { post } = this.props;
+
+    return (
+      <div className={bem()} onMouseEnter={this.onPostHover}>
+        {post.post}
+      </div>
+    );
+  }
+}
