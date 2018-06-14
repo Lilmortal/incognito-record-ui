@@ -1,9 +1,9 @@
 @import "../../styles/styles";
 
 .incognito-Navicon {
-  position: relative;
-  padding-left: 1.25em;
-  z-index: 2;
+  position: fixed;
+  padding-left: 4em;
+  right: 0;
 
   &::before {
     content: "";
@@ -12,7 +12,7 @@
     left: 0;
     width: 1em;
     height: 0.125em;
-    border-top: 0.375em double #000;
-    border-bottom: 0.125em solid #000;
+    border-top: 0.375em double #fff;
+    border-bottom: 0.125em solid #fff;
   }
 }
