@@ -1,7 +1,8 @@
 import React from "react";
-import { Keyframes, config, animated } from "react-spring";
+import { Keyframes, animated } from "react-spring";
 
 import createBem from "../util/createBem";
+import TextField from "../ui/textField";
 import "./Categories.scss";
 
 const bem = createBem("incognito-categories");
@@ -9,28 +10,32 @@ const bem = createBem("incognito-categories");
 const Container = Keyframes.Spring({
   show: {
     to: {
-      t: 0
+      t: 0,
+      tOpacity: 1
     }
   },
   hide: {
     to: {
-      t: 100
+      t: 100,
+      tOpacity: 1
     }
   }
-})
+});
 
 const Options = Keyframes.Trail({
   show: {
     to: {
-      x: 0
+      x: 0,
+      opacity: 1
     }
   },
   hide: {
     to: {
-      x: 100
+      x: 100,
+      opacity: 1
     }
   }
-})
+});
 
 export default class Categories extends React.PureComponent {
   state = {
@@ -51,36 +56,33 @@ export default class Categories extends React.PureComponent {
 
     // TODO: Can choose between marginLeft and marginRight
     return (
-      <div className={bem()} onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseLeave}>
-        <Container native state={this.state.toggle ? 'show' : 'hide'}>
-          {styles => {
-              console.log(styles)
-            
-              return (
-                <animated.div className={bem('categoriesWrapper')} style={{ transform: styles.t.interpolate(marginRight => `translateX(${marginRight}%)`)}}>
-                  <Options
-                    native
-            // from={{ x: 100, opacity: 0.4 }}
-            // to={{ x: toggle ? 0 : 100, opacity: toggle ? 1 : 0.4 }}
-                    keys={categories.map(category => category.key)}
-                    state={this.state.toggle ? 'show' : 'hide'}
+      <animated.div className={bem()} onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseLeave}>
+        <Container native state={this.state.toggle ? "show" : "hide"}>
+          {({ t, tOpacity }) => (
+            <animated.div
+              className={bem("categoriesWrapper")}
+              style={{ opacity: tOpacity, transform: t.interpolate(marginRight => `translateX(${marginRight}%)`) }}
+            >
+              <TextField htmlFor="search" text="Search for post" className={bem("searchField")} />
+              <h2 className={bem("categoriesLabel")}>Recommended search</h2>
+              <Options
+                native
+                keys={categories.map(category => category.key)}
+                state={this.state.toggle ? "show" : "hide"}
+              >
+                {categories.map(category => ({ x, opacity }) => (
+                  <animated.div
+                    className={bem("category")}
+                    style={{ opacity, transform: x.interpolate(marginRight => `translateX(${marginRight}%)`) }}
                   >
-                    {categories.map(category => ({ x }) => {
-                      console.log(x);
-                      return (
-                        <animated.div
-                          className={bem("category")}
-                          style={{ transform: x.interpolate(marginRight => `translateX(${marginRight}%)`) }}
-                        >
-                          {category.text}
-                        </animated.div>
-                      )})}
-                  </Options>
-                </animated.div>
-                )}}
-            
+                    {category.text}
+                  </animated.div>
+                ))}
+              </Options>
+            </animated.div>
+          )}
         </Container>
-      </div>
+      </animated.div>
     );
   }
 }

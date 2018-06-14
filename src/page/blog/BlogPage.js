@@ -3,6 +3,7 @@ import moment from "moment";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import Header from "../../header";
+import Footer from "../../footer";
 import Categories from "../../categories";
 import Calendar from "../../blog/calendar";
 import Post from "../../blog/post";
@@ -61,12 +62,18 @@ export default class BlogPage extends React.Component {
           </div>
           <Categories
             categories={[
-              { key: 0, text: "category 1" },
-              { key: 1, text: "category 2" },
-              { key: 2, text: "category 3" }
+              { key: 0, text: "Docker" },
+              { key: 1, text: "Node JS" },
+              { key: 2, text: "Golang" },
+              { key: 3, text: "Kubernetes" },
+              { key: 4, text: "Terraform" },
+              { key: 5, text: "AWS Lambda" },
+              { key: 6, text: "AWS Cloudfront" },
+              { key: 7, text: "Elastic Search" }
             ]}
           />
         </div>
+        <Footer />
       </div>
     );
   }

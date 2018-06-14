@@ -2,7 +2,7 @@ import React from "react";
 
 import createBem from "../util/createBem";
 import Navigation from "./navigation";
-import Timer from "./timer";
+import Navicon from "./navicon";
 import "./Header.scss";
 
 const bem = createBem("incognito-header");
@@ -10,7 +10,7 @@ const bem = createBem("incognito-header");
 const Header = () => (
   <header className={bem()}>
     <Navigation />
-    <Timer />
+    <Navicon />
   </header>
 );
 

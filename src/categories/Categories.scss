@@ -3,6 +3,7 @@
 .incognito-categories {
   height: 100%;
   position: fixed;
+  top: 0;
   right: 0;
 
   &__categoriesWrapper {
@@ -10,8 +11,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     min-width: 100px;
     background-color: yellowgreen;
+    padding: 1em;
   }
 
   &__category {
@@ -19,5 +22,9 @@
       cursor: pointer;
       color: red;
     }
+  }
+
+  &__searchField {
+    width: 100%;
   }
 }
