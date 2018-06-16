@@ -10,7 +10,7 @@
     height: inherit;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     min-width: 100px;
     background-color: yellowgreen;
@@ -22,9 +22,5 @@
       cursor: pointer;
       color: black;
     }
-  }
-
-  &__searchField {
-    width: 100%;
   }
 }
