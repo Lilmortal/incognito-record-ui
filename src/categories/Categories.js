@@ -8,7 +8,6 @@ import "./Categories.scss";
 
 const bem = createBem("incognito-categories");
 
-const fast = { ...config.stiff, restSpeedThreshold: 1, restDisplacementThreshold: 1 }
 
 const Container = Keyframes.Spring({
   show: {
@@ -34,15 +33,16 @@ const Options = Keyframes.Trail({
     await call({ to: {
       x: 0,
       opacity: 1,
-      config: fast
-    }
+    },
+    config: config.stiff
     })
   },
   hide: {
     to: {
       x: 400,
       opacity: 0
-    }
+    },
+    config: config.stiff
   }
 });
 
