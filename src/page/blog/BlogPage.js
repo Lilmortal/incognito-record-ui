@@ -13,7 +13,7 @@ const bem = createBem("incognito-Blog");
 // TODO: Fix CSS Grid
 export default class BlogPage extends React.Component {
   state = {
-    posts: [{ id: 0, date: moment("11/02/2017", "DD/MM/YYYY"), post: "Post 0" }],
+    posts: [{ date: moment("11/02/2017", "DD/MM/YYYY"), post: "Post 0" }],
     date: moment()
   };
 
@@ -25,9 +25,9 @@ export default class BlogPage extends React.Component {
     setTimeout(() => {
       this.setState({
         posts: this.state.posts.concat([
-          { id: 1, date: moment("31/12/2018", "DD/MM/YYYY"), post: "Post 1" },
-          { id: 2, date: moment("14/08/2020", "DD/MM/YYYY"), post: "Post 2" },
-          { id: 3, date: moment("12/09/2021", "DD/MM/YYYY"), post: "Post 3" }
+          { date: moment("31/12/2018", "DD/MM/YYYY"), post: "Post 1" },
+          { date: moment("14/08/2020", "DD/MM/YYYY"), post: "Post 2" },
+          { date: moment("12/09/2021", "DD/MM/YYYY"), post: "Post 3" }
         ])
       });
     }, 1000);
@@ -51,7 +51,7 @@ export default class BlogPage extends React.Component {
               loader={<h3>Loading...</h3>}
               style={{ height: "inherit", overflow: "inherit" }}
             >
-              {this.state.posts.map(post => <Post post={post} key={post.id} onPostHover={this.onPostHover} />)}
+              {this.state.posts.map((post, index) => <Post post={post} key={index} onPostHover={this.onPostHover} />)}
             </InfiniteScroll>
           </div>
         </div>
