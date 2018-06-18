@@ -24,6 +24,14 @@
     "max-len": [2, 120],
     "no-console": 2,
     "react/prop-types": 0,
-    "no-return-assign": 0
+    "no-return-assign": 0,
+    "jsx-a11y/anchor-is-valid": [
+      2,
+      {
+        "components": ["Link"],
+        "specialLink": ["to", "hrefLeft", "hrefRight"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
+    ]
   }
 }

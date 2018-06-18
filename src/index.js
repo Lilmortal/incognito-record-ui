@@ -2,15 +2,21 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 
-import BlogPage from "./page/blog";
+import createBem from "./util/createBem";
+import Root from "./page/root";
 
-import "./Root.scss";
+import "./index.scss";
+
+const bem = createBem("incognito");
 
 const Index = () => (
-  <React.Fragment>
-    <BlogPage />
-  </React.Fragment>
+  <BrowserRouter>
+    <div className={bem()}>
+      <Root />
+    </div>
+  </BrowserRouter>
 );
 
 if (__DEV__) {

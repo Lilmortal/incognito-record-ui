@@ -1,13 +1,12 @@
 import React from "react";
 import { Keyframes, animated, config } from "react-spring";
-import delay from 'delay'
+import delay from "delay";
 
-import createBem from "../util/createBem";
-import TextField from "../ui/textField";
+import createBem from "../../util/createBem";
+import TextField from "../../ui/textField";
 import "./Categories.scss";
 
 const bem = createBem("incognito-categories");
-
 
 const Container = Keyframes.Spring({
   show: {
@@ -17,25 +16,26 @@ const Container = Keyframes.Spring({
     }
   },
   hide: async call => {
-    await delay(400);
+    await delay(200);
     await call({
-    to: {
-      t: 100,
-      tOpacity: 0
-    }
-  })
-}
+      to: {
+        t: 100,
+        tOpacity: 0
+      }
+    });
+  }
 });
 
 const Options = Keyframes.Trail({
   show: async call => {
-    await delay(400)
-    await call({ to: {
-      x: 0,
-      opacity: 1,
-    },
-    config: config.stiff
-    })
+    await delay(200);
+    await call({
+      to: {
+        x: 0,
+        opacity: 1
+      },
+      config: config.stiff
+    });
   },
   hide: {
     to: {

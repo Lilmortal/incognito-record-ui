@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
+import { BLOG_PAGE_ROUTE, ABOUT_PAGE_ROUTE } from "../../config/routes";
 import createBem from "../../util/createBem";
 import "./Navigation.scss";
 
@@ -9,10 +11,10 @@ const Navigation = () => (
   <nav className={bem()}>
     <ul className={bem("links")}>
       <li>
-        <a href="aaaa">Blog</a>
+        <Link to={BLOG_PAGE_ROUTE}>Blog</Link>
       </li>
       <li>
-        <a href="test">About</a>
+        <Link to={ABOUT_PAGE_ROUTE}>About</Link>
       </li>
     </ul>
   </nav>
