@@ -1,7 +1,7 @@
 import React from "react";
 import { Keyframes, animated, config } from "react-spring";
-import delay from "delay";
 
+import delay from "../../util/delay";
 import createBem from "../../util/createBem";
 import TextField from "../../ui/textField";
 import "./Categories.scss";

@@ -1,7 +1,8 @@
 import React from "react";
-import { Transition, animated } from "react-spring";
+import { Transition, Keyframes, animated, config } from "react-spring";
 import moment from "moment";
 
+import delay from "../../util/delay";
 import createBem from "../../util/createBem";
 import "./Calendar.scss";
 
@@ -96,12 +97,53 @@ export default class Calendar extends React.PureComponent {
     return this.prevYear !== this.currentYear;
   }
 
+  BorderContainer = Keyframes.Transition({
+    initial: {
+      to: {
+        borderOpacity: 0.01,
+        borderHeight: 0,
+        height: 200
+      }
+    },
+    show: async call => {
+      await delay(1000);
+      await call({
+        from: {
+          borderOpacity: 0.01,
+          borderHeight: 0,
+          height: 200
+        },
+        to: {
+          borderOpacity: 1,
+          borderHeight: this.state.loaded ? 200 : 0.01,
+          height: 0
+        }
+      });
+    }
+  });
+
+  CalendarContainer = Keyframes.Transition({
+    show: {
+      from: {
+        calendarOpacity: 0.01,
+        datePosition: this.prevDateLocation,
+        monthPositon: this.prevMonthLocation
+      },
+      to: {
+        calendarOpacity: 1,
+        datePosition: this.currentDateLocation,
+        monthPositon: this.currentMonthLocation
+      },
+      config: config.slow
+    }
+  });
+
   render() {
     return (
       <div className={bem()}>
         <Transition
           native
-          from={{ opacity: this.isCurrentYearChanged ? 0 : 1 }}
+          from={{ opacity: this.isCurrentYearChanged ? 0.01 : 1 }}
           enter={{ opacity: 1 }}
           keys={this.currentYear}
         >
@@ -111,55 +153,56 @@ export default class Calendar extends React.PureComponent {
             </animated.div>
           )}
         </Transition>
-        <Transition
-          native
-          from={{
-            borderLength: this.state.loaded ? 200 : 0,
-            dateLongitude: this.prevDateLocation,
-            monthLongitude: this.prevMonthLocation
-          }}
-          enter={{
-            borderLength: 200,
-            dateLongitude: this.currentDateLocation,
-            monthLongitude: this.currentMonthLocation
-          }}
-          keys={this.currentDate + this.currentMonth}
-        >
-          {({ borderLength, dateLongitude, monthLongitude }) => (
+        <this.BorderContainer native state={this.state.loaded ? "show" : "initial"}>
+          {({ borderHeight, height, borderOpacity }) => (
             <div className={bem("dateSlider")}>
               <animated.div
                 className={bem("dateSliderBorderTop")}
                 style={{
-                  borderTop: borderLength.interpolate(length => `${length}px solid black`)
+                  opacity: borderOpacity,
+                  height: height.interpolate(length => `${length}px`),
+                  borderBottom: borderHeight.interpolate(length => `${length}px solid black`)
                 }}
               />
-              <div className={bem("monthsWrapper")}>
-                <animated.div
-                  className={bem("months")}
-                  style={{ transform: monthLongitude.interpolate(pos => `translateY(-${pos}em`) }}
-                >
-                  {months}
-                </animated.div>
-              </div>
-              <div className={bem("datesWrapper")}>
-                <animated.div
-                  className={bem("dates")}
-                  style={{
-                    transform: dateLongitude.interpolate(pos => `translateY(-${pos}em)`)
-                  }}
-                >
-                  {dates}
-                </animated.div>
-              </div>
+              <this.CalendarContainer native state={this.state.loaded ? "show" : ""}>
+                {({ calendarOpacity, datePosition, monthPositon }) => (
+                  <React.Fragment>
+                    <div className={bem("monthsWrapper")}>
+                      <animated.div
+                        className={bem("months")}
+                        style={{
+                          opacity: calendarOpacity,
+                          transform: monthPositon.interpolate(pos => `translateY(-${pos}em`)
+                        }}
+                      >
+                        {months}
+                      </animated.div>
+                    </div>
+                    <div className={bem("datesWrapper")}>
+                      <animated.div
+                        className={bem("dates")}
+                        style={{
+                          opacity: calendarOpacity,
+                          transform: datePosition.interpolate(pos => `translateY(-${pos}em)`)
+                        }}
+                      >
+                        {dates}
+                      </animated.div>
+                    </div>
+                  </React.Fragment>
+                )}
+              </this.CalendarContainer>
               <animated.div
                 className={bem("dateSliderBorderBottom")}
                 style={{
-                  borderBottom: borderLength.interpolate(length => `${length}px solid black`)
+                  opacity: borderOpacity,
+                  height: height.interpolate(length => `${length}px`),
+                  borderTop: borderHeight.interpolate(length => `${length}px solid black`)
                 }}
               />
             </div>
           )}
-        </Transition>
+        </this.BorderContainer>
       </div>
     );
   }
