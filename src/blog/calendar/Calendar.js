@@ -85,14 +85,6 @@ export default class Calendar extends React.PureComponent {
     return CONTAINER_SPACES * (this.currentMonth || 0);
   }
 
-  get isCurrentDateChanged() {
-    return this.prevDate !== this.currentDate;
-  }
-
-  get isCurrentMonthChanged() {
-    return this.prevMonth !== this.currentMonth;
-  }
-
   get isCurrentYearChanged() {
     return this.prevYear !== this.currentYear;
   }
@@ -103,7 +95,8 @@ export default class Calendar extends React.PureComponent {
         borderOpacity: 0.01,
         borderHeight: 0,
         height: 200
-      }
+      },
+      config: config.slow
     },
     show: async call => {
       await delay(1000);
@@ -117,24 +110,9 @@ export default class Calendar extends React.PureComponent {
           borderOpacity: 1,
           borderHeight: this.state.loaded ? 200 : 0.01,
           height: 0
-        }
+        },
+        config: config.slow
       });
-    }
-  });
-
-  CalendarContainer = Keyframes.Transition({
-    show: {
-      from: {
-        calendarOpacity: 0.01,
-        datePosition: this.prevDateLocation,
-        monthPositon: this.prevMonthLocation
-      },
-      to: {
-        calendarOpacity: 1,
-        datePosition: this.currentDateLocation,
-        monthPositon: this.currentMonthLocation
-      },
-      config: config.slow
     }
   });
 
