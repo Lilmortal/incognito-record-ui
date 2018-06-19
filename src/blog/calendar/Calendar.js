@@ -153,9 +153,9 @@ export default class Calendar extends React.PureComponent {
             </animated.div>
           )}
         </Transition>
-        <this.BorderContainer native state={this.state.loaded ? "show" : "initial"}>
-          {({ borderHeight, height, borderOpacity }) => (
-            <div className={bem("dateSlider")}>
+        <div className={bem("dateSlider")}>
+          <this.BorderContainer native state={this.state.loaded ? "show" : "initial"}>
+            {({ borderHeight, height, borderOpacity }) => (
               <animated.div
                 className={bem("dateSliderBorderTop")}
                 style={{
@@ -164,34 +164,51 @@ export default class Calendar extends React.PureComponent {
                   borderBottom: borderHeight.interpolate(length => `${length}px solid black`)
                 }}
               />
-              <this.CalendarContainer native state={this.state.loaded ? "show" : ""}>
-                {({ calendarOpacity, datePosition, monthPositon }) => (
-                  <React.Fragment>
-                    <div className={bem("monthsWrapper")}>
-                      <animated.div
-                        className={bem("months")}
-                        style={{
-                          opacity: calendarOpacity,
-                          transform: monthPositon.interpolate(pos => `translateY(-${pos}em`)
-                        }}
-                      >
-                        {months}
-                      </animated.div>
-                    </div>
-                    <div className={bem("datesWrapper")}>
-                      <animated.div
-                        className={bem("dates")}
-                        style={{
-                          opacity: calendarOpacity,
-                          transform: datePosition.interpolate(pos => `translateY(-${pos}em)`)
-                        }}
-                      >
-                        {dates}
-                      </animated.div>
-                    </div>
-                  </React.Fragment>
-                )}
-              </this.CalendarContainer>
+            )}
+          </this.BorderContainer>
+          <Transition
+            native
+            from={{
+              calendarOpacity: 0.01,
+              datePosition: this.prevDateLocation,
+              monthPositon: this.prevMonthLocation
+            }}
+            enter={{
+              calendarOpacity: 1,
+              datePosition: this.currentDateLocation,
+              monthPositon: this.currentMonthLocation
+            }}
+            keys={this.currentDate + this.currentMonth + this.currentYear}
+          >
+            {({ calendarOpacity, datePosition, monthPositon }) => (
+              <React.Fragment>
+                <div className={bem("monthsWrapper")}>
+                  <animated.div
+                    className={bem("months")}
+                    style={{
+                      opacity: calendarOpacity,
+                      transform: monthPositon.interpolate(pos => `translateY(-${pos}em`)
+                    }}
+                  >
+                    {months}
+                  </animated.div>
+                </div>
+                <div className={bem("datesWrapper")}>
+                  <animated.div
+                    className={bem("dates")}
+                    style={{
+                      opacity: calendarOpacity,
+                      transform: datePosition.interpolate(pos => `translateY(-${pos}em)`)
+                    }}
+                  >
+                    {dates}
+                  </animated.div>
+                </div>
+              </React.Fragment>
+            )}
+          </Transition>
+          <this.BorderContainer native state={this.state.loaded ? "show" : "initial"}>
+            {({ borderHeight, height, borderOpacity }) => (
               <animated.div
                 className={bem("dateSliderBorderBottom")}
                 style={{
@@ -200,9 +217,9 @@ export default class Calendar extends React.PureComponent {
                   borderTop: borderHeight.interpolate(length => `${length}px solid black`)
                 }}
               />
-            </div>
-          )}
-        </this.BorderContainer>
+            )}
+          </this.BorderContainer>
+        </div>
       </div>
     );
   }
