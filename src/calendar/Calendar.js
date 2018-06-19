@@ -2,8 +2,8 @@ import React from "react";
 import { Transition, Keyframes, animated, config } from "react-spring";
 import moment from "moment";
 
-import delay from "../../util/delay";
-import createBem from "../../util/createBem";
+import delay from "../util/delay";
+import createBem from "../util/createBem";
 import "./Calendar.scss";
 
 const bem = createBem("wifi-Calendar");
@@ -101,11 +101,6 @@ export default class Calendar extends React.PureComponent {
     show: async call => {
       await delay(1000);
       await call({
-        from: {
-          borderOpacity: 0.01,
-          borderHeight: 0,
-          height: 200
-        },
         to: {
           borderOpacity: 1,
           borderHeight: this.state.loaded ? 200 : 0.01,

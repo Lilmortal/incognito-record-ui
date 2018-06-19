@@ -11,10 +11,10 @@ export default class Post extends React.Component {
   };
 
   render() {
-    const { post } = this.props;
+    const { post, style } = this.props;
 
     return (
-      <div className={bem()} onMouseEnter={this.onPostHover}>
+      <div className={bem()} onMouseEnter={this.onPostHover} style={style}>
         {post.post}
       </div>
     );

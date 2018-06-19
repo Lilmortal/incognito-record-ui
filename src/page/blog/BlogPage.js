@@ -1,10 +1,12 @@
 import React from "react";
+import { Keyframes, config, animated } from "react-spring";
 import moment from "moment";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import Calendar from "../../blog/calendar";
+import Calendar from "../../calendar";
 import Post from "../../blog/post";
 
+import delay from "../../util/delay";
 import createBem from "../../util/createBem";
 import "./BlogPage.scss";
 
@@ -14,8 +16,15 @@ const bem = createBem("incognito-Blog");
 export default class BlogPage extends React.Component {
   state = {
     posts: [{ date: moment("11/02/2017", "DD/MM/YYYY"), post: "Post 0" }],
-    date: moment()
+    date: moment(),
+    loaded: false
   };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loaded: true });
+    }, 0);
+  }
 
   onPostHover = date => {
     this.setState({ date });
@@ -30,8 +39,26 @@ export default class BlogPage extends React.Component {
           { date: moment("12/09/2021", "DD/MM/YYYY"), post: "Post 3" }
         ])
       });
-    }, 1000);
+    }, 0);
   };
+
+  PostContainer = Keyframes.Transition({
+    initial: {
+      to: {
+        opacity: 0.01
+      },
+      config: config.slow
+    },
+    show: async call => {
+      await delay(1000);
+      await call({
+        to: {
+          opacity: 1
+        },
+        config: config.slow
+      });
+    }
+  });
 
   render() {
     return (
@@ -43,17 +70,23 @@ export default class BlogPage extends React.Component {
               <Calendar date={this.state.date} />
             </div>
           </div>
-          <div className={bem("posts")}>
-            <InfiniteScroll
-              dataLength={this.state.posts.length}
-              next={this.fetchMoreData}
-              hasMore
-              loader={<h3>Loading...</h3>}
-              style={{ height: "inherit", overflow: "inherit" }}
-            >
-              {this.state.posts.map((post, index) => <Post post={post} key={index} onPostHover={this.onPostHover} />)}
-            </InfiniteScroll>
-          </div>
+          <this.PostContainer native state={this.state.loaded ? "show" : "initial"}>
+            {({ opacity }) => (
+              <animated.div className={bem("posts")} style={{ opacity }}>
+                <InfiniteScroll
+                  dataLength={this.state.posts.length}
+                  next={this.fetchMoreData}
+                  hasMore
+                  loader={<h3>Loading...</h3>}
+                  style={{ height: "inherit", overflow: "inherit" }}
+                >
+                  {this.state.posts.map((post, index) => (
+                    <Post post={post} key={index} onPostHover={this.onPostHover} />
+                  ))}
+                </InfiniteScroll>
+              </animated.div>
+            )}
+          </this.PostContainer>
         </div>
       </div>
     );
