@@ -15,14 +15,14 @@ const bem = createBem("incognito-Blog");
 // TODO: Fix CSS Grid
 export default class BlogPage extends React.Component {
   state = {
-    posts: [{ date: moment("11/02/2017", "DD/MM/YYYY"), post: "Post 0", image: "docker" }],
+    posts: [{ date: moment("11/02/2017", "DD/MM/YYYY"), title: "Title 0", post: "Post 0", image: "docker" }],
     date: moment(),
     image: "",
     loaded: false
   };
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loaded: true }), 1500);
+    setTimeout(() => this.setState({ loaded: true }), 1000);
   }
 
   onPostHover = ({ date, image }) => this.setState({ date, image });
@@ -31,9 +31,9 @@ export default class BlogPage extends React.Component {
     setTimeout(() => {
       this.setState({
         posts: this.state.posts.concat([
-          { date: moment("31/12/2018", "DD/MM/YYYY"), post: "Post 1", image: "flower" },
-          { date: moment("14/08/2020", "DD/MM/YYYY"), post: "Post 2", image: "docker" },
-          { date: moment("12/09/2021", "DD/MM/YYYY"), post: "Post 3", image: "flower" }
+          { date: moment("31/12/2017", "DD/MM/YYYY"), title: "Title 1", post: "Post 1", image: "flower" },
+          { date: moment("14/08/2020", "DD/MM/YYYY"), title: "Title 2", post: "Post 2", image: "docker" },
+          { date: moment("12/09/2021", "DD/MM/YYYY"), title: "Title 3", post: "Post 3", image: "flower" }
         ])
       });
     }, 1000);
@@ -69,6 +69,7 @@ export default class BlogPage extends React.Component {
                 >
                   {this.state.posts.map(post => (
                     <Post
+                      title={post.title}
                       post={post.post}
                       date={post.date}
                       image={post.image}
