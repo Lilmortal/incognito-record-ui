@@ -3,7 +3,11 @@
 .incognito-Blog {
   display: grid;
   flex: 1 1 auto;
-  grid-template-columns: 1fr 50% 2fr;
+  grid-template-columns: 1fr 70% 2fr;
+
+  @media (min-width: 1890px) {
+    grid-template-columns: 1fr 50% 2fr;
+  }
 
   &__calendarWrapper {
     display: grid;
