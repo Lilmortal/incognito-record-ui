@@ -3,7 +3,7 @@
 .incognito-Blog {
   display: grid;
   flex: 1 1 auto;
-  grid-template-columns: 1fr 50% 2fr;
+  grid-template-columns: 1fr 50% 2fr 2fr;
 
   &__calendarWrapper {
     display: grid;
@@ -26,5 +26,11 @@
     &--loading {
       visibility: hidden;
     }
+  }
+
+  &__postImage {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../blog/postImage/docker.png');
   }
 }

@@ -19,7 +19,7 @@ const Root = ({ history }) => {
     <div className={bem()}>
       <Header isHomePage={isHomePage} />
       <Switch>
-        <Route path={routes.about} component={AboutPage} />
+        <Route path={routes.about} component={AboutPage} exact />
         <Route path={routes.index} component={BlogPage} />
       </Switch>
       <Footer />

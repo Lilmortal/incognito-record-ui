@@ -5,6 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Calendar from '../../calendar';
 import Post from '../../blog/post';
+import PostImage from '../../blog/postImage';
 
 import createBem from '../../util/createBem';
 import './BlogPage.scss';
@@ -80,6 +81,10 @@ export default class BlogPage extends React.Component {
               </animated.div>
             )}
           </Transition>
+        </div>
+
+        <div className={bem('postImage')}>
+          <PostImage />
         </div>
       </div>
     );
