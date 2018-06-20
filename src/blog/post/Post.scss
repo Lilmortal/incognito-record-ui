@@ -1,4 +1,4 @@
-@import "../../styles/styles";
+@import '../../styles/styles';
 
 .incognito-Post {
   border-top: 1px solid white;
@@ -7,11 +7,10 @@
   min-height: 500px;
   box-shadow: none;
   transition: box-shadow 0.5s;
+  opacity: 0;
 
   &:hover {
-    box-shadow: 
-    inset 0 15px 8px -10px #888,
-    inset 0 -15px 8px -10px #888; 
+    box-shadow: inset 0 15px 8px -10px #888, inset 0 -15px 8px -10px #888;
     transition: box-shadow 0.5s;
   }
 }

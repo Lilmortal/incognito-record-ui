@@ -1,4 +1,4 @@
-@import "../../styles/styles";
+@import '../../styles/styles';
 
 .incognito-Blog {
   display: grid;
@@ -21,5 +21,10 @@
 
   &__posts {
     min-height: 100vh;
+    visibility: visible;
+
+    &--loading {
+      visibility: hidden;
+    }
   }
 }
