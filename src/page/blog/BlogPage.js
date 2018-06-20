@@ -15,8 +15,9 @@ const bem = createBem("incognito-Blog");
 // TODO: Fix CSS Grid
 export default class BlogPage extends React.Component {
   state = {
-    posts: [{ date: moment("11/02/2017", "DD/MM/YYYY"), post: "Post 0" }],
+    posts: [{ date: moment("11/02/2017", "DD/MM/YYYY"), post: "Post 0", image: "docker" }],
     date: moment(),
+    image: "",
     loaded: false
   };
 
@@ -24,17 +25,18 @@ export default class BlogPage extends React.Component {
     setTimeout(() => this.setState({ loaded: true }), 1500);
   }
 
-  onPostHover = date => {
-    this.setState({ date });
+  onPostHover = ({ date, image }) => {
+    console.log(image);
+    this.setState({ date, image });
   };
 
   fetchMoreData = () => {
     setTimeout(() => {
       this.setState({
         posts: this.state.posts.concat([
-          { date: moment("31/12/2018", "DD/MM/YYYY"), post: "Post 1" },
-          { date: moment("14/08/2020", "DD/MM/YYYY"), post: "Post 2" },
-          { date: moment("12/09/2021", "DD/MM/YYYY"), post: "Post 3" }
+          { date: moment("31/12/2018", "DD/MM/YYYY"), post: "Post 1", image: "flower" },
+          { date: moment("14/08/2020", "DD/MM/YYYY"), post: "Post 2", image: "docker" },
+          { date: moment("12/09/2021", "DD/MM/YYYY"), post: "Post 3", image: "flower" }
         ])
       });
     }, 1000);
@@ -67,7 +69,13 @@ export default class BlogPage extends React.Component {
                   style={{ height: "inherit", overflow: "inherit" }}
                 >
                   {this.state.posts.map((post, index) => (
-                    <Post post={post.post} date={post.date} key={index} onPostHover={this.onPostHover} />
+                    <Post
+                      post={post.post}
+                      date={post.date}
+                      image={post.image}
+                      key={index}
+                      onPostHover={this.onPostHover}
+                    />
                   ))}
                 </InfiniteScroll>
               </animated.div>
@@ -75,7 +83,7 @@ export default class BlogPage extends React.Component {
           </Transition>
         </div>
         <div className={bem("postImage")}>
-          <PostImage type="flower" />
+          <PostImage type={this.state.image} />
         </div>
       </div>
     );
