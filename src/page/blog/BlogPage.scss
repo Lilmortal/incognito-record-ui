@@ -1,4 +1,4 @@
-@import '../../styles/styles';
+@import "../../styles/styles";
 
 .incognito-Blog {
   display: grid;
@@ -9,6 +9,7 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 2em;
+    z-index: 1;
   }
 
   &__calendar {
@@ -26,5 +27,13 @@
     &--loading {
       visibility: hidden;
     }
+  }
+
+  &__postImage {
+    display: grid;
+  }
+
+  &__postImageSticky {
+    position: fixed;
   }
 }

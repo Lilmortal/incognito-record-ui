@@ -1,7 +1,7 @@
 import React from "react";
 
 import createBem from "../util/createBem";
-import Categories from "./categories";
+import Categories from "../categories";
 import Navigation from "./navigation";
 import Navicon from "./navicon";
 import "./Header.scss";
