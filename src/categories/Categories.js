@@ -11,16 +11,16 @@ const bem = createBem("incognito-categories");
 const Container = Keyframes.Spring({
   show: {
     to: {
-      t: 0,
-      tOpacity: 1
+      containerXPosition: 0,
+      containerOpacity: 1
     }
   },
   hide: async call => {
     await delay(200);
     await call({
       to: {
-        t: 100,
-        tOpacity: 0
+        containerXPosition: 100,
+        containerOpacity: 0
       }
     });
   }
@@ -31,16 +31,16 @@ const Options = Keyframes.Trail({
     await delay(200);
     await call({
       to: {
-        x: 0,
-        opacity: 1
+        optionsXPosition: 0,
+        optionsOpacity: 1
       },
       config: config.stiff
     });
   },
   hide: {
     to: {
-      x: 400,
-      opacity: 0
+      optionsXPosition: 400,
+      optionsOpacity: 0
     },
     config: config.stiff
   }
@@ -60,17 +60,18 @@ export default class Categories extends React.PureComponent {
   };
 
   render() {
-    // const { toggle } = this.state;
     const { categories } = this.props;
 
-    // TODO: Can choose between marginLeft and marginRight
     return (
       <animated.div className={bem()} onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseLeave}>
         <Container native state={this.state.toggle ? "show" : "hide"}>
-          {({ t, tOpacity }) => (
+          {({ containerXPosition, containerOpacity }) => (
             <animated.div
               className={bem("categoriesWrapper")}
-              style={{ opacity: tOpacity, transform: t.interpolate(marginRight => `translateX(${marginRight}%)`) }}
+              style={{
+                opacity: containerOpacity,
+                transform: containerXPosition.interpolate(x => `translateX(${x}%)`)
+              }}
             >
               <TextField htmlFor="search" text="Search for post" className={bem("searchField")} />
               <h2 className={bem("categoriesLabel")}>Recommended search</h2>
@@ -79,10 +80,13 @@ export default class Categories extends React.PureComponent {
                 keys={categories.map(category => category.key)}
                 state={this.state.toggle ? "show" : "hide"}
               >
-                {categories.map(category => ({ x, opacity }) => (
+                {categories.map(category => ({ optionsXPosition, optionsOpacity }) => (
                   <animated.div
                     className={bem("category")}
-                    style={{ opacity, transform: x.interpolate(marginRight => `translateX(${marginRight}%)`) }}
+                    style={{
+                      opacity: optionsOpacity,
+                      transform: optionsXPosition.interpolate(x => `translateX(${x}%)`)
+                    }}
                   >
                     {category.text}
                   </animated.div>

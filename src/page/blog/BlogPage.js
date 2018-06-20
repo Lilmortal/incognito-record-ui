@@ -25,10 +25,7 @@ export default class BlogPage extends React.Component {
     setTimeout(() => this.setState({ loaded: true }), 1500);
   }
 
-  onPostHover = ({ date, image }) => {
-    console.log(image);
-    this.setState({ date, image });
-  };
+  onPostHover = ({ date, image }) => this.setState({ date, image });
 
   fetchMoreData = () => {
     setTimeout(() => {
@@ -41,6 +38,8 @@ export default class BlogPage extends React.Component {
       });
     }, 1000);
   };
+
+  id = 0;
 
   render() {
     return (
@@ -68,12 +67,13 @@ export default class BlogPage extends React.Component {
                   loader={<h3>Loading...</h3>}
                   style={{ height: "inherit", overflow: "inherit" }}
                 >
-                  {this.state.posts.map((post, index) => (
+                  {this.state.posts.map(post => (
                     <Post
                       post={post.post}
                       date={post.date}
                       image={post.image}
-                      key={index}
+                      // eslint-disable-next-line no-plusplus
+                      key={this.id++}
                       onPostHover={this.onPostHover}
                     />
                   ))}
