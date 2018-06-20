@@ -1,22 +1,32 @@
-import React from "react";
-import createBem from "../../util/createBem";
+import React from 'react';
+import { Transition, animated } from 'react-spring';
 
-import "./Post.scss";
+import createBem from '../../util/createBem';
 
-const bem = createBem("incognito-Post");
+import './Post.scss';
+
+const bem = createBem('incognito-Post');
 
 export default class Post extends React.Component {
   onPostHover = () => {
-    this.props.onPostHover(this.props.post.date);
+    this.props.onPostHover(this.props.date);
   };
 
   render() {
-    const { post, style } = this.props;
+    const { post } = this.props;
 
     return (
-      <div className={bem()} onMouseEnter={this.onPostHover} style={style}>
-        {post.post}
-      </div>
+      <Transition native from={{ opacity: 0 }} enter={{ opacity: 1 }}>
+        {({ opacity }) => (
+          <animated.div
+            className={bem()}
+            onMouseEnter={this.onPostHover}
+            style={{ opacity }}
+          >
+            {post}
+          </animated.div>
+        )}
+      </Transition>
     );
   }
 }
