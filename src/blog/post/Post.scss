@@ -2,7 +2,6 @@
 
 .incognito-Post {
   border-top: 1px solid white;
-  padding: 30px 15px;
   width: 100%;
   min-height: 500px;
   box-shadow: none;
@@ -18,5 +17,10 @@
     top: 0;
     border-bottom: 1px solid black;
     background-color: lightgray;
+    margin: 0;
+  }
+
+  &__post {
+    padding: 30px 15px;
   }
 }

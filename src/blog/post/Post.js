@@ -17,7 +17,7 @@ export default class Post extends React.Component {
     return (
       <div className={bem()} onMouseEnter={this.onPostHover}>
         <h2 className={bem("title")}>{title}</h2>
-        {post}
+        <div className={bem("post")}>{post}</div>
       </div>
     );
   }
