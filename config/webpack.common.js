@@ -7,7 +7,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: ['babel-polyfill', path.resolve(__dirname, "..", "src/index.js")]
+    app: ["babel-polyfill", path.resolve(__dirname, "..", "src/index.js")]
   },
   module: {
     rules: [
@@ -16,7 +16,7 @@ module.exports = {
         use: ["svg-react-loader"]
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
         use: [
           {
             loader: "file-loader",

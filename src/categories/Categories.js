@@ -1,9 +1,9 @@
 import React from "react";
 import { Keyframes, animated, config } from "react-spring";
 
-import delay from "../../util/delay";
-import createBem from "../../util/createBem";
-import TextField from "../../ui/textField";
+import delay from "../util/delay";
+import createBem from "../util/createBem";
+import TextField from "../ui/textField";
 import "./Categories.scss";
 
 const bem = createBem("incognito-categories");
