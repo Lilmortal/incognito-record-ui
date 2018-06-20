@@ -1,4 +1,5 @@
 import React from 'react';
+import { Transition, animated } from 'react-spring';
 import moment from 'moment';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -48,24 +49,37 @@ export default class BlogPage extends React.Component {
               <Calendar date={this.state.date} />
             </div>
           </div>
-          <div className={bem('posts', this.state.loaded ? '' : 'loading')}>
-            <InfiniteScroll
-              dataLength={this.state.posts.length}
-              next={this.fetchMoreData}
-              hasMore
-              loader={<h3>Loading...</h3>}
-              style={{ height: 'inherit', overflow: 'inherit' }}
-            >
-              {this.state.posts.map((post, index) => (
-                <Post
-                  post={post.post}
-                  date={post.date}
-                  key={index}
-                  onPostHover={this.onPostHover}
-                />
-              ))}
-            </InfiniteScroll>
-          </div>
+          <Transition
+            native
+            from={{ opacity: 0 }}
+            enter={{
+              opacity: this.state.loaded ? 1 : 0,
+            }}
+          >
+            {({ opacity }) => (
+              <animated.div
+                className={bem('posts', this.state.loaded ? '' : 'loading')}
+                style={{ opacity }}
+              >
+                <InfiniteScroll
+                  dataLength={this.state.posts.length}
+                  next={this.fetchMoreData}
+                  hasMore
+                  loader={<h3>Loading...</h3>}
+                  style={{ height: 'inherit', overflow: 'inherit' }}
+                >
+                  {this.state.posts.map((post, index) => (
+                    <Post
+                      post={post.post}
+                      date={post.date}
+                      key={index}
+                      onPostHover={this.onPostHover}
+                    />
+                  ))}
+                </InfiniteScroll>
+              </animated.div>
+            )}
+          </Transition>
         </div>
       </div>
     );
