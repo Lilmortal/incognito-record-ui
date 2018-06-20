@@ -1,5 +1,4 @@
 import React from "react";
-import { Transition, animated } from "react-spring";
 
 import createBem from "../../util/createBem";
 
@@ -16,13 +15,9 @@ export default class Post extends React.Component {
     const { post } = this.props;
 
     return (
-      <Transition native from={{ opacity: 0 }} enter={{ opacity: 1 }}>
-        {({ opacity }) => (
-          <animated.div className={bem()} onMouseEnter={this.onPostHover} style={{ opacity }}>
-            {post}
-          </animated.div>
-        )}
-      </Transition>
+      <div className={bem()} onMouseEnter={this.onPostHover}>
+        {post}
+      </div>
     );
   }
 }
