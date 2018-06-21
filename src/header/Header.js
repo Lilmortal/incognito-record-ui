@@ -6,11 +6,16 @@ import Navigation from './navigation';
 import Navicon from './navicon';
 import './Header.scss';
 
+import SearchImg from './search.png';
+
 const bem = createBem('incognito-header');
 
 const Header = ({ isHomePage }) => (
   <header className={bem()}>
     <Navigation />
+    <div className={bem('search')}>
+      <img src={SearchImg} alt="Search" />
+    </div>
     {isHomePage && (
       <div className={bem('categories')}>
         <Navicon />
