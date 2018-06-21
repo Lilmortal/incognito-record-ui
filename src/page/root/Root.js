@@ -21,7 +21,7 @@ const Root = ({ history }) => {
       <Switch>
         <Route path={routes.about} component={AboutPage} />
         <Route path={routes.index} component={BlogPage} />
-      </Switch>
+      </Switch> 
       <Footer />
     </div>
   );

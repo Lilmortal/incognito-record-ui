@@ -1,0 +1,12 @@
+@import '../styles/styles';
+
+.incognito-DigitalClock {
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
+
+  &__card {
+    border: 1px solid gray;
+    padding: 10px;
+  }
+}

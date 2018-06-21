@@ -1,32 +1,77 @@
-@import "../../styles/styles";
+@import '../../styles/styles';
 
 .incognito-Blog {
   display: grid;
   flex: 1 1 auto;
-  grid-template-columns: 1fr 70% 2fr;
+  width: 80%;
+  margin: 0 auto;
 
-  @media (min-width: 1890px) {
-    grid-template-columns: 1fr 50% 2fr;
+  @media only screen and (min-width: 900px) {
+    width: 100%;
+    margin: 0;
+    grid-template-columns: [placeholder] 1fr [blog] 70% [images] 2fr;
+  }
+
+  @media only screen and (min-width: 1890px) {
+    grid-template-columns: [placeholder] 1fr [blog] 50% [images] 2fr;
+  }
+
+  &__placeholder {
+    display: none;
+    @media only screen and (min-width: 900px) {
+      display: block;
+    }
   }
 
   &__calendarWrapper {
     display: grid;
-    grid-template-columns: 1fr 2fr;
     grid-gap: 2em;
     z-index: 1;
+    grid-template-rows: [clock] 100% [posts] 1fr;
+
+    @media only screen and (min-width: 900px) {
+      grid-template-rows: 0;
+      grid-template-columns: [calendar] 1fr [posts] 2fr;
+    }
+  }
+
+  &__digitalClock {
+    grid-row: clock;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
+    @media only screen and (min-width: 900px) {
+      display: none;
+    }
   }
 
   &__calendar {
-    display: grid;
+    display: none;
+
+    @media only screen and (min-width: 900px) {
+      display: grid;
+      grid-column: calendar;
+    }
   }
 
   &__calendarSticky {
-    position: fixed;
+    position: initial;
+
+    @media only screen and (min-width: 900px) {
+      position: fixed;
+    }
   }
 
   &__posts {
     min-height: 100vh;
     visibility: visible;
+    grid-row: posts;
+
+    @media only screen and (min-width: 900px) {
+      grid-row: 0;
+      grid-column: posts;
+    }
 
     &--loading {
       visibility: hidden;
@@ -34,7 +79,11 @@
   }
 
   &__postImage {
-    display: grid;
+    display: none;
+    @media only screen and (min-width: 900px) {
+      display: grid;
+      grid-column: images;
+    }
   }
 
   &__postImageSticky {
