@@ -6,7 +6,7 @@ const createBem = block => (modifier, element) => {
   }
 
   if (element) {
-    className += `--${element}`;
+    className = `${className} ${className}--${element}`;
   }
 
   return className;

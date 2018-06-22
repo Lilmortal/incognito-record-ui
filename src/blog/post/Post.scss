@@ -13,6 +13,7 @@
 
   &__title {
     position: sticky;
+    // TODO: Find out how to have to append 2 stickys together; why top: 99px onwards results in post text showing up on top of the title
     top: 98px;
     border-bottom: 1px solid black;
     background-color: lightgray;
