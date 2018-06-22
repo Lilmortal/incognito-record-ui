@@ -1,9 +1,11 @@
-@import '../styles/styles';
+@import "../styles/styles";
 
 .incognito-DigitalClock {
   display: flex;
   justify-content: space-around;
-  background-color: black;
+  background-color: #2c323d;
+  font-family: Orbitron, sans-serif;
+  padding: 30px 0;
 
   &__card {
     border: 1px solid gray;

@@ -6,9 +6,15 @@
 
   &__categories {
     display: none;
-    
+
     @media only screen and (min-width: 900px) {
       display: block;
+    }
+  }
+
+  &__search {
+    @media only screen and (min-width: 900px) {
+      display: none;
     }
   }
 }

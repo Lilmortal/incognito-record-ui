@@ -1,4 +1,4 @@
-@import '../../styles/styles';
+@import "../../styles/styles";
 
 .incognito-Blog {
   display: grid;
@@ -25,7 +25,6 @@
 
   &__calendarWrapper {
     display: grid;
-    grid-gap: 2em;
     z-index: 1;
     grid-template-rows: [clock] 100% [posts] 1fr;
 

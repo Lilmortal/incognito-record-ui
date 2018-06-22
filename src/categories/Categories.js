@@ -3,7 +3,7 @@ import { Keyframes, animated, config } from "react-spring";
 
 import delay from "../util/delay";
 import createBem from "../util/createBem";
-import TextField from "../ui/textField";
+import Search from "../ui/search";
 import "./Categories.scss";
 
 const bem = createBem("incognito-categories");
@@ -73,7 +73,7 @@ export default class Categories extends React.PureComponent {
                 transform: containerXPosition.interpolate(x => `translateX(${x}%)`)
               }}
             >
-              <TextField htmlFor="search" text="Search for post" className={bem("searchField")} />
+              <Search />
               <h2 className={bem("categoriesLabel")}>Recommended search</h2>
               <Options
                 native
