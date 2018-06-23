@@ -1,8 +1,17 @@
 .incognito-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
   padding: 30px;
+
+  &__navigation {
+    padding-bottom: 1em;
+
+    @media only screen and (min-width: 572px) {
+      padding: 0;
+    }
+  }
 
   &__categories {
     display: none;
