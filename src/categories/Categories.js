@@ -73,7 +73,7 @@ export default class Categories extends React.PureComponent {
                 transform: containerXPosition.interpolate(x => `translateX(${x}%)`)
               }}
             >
-              <Search />
+              <Search id="categorySearch" />
               <h2 className={bem("categoriesLabel")}>Recommended search</h2>
               <Options
                 native

@@ -18,7 +18,7 @@ const Header = ({ isHomePage }) => (
     {isHomePage && (
       <React.Fragment>
         <div className={bem("search")}>
-          <Search />
+          <Search id="headerSearch" />
         </div>
         <div className={bem("categories")}>
           <Navicon />

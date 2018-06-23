@@ -6,9 +6,15 @@ import "./Search.scss";
 
 const bem = createBem("incognito-Search");
 
-const Search = () => (
+const Search = ({ id }) => (
   <div className={bem()}>
-    <TextField htmlFor="search" text="Search for post" className={bem("searchField")} />
+    <TextField
+      htmlFor={id}
+      text="Search for post"
+      className={bem("searchField")}
+      type="noBorder"
+      placeholder="What post am I looking for..."
+    />
     <div className={bem("icon")} />
   </div>
 );

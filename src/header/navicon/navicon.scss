@@ -3,9 +3,9 @@
 .incognito-Navicon {
   position: fixed;
   padding-left: 4em;
+  top: 2.1em;
   right: 0;
-  z-index: 2;
-  
+
   &::before {
     content: "";
     position: absolute;
