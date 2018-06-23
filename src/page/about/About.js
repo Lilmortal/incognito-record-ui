@@ -11,16 +11,24 @@ export default class About extends React.Component {
   componentDidMount() {
     this.observer = new window.IntersectionObserver(entries => {
       entries.forEach(entry => {
-        const { isIntersecting } = entry;
+        const { isIntersecting, intersectionRatio } = entry;
 
-        if (isIntersecting) {
+        // intersectionRatio is needed because Edge does not support isIntersecting
+        if (isIntersecting || intersectionRatio > 0) {
+          // TODO: { ...entry, target: { className: {}}} does not work...
+          // eslint-disable-next-line no-param-reassign
           entry.target.className += ` ${entry.target.className}--isIntersecting`;
         }
       });
     });
   }
 
-  pushContentRefs = ref => this.observer.observe(ref);
+  componentWillUnmount() {
+    this.observer.disconnect();
+    this.observer = null;
+  }
+
+  pushContentRefs = ref => this.observer !== null && this.observer.observe(ref);
 
   render() {
     const contents = [];
