@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
 import Header from "../../header";
 import Footer from "../../footer";
@@ -21,6 +21,7 @@ const Root = ({ history }) => {
       <Switch>
         <Route path={routes.index} component={BlogPage} exact />
         <Route path={routes.about} component={AboutPage} exact />
+        <Redirect to={routes.index} />
       </Switch>
       <div className={bem("footer")}>
         <Footer />
