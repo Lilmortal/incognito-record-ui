@@ -1,10 +1,10 @@
-import React from 'react';
-import moment from 'moment';
+import React from "react";
+import moment from "moment";
 
-import createBem from '../util/createBem';
-import './DigitalClock.scss';
+import createBem from "../util/createBem";
+import "./DigitalClock.scss";
 
-const bem = createBem('incognito-DigitalClock');
+const bem = createBem("incognito-DigitalClock");
 
 export default class DigitalClock extends React.Component {
   get currentDate() {
@@ -12,7 +12,7 @@ export default class DigitalClock extends React.Component {
   }
 
   get currentMonth() {
-    return moment(this.props.date).month();
+    return moment(this.props.date).format("MMM");
   }
 
   get currentYear() {
@@ -22,9 +22,9 @@ export default class DigitalClock extends React.Component {
   render() {
     return (
       <div className={bem()}>
-        <div className={bem('card')}>{this.currentDate}</div>
-        <div className={bem('card')}>{this.currentMonth}</div>
-        <div className={bem('card')}>{this.currentYear}</div>
+        <div className={bem("card")}>{this.currentDate}</div>
+        <div className={bem("card")}>{this.currentMonth}</div>
+        <div className={bem("card")}>{this.currentYear}</div>
       </div>
     );
   }
