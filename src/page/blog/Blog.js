@@ -60,7 +60,7 @@ export default class BlogPage extends React.Component {
           }
         ])
       });
-    }, 5000);
+    }, 1000);
   };
 
   id = 0;
@@ -92,7 +92,11 @@ export default class BlogPage extends React.Component {
                   dataLength={this.state.posts.length}
                   next={this.fetchMoreData}
                   hasMore
-                  loader={<Spinner>Posts incoming!</Spinner>}
+                  loader={
+                    <div className={bem("spinner")}>
+                      <Spinner>Posts incoming!</Spinner>
+                    </div>
+                  }
                   style={{ height: "inherit", overflow: "inherit" }}
                 >
                   {this.state.posts.map(post => (
