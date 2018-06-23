@@ -5,44 +5,5 @@
   flex-direction: column;
   width: 80%;
   margin: 0 auto;
-
-  &__contentWrapper {
-    display: inline-block;
-  }
-
-  &__contentTitleWrapper {
-    display: inline-block;
-  }
-
-  &__contentTitle {
-    display: inline-block;
-
-    &--isIntersecting {
-      border-bottom: 1px solid white;
-      border-right: 0.15em solid white;
-      overflow: hidden;
-      white-space: nowrap;
-      letter-spacing: 0.15em;
-      animation: typing 1.5s steps(40, end), blink-caret 0.75s step-end infinite;
-    }
-  }
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes blink-caret {
-  from,
-  to {
-    border-right-color: transparent;
-  }
-  50% {
-    border-right-color: white;
-  }
+  max-width: 900px;
 }

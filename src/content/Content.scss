@@ -1,0 +1,41 @@
+@import "../styles/styles";
+
+.incognito-Content {
+  display: inline-block;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+  &__titleWrapper {
+    display: inline-block;
+  }
+
+  &__title {
+    display: inline-block;
+
+    &--isIntersecting {
+      overflow: hidden;
+      white-space: nowrap;
+      letter-spacing: 0.15em;
+      animation: typing 1s steps(40, end), blink-caret 0.5s step-end 4;
+    }
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  50% {
+    border-right: 1px solid white;
+  }
+  to {
+    border: 0;
+    transition: border 3s ease-in-out;
+  }
+}
