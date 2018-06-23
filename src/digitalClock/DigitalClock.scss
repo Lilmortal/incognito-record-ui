@@ -3,12 +3,12 @@
 .incognito-DigitalClock {
   display: flex;
   justify-content: space-around;
-  background-color: #2c323d;
+  background-color: $colorDigitalClockBackground;
   font-family: Orbitron, sans-serif;
   padding: 30px 0;
 
   &__card {
-    border: 1px solid gray;
+    border: 1px solid $colorDigitalClockBorder;
     padding: 10px;
   }
 }

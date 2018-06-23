@@ -16,9 +16,9 @@
   text-transform: uppercase;
   font-weight: 900;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.98);
+  color: $colorSpinnerText;
   letter-spacing: 0.2em;
-  background-color: black;
+  background-color: $colorSpinnerBackground;
 
   &::before,
   &::after {
@@ -26,7 +26,7 @@
     display: block;
     width: 15px;
     height: 15px;
-    background: rgb(255, 255, 255);
+    background: $colorSpinnerLoadingBackground;
     position: absolute;
     animation: cssload-load 0.81s infinite alternate ease-in-out;
     -o-animation: cssload-load 0.81s infinite alternate ease-in-out;
