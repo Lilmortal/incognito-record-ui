@@ -3,6 +3,7 @@ import { Transition, animated } from "react-spring";
 import moment from "moment";
 import InfiniteScroll from "react-infinite-scroll-component";
 
+import Spinner from "../../spinner";
 import DigitalClock from "../../digitalClock";
 import Calendar from "../../calendar";
 import Post from "../../blog/post";
@@ -59,7 +60,7 @@ export default class BlogPage extends React.Component {
           }
         ])
       });
-    }, 1000);
+    }, 5000);
   };
 
   id = 0;
@@ -77,7 +78,7 @@ export default class BlogPage extends React.Component {
               <Calendar date={this.state.date} />
             </div>
           </div>
-          {!this.state.loaded && <div>Spinning</div>}
+          {!this.state.loaded && <Spinner>Loading post...</Spinner>}
           <Transition
             native
             from={{ opacity: 0 }}
@@ -91,7 +92,7 @@ export default class BlogPage extends React.Component {
                   dataLength={this.state.posts.length}
                   next={this.fetchMoreData}
                   hasMore
-                  loader={<h3>Loading...</h3>}
+                  loader={<Spinner>Posts incoming!</Spinner>}
                   style={{ height: "inherit", overflow: "inherit" }}
                 >
                   {this.state.posts.map(post => (
