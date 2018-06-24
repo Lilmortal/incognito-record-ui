@@ -70,15 +70,18 @@ export default class BlogPage extends React.Component {
       <div className={bem()}>
         <div className={bem("placeholder")} />
         <div className={bem("calendarWrapper")}>
-          <div className={bem("digitalClock")}>
-            <DigitalClock date={this.state.date} />
-          </div>
           <div className={bem("calendar")}>
             <div className={bem("calendarSticky")}>
               <Calendar date={this.state.date} />
             </div>
           </div>
-          {!this.state.loaded && <Spinner>Loading post...</Spinner>}
+          {!this.state.loaded ? (
+            <Spinner>Loading post...</Spinner>
+          ) : (
+            <div className={bem("digitalClock")}>
+              <DigitalClock date={this.state.date} />
+            </div>
+          )}
           <Transition
             native
             from={{ opacity: 0 }}
