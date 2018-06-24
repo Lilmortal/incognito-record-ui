@@ -64,6 +64,10 @@ export default class Calendar extends React.PureComponent {
     return moment(this.props.date).month();
   }
 
+  get currentMonthInText() {
+    return moment(this.props.date).format("MMM");
+  }
+
   get currentYear() {
     return moment(this.props.date).year();
   }
@@ -113,7 +117,7 @@ export default class Calendar extends React.PureComponent {
 
   render() {
     return (
-      <div className={bem()}>
+      <div className={bem()} aria-label={`${this.currentDate} ${this.currentMonthInText} ${this.currentYear}`}>
         <Transition
           native
           from={{ opacity: this.isCurrentYearChanged ? 0 : 1 }}
@@ -121,12 +125,12 @@ export default class Calendar extends React.PureComponent {
           keys={this.currentYear}
         >
           {({ opacity }) => (
-            <animated.div className={bem("years")} style={{ opacity }}>
+            <animated.div className={bem("years")} style={{ opacity }} aria-hidden>
               {this.currentYear}
             </animated.div>
           )}
         </Transition>
-        <div className={bem("dateSlider")}>
+        <div className={bem("dateSlider")} aria-hidden>
           <this.BorderContainer native state={this.state.loaded ? "show" : "initial"}>
             {({ borderHeight, height, borderOpacity }) => (
               <animated.div
@@ -155,7 +159,7 @@ export default class Calendar extends React.PureComponent {
           >
             {({ calendarOpacity, datePosition, monthPositon }) => (
               <React.Fragment>
-                <div className={bem("monthsWrapper")}>
+                <div className={bem("monthsWrapper")} aria-hidden>
                   <animated.div
                     className={bem("months")}
                     style={{
@@ -166,7 +170,7 @@ export default class Calendar extends React.PureComponent {
                     {months}
                   </animated.div>
                 </div>
-                <div className={bem("datesWrapper")}>
+                <div className={bem("datesWrapper")} aria-hidden>
                   <animated.div
                     className={bem("dates")}
                     style={{
