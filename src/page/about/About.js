@@ -15,7 +15,7 @@ export default class About extends React.Component {
 
         // intersectionRatio is needed because Edge does not support isIntersecting
         if (isIntersecting || intersectionRatio > 0) {
-          // TODO: { ...entry, target: { className: {}}} does not work...
+          // TODO: { ...entry, target: { className: {}}} does not work, as well as Object.assign({}, entry, ...)
           // eslint-disable-next-line no-param-reassign
           entry.target.className += ` ${entry.target.className}--isIntersecting`;
         }
@@ -28,7 +28,7 @@ export default class About extends React.Component {
     this.observer = null;
   }
 
-  pushContentRefs = ref => this.observer !== null && this.observer.observe(ref);
+  pushContentRefs = ref => this.observer !== null && ref !== null && this.observer.observe(ref);
 
   render() {
     const contents = [];

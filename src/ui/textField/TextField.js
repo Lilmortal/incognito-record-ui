@@ -15,7 +15,7 @@ const TextField = ({ text, htmlFor, type, placeholder, ...props }) => {
     <div {...props}>
       <label htmlFor={htmlFor}>
         <span className={bem("label")}>{text}</span>
-        <input type="text" className={bem("", renderType[type])} id={htmlFor} placeholder={placeholder} />
+        <input type="text" className={bem("", renderType[type] || "")} id={htmlFor} placeholder={placeholder} />
       </label>
     </div>
   );

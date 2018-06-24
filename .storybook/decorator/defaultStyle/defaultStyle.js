@@ -3,6 +3,6 @@ import { addDecorator } from "@storybook/react";
 
 import "./defaultStyle.scss";
 
-const defaultStyleDecorator = storyFn => <div>{storyFn()}</div>;
+const defaultStyleDecorator = storyFn => storyFn();
 
 export default defaultStyleDecorator;

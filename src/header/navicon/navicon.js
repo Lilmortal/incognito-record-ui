@@ -1,7 +1,7 @@
 import React from "react";
 
 import createBem from "../../util/createBem";
-import "./navicon.scss";
+import "./Navicon.scss";
 
 const bem = createBem("incognito-Navicon");
 

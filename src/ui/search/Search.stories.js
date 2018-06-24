@@ -2,8 +2,8 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered";
 
-import Navigation from "./Navigation";
+import Search from "./Search";
 
-storiesOf("Navigation", module)
+storiesOf("Search", module)
   .addDecorator(centered)
-  .add("default", () => <Navigation />);
+  .add("default", () => <Search id="storybook-search" />);
