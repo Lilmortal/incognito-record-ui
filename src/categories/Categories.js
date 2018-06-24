@@ -1,9 +1,11 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { Keyframes, animated, config } from "react-spring";
 
 import delay from "../util/delay";
 import createBem from "../util/createBem";
 import Search from "../ui/search";
+import messages from "./Categories.messages";
 import "./Categories.scss";
 
 const bem = createBem("incognito-categories");
@@ -74,7 +76,9 @@ export default class Categories extends React.PureComponent {
               }}
             >
               <Search id="categorySearch" />
-              <h2 className={bem("categoriesLabel")}>Recommended search</h2>
+              <h2 className={bem("categoriesLabel")}>
+                <FormattedMessage {...messages.label} />
+              </h2>
               <Options
                 native
                 keys={categories.map(category => category.key)}

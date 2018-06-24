@@ -2,10 +2,15 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import Root from "./page/root";
 
-const Index = () => <Root />;
+const Index = () => (
+  <BrowserRouter>
+    <Root />
+  </BrowserRouter>
+);
 
 if (__DEV__) {
   // eslint-disable-next-line no-console

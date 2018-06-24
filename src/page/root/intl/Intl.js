@@ -6,17 +6,17 @@ import localeZh from "react-intl/locale-data/zh";
 addLocaleData([...localeEn, ...localeZh]);
 
 const messages = {
-  en: "en",
-  zh: "zh"
+  en: {},
+  zh: {}
 };
 
 // language without region code
 const language = window.navigator.language.split(/[-_]/)[0];
 
-const Intl = ({ children }) => (
+const RootIntl = ({ children }) => (
   <IntlProvider locale={language} messages={messages[language]}>
     {children}
   </IntlProvider>
 );
 
-export default Intl;
+export default RootIntl;
