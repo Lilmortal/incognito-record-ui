@@ -1,16 +1,16 @@
-import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import React from "react";
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
-import Header from '../../header';
-import Footer from '../../footer';
-import createBem from '../../util/createBem';
-import routes from '../../config/routes';
-import BlogPage from '../blog';
-import AboutPage from '../about';
+import Header from "../../header";
+import Footer from "../../footer";
+import createBem from "../../util/createBem";
+import routes from "../../config/routes";
+import BlogPage from "../blog";
+import AboutPage from "../about";
 
-import './Root.scss';
+import "./Root.scss";
 
-const bem = createBem('incognito-Root');
+const bem = createBem("incognito-Root");
 
 const Root = ({ history }) => {
   const isHomePage = history.location.pathname === routes.index;
@@ -19,10 +19,13 @@ const Root = ({ history }) => {
     <div className={bem()}>
       <Header isHomePage={isHomePage} />
       <Switch>
-        <Route path={routes.about} component={AboutPage} />
-        <Route path={routes.index} component={BlogPage} />
+        <Route path={routes.index} component={BlogPage} exact />
+        <Route path={routes.about} component={AboutPage} exact />
+        <Redirect to={routes.index} />
       </Switch>
-      <Footer />
+      <div className={bem("footer")}>
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -1,0 +1,16 @@
+@import "../../styles/styles";
+
+.incognito-Search {
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    background-image: url("./search.png");
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+}

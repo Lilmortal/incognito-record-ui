@@ -1,4 +1,4 @@
-@import "../../styles/styles";
+@import '../../styles/styles';
 
 .incognito-PostImage {
   width: 25%;
@@ -9,4 +9,5 @@
   transform: skew(-15deg, 5deg);
   filter: blur(2px);
   position: fixed;
+  right: 3%;
 }

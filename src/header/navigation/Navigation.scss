@@ -13,14 +13,14 @@
       & a {
         padding: 10px 30px;
         text-decoration: none;
-        color: hsla(0, 0%, 100%, 0.8);
+        color: $colorNavigationText;
 
         &--active {
-          border-bottom: 2px solid hsla(0, 0%, 100%, 0.8);
+          border-bottom: 2px solid $colorNavigationBorder;
         }
 
         &:hover {
-          border-bottom: 2px solid hsla(0, 0%, 100%, 0.8);
+          border-bottom: 2px solid $colorNavigationBorder;
           transition: border-bottom 200ms ease-in;
         }
       }

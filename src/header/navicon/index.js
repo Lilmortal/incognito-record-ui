@@ -1,1 +1,1 @@
-export { default } from "./navicon";
+export { default } from "./Navicon";

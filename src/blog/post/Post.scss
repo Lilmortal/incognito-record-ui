@@ -1,26 +1,32 @@
 @import "../../styles/styles";
 
 .incognito-Post {
-  border-top: 1px solid white;
-  width: 100%;
-  min-height: 500px;
-  box-shadow: none;
-  transition: box-shadow 0.5s;
-
-  &:hover {
-    box-shadow: inset 0 15px 8px -10px #888, inset 0 -15px 8px -10px #888;
-    transition: box-shadow 0.5s;
-  }
-
   &__title {
     position: sticky;
-    top: 0;
-    border-bottom: 1px solid black;
-    background-color: lightgray;
+    // TODO: Find out how to have to append 2 stickys together; why top: 99px onwards results in post text showing up on top of the title
+    top: 98px;
+    border-bottom: 1px solid $colorBannerBorder;
+    background-color: $colorBannerBackground;
+    padding: 20px 0;
     margin: 0;
+    display: flex;
+    justify-content: center;
+
+    @media only screen and (min-width: 900px) {
+      top: 0;
+    }
   }
 
   &__post {
+    min-height: 500px;
     padding: 30px 15px;
+    box-shadow: none;
+    transition: box-shadow 0.5s;
+
+    &:hover {
+      box-shadow: inset 0 15px 8px -10px $colorPostBoxShadow,
+        inset 0 -15px 8px -10px $colorPostBoxShadow;
+      transition: box-shadow 0.5s;
+    }
   }
 }

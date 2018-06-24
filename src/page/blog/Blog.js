@@ -3,19 +3,46 @@ import { Transition, animated } from "react-spring";
 import moment from "moment";
 import InfiniteScroll from "react-infinite-scroll-component";
 
+import Spinner from "../../spinner";
+import DigitalClock from "../../digitalClock";
 import Calendar from "../../calendar";
 import Post from "../../blog/post";
 import PostImage from "../../blog/postImage";
 
 import createBem from "../../util/createBem";
-import "./BlogPage.scss";
+import "./Blog.scss";
 
 const bem = createBem("incognito-Blog");
 
 // TODO: Fix CSS Grid
 export default class BlogPage extends React.Component {
   state = {
-    posts: [{ date: moment("11/02/2017", "DD/MM/YYYY"), title: "Title 0", post: "Post 0", image: "docker" }],
+    posts: [
+      {
+        date: moment("11/02/2017", "DD/MM/YYYY"),
+        title: "Title 0",
+        post: "Post 0",
+        image: "docker"
+      },
+      {
+        date: moment("31/12/2017", "DD/MM/YYYY"),
+        title: "Title 1",
+        post: "Post 1",
+        image: "flower"
+      },
+      {
+        date: moment("14/08/2020", "DD/MM/YYYY"),
+        title: "Title 2",
+        post: "Post 2",
+        image: "docker"
+      },
+      {
+        date: moment("12/09/2021", "DD/MM/YYYY"),
+        title: "Title 3",
+        post: "Post 3",
+        image: "flower"
+      }
+    ],
     date: moment(),
     image: "",
     loaded: false
@@ -31,9 +58,24 @@ export default class BlogPage extends React.Component {
     setTimeout(() => {
       this.setState({
         posts: this.state.posts.concat([
-          { date: moment("31/12/2017", "DD/MM/YYYY"), title: "Title 1", post: "Post 1", image: "flower" },
-          { date: moment("14/08/2020", "DD/MM/YYYY"), title: "Title 2", post: "Post 2", image: "docker" },
-          { date: moment("12/09/2021", "DD/MM/YYYY"), title: "Title 3", post: "Post 3", image: "flower" }
+          {
+            date: moment("31/12/2017", "DD/MM/YYYY"),
+            title: "Title 1",
+            post: "Post 1",
+            image: "flower"
+          },
+          {
+            date: moment("14/08/2020", "DD/MM/YYYY"),
+            title: "Title 2",
+            post: "Post 2",
+            image: "docker"
+          },
+          {
+            date: moment("12/09/2021", "DD/MM/YYYY"),
+            title: "Title 3",
+            post: "Post 3",
+            image: "flower"
+          }
         ])
       });
     }, 1000);
@@ -51,6 +93,13 @@ export default class BlogPage extends React.Component {
               <Calendar date={this.state.date} />
             </div>
           </div>
+          {!this.state.loaded ? (
+            <Spinner>Loading post...</Spinner>
+          ) : (
+            <div className={bem("digitalClock")}>
+              <DigitalClock date={this.state.date} />
+            </div>
+          )}
           <Transition
             native
             from={{ opacity: 0 }}
@@ -64,7 +113,11 @@ export default class BlogPage extends React.Component {
                   dataLength={this.state.posts.length}
                   next={this.fetchMoreData}
                   hasMore
-                  loader={<h3>Loading...</h3>}
+                  loader={
+                    <div className={bem("spinner")}>
+                      <Spinner>Posts incoming!</Spinner>
+                    </div>
+                  }
                   style={{ height: "inherit", overflow: "inherit" }}
                 >
                   {this.state.posts.map(post => (
