@@ -5,10 +5,7 @@ import localeZh from "react-intl/locale-data/zh";
 
 addLocaleData([...localeEn, ...localeZh]);
 
-const messages = {
-  en: {},
-  zh: {}
-};
+const messages = {};
 
 // language without region code
 const language = window.navigator.language.split(/[-_]/)[0];

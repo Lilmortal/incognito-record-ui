@@ -1,4 +1,14 @@
 {
-  "plugins": ["react-hot-loader/babel", "transform-class-properties", "transform-object-rest-spread"],
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    [
+      "react-intl",
+      {
+        "messagesDir": "./build/messages/"
+      }
+    ]
+  ],
   "presets": ["env", "react"]
 }
