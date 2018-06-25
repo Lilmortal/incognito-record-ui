@@ -11,8 +11,10 @@
 
   &__title {
     display: inline-block;
+    visibility: hidden;
 
     &--isIntersecting {
+      visibility: visible;
       overflow: hidden;
       white-space: nowrap;
       letter-spacing: 0.15em;

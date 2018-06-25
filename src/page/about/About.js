@@ -8,6 +8,10 @@ import "./About.scss";
 const bem = createBem("incognito-About");
 
 export default class About extends React.Component {
+  state = {
+    contents: []
+  };
+
   componentDidMount() {
     this.observer = new window.IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -15,9 +19,7 @@ export default class About extends React.Component {
 
         // intersectionRatio is needed because Edge does not support isIntersecting
         if (isIntersecting || intersectionRatio > 0) {
-          // TODO: { ...entry, target: { className: {}}} does not work, as well as Object.assign({}, entry, ...)
-          // eslint-disable-next-line no-param-reassign
-          entry.target.className += ` ${entry.target.className}--isIntersecting`;
+          this.setState({ contents: { ...this.state.contents, [entry.target.id]: true } });
         }
       });
     });
@@ -34,7 +36,13 @@ export default class About extends React.Component {
     const contents = [];
     for (let i = 0; i < 200; i += 1) {
       contents.push(
-        <Content key={i} title="Title" onRefObserve={this.pushContentRefs}>
+        <Content
+          key={i}
+          id={i}
+          title="Title"
+          onRefObserve={this.pushContentRefs}
+          isIntersecting={this.state.contents[i]}
+        >
           About
         </Content>
       );
