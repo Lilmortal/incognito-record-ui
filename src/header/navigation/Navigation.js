@@ -7,7 +7,7 @@ import createBem from "../../util/createBem";
 import messages from "./Navigation.messages";
 import "./Navigation.scss";
 
-const bem = createBem("incognito-navigation");
+const bem = createBem("incognito-Navigation");
 
 const Navigation = () => (
   <nav className={bem()}>

@@ -8,7 +8,7 @@ import Search from "../ui/search";
 import messages from "./Categories.messages";
 import "./Categories.scss";
 
-const bem = createBem("incognito-categories");
+const bem = createBem("incognito-Categories");
 
 const Container = Keyframes.Spring({
   show: {

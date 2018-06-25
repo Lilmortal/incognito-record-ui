@@ -57,7 +57,9 @@ export default class Calendar extends React.PureComponent {
   }
 
   get currentDate() {
-    return moment(this.props.date).date();
+    // moment.js months are zero indexed, but dates are not.
+    // To keep this consistent, we will keep our dates as zero indexed.
+    return moment(this.props.date).date() - 1;
   }
 
   get currentMonth() {
@@ -73,12 +75,11 @@ export default class Calendar extends React.PureComponent {
   }
 
   get prevDateLocation() {
-    // TODO: Why do I have to minus 1 CONTAINER_SPACES here to get it working
-    return CONTAINER_SPACES * (this.prevDate || 0) - CONTAINER_SPACES;
+    return CONTAINER_SPACES * (this.prevDate || 0);
   }
 
   get currentDateLocation() {
-    return CONTAINER_SPACES * (this.currentDate || 0) - CONTAINER_SPACES;
+    return CONTAINER_SPACES * (this.currentDate || 0);
   }
 
   get prevMonthLocation() {
@@ -116,8 +117,10 @@ export default class Calendar extends React.PureComponent {
   });
 
   render() {
+    const { id } = this.props;
+
     return (
-      <div className={bem()} aria-label={`${this.currentDate} ${this.currentMonthInText} ${this.currentYear}`}>
+      <div className={bem()} aria-label={`${this.currentDate} ${this.currentMonthInText} ${this.currentYear}`} id={id}>
         <Transition
           native
           from={{ opacity: this.isCurrentYearChanged ? 0 : 1 }}
@@ -125,7 +128,7 @@ export default class Calendar extends React.PureComponent {
           keys={this.currentYear}
         >
           {({ opacity }) => (
-            <animated.div className={bem("years")} style={{ opacity }} aria-hidden>
+            <animated.div className={bem("years")} style={{ opacity }}>
               {this.currentYear}
             </animated.div>
           )}

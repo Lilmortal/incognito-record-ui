@@ -7,7 +7,7 @@ import Navigation from "./navigation";
 import Navicon from "./navicon";
 import "./Header.scss";
 
-const bem = createBem("incognito-header");
+const bem = createBem("incognito-Header");
 
 const Header = ({ isHomePage }) => (
   <header className={bem()}>

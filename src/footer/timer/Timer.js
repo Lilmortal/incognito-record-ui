@@ -4,7 +4,7 @@ import { Transition } from "react-spring";
 import createBem from "../../util/createBem";
 import "./Timer.scss";
 
-const bem = createBem("incognito-timer");
+const bem = createBem("incognito-Timer");
 
 class Timer extends React.Component {
   state = {

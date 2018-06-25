@@ -1,4 +1,5 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { Transition, animated } from "react-spring";
 import moment from "moment";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -8,8 +9,9 @@ import DigitalClock from "../../digitalClock";
 import Calendar from "../../calendar";
 import Post from "../../blog/post";
 import PostImage from "../../blog/postImage";
-
 import createBem from "../../util/createBem";
+
+import messages from "./Blog.messages";
 import "./Blog.scss";
 
 const bem = createBem("incognito-Blog");
@@ -90,11 +92,13 @@ export default class BlogPage extends React.Component {
         <div className={bem("calendarWrapper")}>
           <div className={bem("calendar")}>
             <div className={bem("calendarSticky")}>
-              <Calendar date={this.state.date} />
+              <Calendar date={this.state.date} id={bem("calendar")} />
             </div>
           </div>
           {!this.state.loaded ? (
-            <Spinner>Loading post...</Spinner>
+            <Spinner>
+              <FormattedMessage {...messages.initialLoad} />
+            </Spinner>
           ) : (
             <div className={bem("digitalClock")}>
               <DigitalClock date={this.state.date} />
@@ -115,7 +119,9 @@ export default class BlogPage extends React.Component {
                   hasMore
                   loader={
                     <div className={bem("spinner")}>
-                      <Spinner>Posts incoming!</Spinner>
+                      <Spinner>
+                        <FormattedMessage {...messages.additionalLoad} />
+                      </Spinner>
                     </div>
                   }
                   style={{ height: "inherit", overflow: "inherit" }}
@@ -129,6 +135,7 @@ export default class BlogPage extends React.Component {
                       // eslint-disable-next-line no-plusplus
                       key={this.id++}
                       onPostHover={this.onPostHover}
+                      ariaLabelledby={bem("calendar")}
                     />
                   ))}
                 </InfiniteScroll>
