@@ -21,10 +21,16 @@ export default class DigitalClock extends React.Component {
 
   render() {
     return (
-      <div className={bem()}>
-        <div className={bem("card")}>{this.currentDate}</div>
-        <div className={bem("card")}>{this.currentMonth}</div>
-        <div className={bem("card")}>{this.currentYear}</div>
+      <div className={bem()} aria-label={`${this.currentDate} ${this.currentMonth} ${this.currentYear}`}>
+        <div className={bem("card")} aria-hidden>
+          {this.currentDate}
+        </div>
+        <div className={bem("card")} aria-hidden>
+          {this.currentMonth}
+        </div>
+        <div className={bem("card")} aria-hidden>
+          {this.currentYear}
+        </div>
       </div>
     );
   }
