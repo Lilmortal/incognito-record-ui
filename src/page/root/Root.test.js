@@ -12,7 +12,7 @@ beforeEach(() => {
   defaultProps = {};
 });
 
-const renderMount = (pathname, props) =>
+const renderMount = (pathname = "/", props) =>
   mount(
     <IntlProvider locale="en">
       <MemoryRouter initialEntries={[pathname]}>
@@ -23,7 +23,7 @@ const renderMount = (pathname, props) =>
 
 describe("header search visibility", () => {
   it("should render header search if in home page", () => {
-    const root = renderMount("/");
+    const root = renderMount();
 
     expect(
       root
@@ -36,12 +36,11 @@ describe("header search visibility", () => {
   it("should not render header search if not in home page", () => {
     const root = renderMount("/random");
 
-    // TODO: Why is isHomePage true here!
     expect(
       root
         .find(Header)
         .find(".incognito-Header__search")
         .exists()
-    ).toEqual(true);
+    ).toEqual(false);
   });
 });

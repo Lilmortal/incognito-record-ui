@@ -6,8 +6,6 @@ import Categories from "./Categories";
 
 let defaultProps;
 
-// jest.useFakeTimers();
-
 beforeEach(() => {
   defaultProps = {
     categories: [
@@ -37,20 +35,30 @@ const renderMount = props =>
   );
 
 it("should render categories", () => {
+  jest.useFakeTimers();
   const categories = renderMount();
 
-  setTimeout(() => {}, 20000);
-  //   jest.runAllTimers();
-
-  categories
-    .find(".incognito-Categories")
-    .filterWhere(category => category.is("div"))
-    .prop("onMouseEnter")();
-
   categories.update();
 
-  categories.update();
+  // TODO: Fix this test
+  const result = new Promise(resolve =>
+    resolve(
+      categories
+        .find(".incognito-Categories")
+        .filterWhere(category => category.is("div"))
+        .prop("onMouseEnter")()
+    ).then(() =>
+      setTimeout(() => {
+        expect(
+          categories
+            .find(".incognito-Categories__category")
+            .first()
+            .text()
+        ).toEqual("text1");
+      }, 200)
+    )
+  );
 
-  //   console.log(categories.debug());
-  //   expect(categories.find(".incognito-Categories__category").debug()).toEqual("text");
+  jest.runAllTimers();
+  return result;
 });

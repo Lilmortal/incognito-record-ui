@@ -22,5 +22,5 @@ it("should append isIntersecting class name if it is intersected", () => {
     "incognito-Content__title--isIntersecting"
   );
 
-  // TODO: How to test ref
 });
+
