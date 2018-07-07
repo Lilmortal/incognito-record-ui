@@ -18,7 +18,7 @@ describe("Background image render", () => {
     const postImage = renderShallow();
 
     expect(postImage.find(".incognito-PostImage").prop("style").backgroundImage).toEqual(
-      "url(https://s3-ap-southeast-2.amazonaws.com/incognito-record-ui/docker.png)"
+      "url(https://s3-ap-southeast-2.amazonaws.com/incognito-record-images/docker.png)"
     );
   });
 
@@ -26,7 +26,7 @@ describe("Background image render", () => {
     const postImage = renderShallow({ type: "flower" });
 
     expect(postImage.find(".incognito-PostImage").prop("style").backgroundImage).toEqual(
-      "url(https://s3-ap-southeast-2.amazonaws.com/incognito-record-ui/flower.jpeg)"
+      "url(https://s3-ap-southeast-2.amazonaws.com/incognito-record-images/flower.jpeg)"
     );
   });
 });

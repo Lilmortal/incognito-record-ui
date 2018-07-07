@@ -16,14 +16,9 @@ export default class Post extends React.Component {
 
     return (
       <div
-        role="button"
-        tabIndex={0}
         className={bem()}
         onMouseEnter={this.onPostHover}
-        onClick={this.onPostHover}
-        onKeyPress={this.onPostHover}
         aria-labelledby={ariaLabelledby}
-        aria-describedby={ariaLabelledby}
       >
         <h2 className={bem("title")}>{title}</h2>
         <div className={bem("post")}>{post}</div>

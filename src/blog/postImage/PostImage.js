@@ -7,8 +7,8 @@ import "./PostImage.scss";
 const bem = createBem("incognito-PostImage");
 
 const renderBackgroundImage = {
-  docker: "https://s3-ap-southeast-2.amazonaws.com/incognito-record-ui/docker.png",
-  flower: "https://s3-ap-southeast-2.amazonaws.com/incognito-record-ui/flower.jpeg"
+  docker: "https://s3-ap-southeast-2.amazonaws.com/incognito-record-images/docker.png",
+  flower: "https://s3-ap-southeast-2.amazonaws.com/incognito-record-images/flower.jpeg"
 };
 
 export default class PostImage extends React.Component {

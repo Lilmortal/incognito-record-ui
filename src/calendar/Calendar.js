@@ -128,7 +128,7 @@ export default class Calendar extends React.PureComponent {
           keys={this.currentYear}
         >
           {({ opacity }) => (
-            <animated.div className={bem("years")} style={{ opacity }}>
+            <animated.div className={bem("years")} style={{ opacity }} aria-hidden>
               {this.currentYear}
             </animated.div>
           )}
