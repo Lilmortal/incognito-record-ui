@@ -11,14 +11,20 @@ const withBreakpoints = Component =>
       window.onresize = () => {
         clearTimeout(timer);
         timer = setTimeout(() => {
-          if (window.matchMedia("screen and (min-width: 900px)").matches) {
-            this.setState({ breakpoints: "lg" });
-          } else {
-            this.setState({ breakpoints: "sm" });
-          }
+          this.onDetermineBreakpoints();
         }, 250);
       };
+
+      this.onDetermineBreakpoints();
     }
+
+    onDetermineBreakpoints = () => {
+      if (window.matchMedia("screen and (min-width: 900px)").matches) {
+        this.setState({ breakpoints: "lg" });
+      } else {
+        this.setState({ breakpoints: "sm" });
+      }
+    };
 
     render() {
       return <Component breakpoints={this.state.breakpoints} />;
