@@ -6,7 +6,7 @@ import delay from "../util/delay";
 import createBem from "../util/createBem";
 import "./Calendar.scss";
 
-const bem = createBem("wifi-Calendar");
+const bem = createBem("incognito-Calendar");
 
 const CONTAINER_SPACES = 3;
 

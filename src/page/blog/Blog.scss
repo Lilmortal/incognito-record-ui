@@ -9,21 +9,10 @@
   @media only screen and (min-width: 900px) {
     width: 100%;
     margin: 0;
-    grid-template-columns: [placeholder] 1fr [blog] 70% [images] 2fr;
+    grid-template-columns: [blog] 70% [images] 2fr;
   }
 
-  @media only screen and (min-width: 1890px) {
-    grid-template-columns: [placeholder] 1fr [blog] 50% [images] 2fr;
-  }
-
-  &__placeholder {
-    display: none;
-    @media only screen and (min-width: 900px) {
-      display: block;
-    }
-  }
-
-  &__calendarWrapper {
+  &__postsWrapper {
     display: grid;
     z-index: 1;
     grid-template-rows: [clock] 100% [posts] 1fr;
@@ -32,34 +21,6 @@
     @media only screen and (min-width: 900px) {
       grid-template-rows: 0;
       grid-template-columns: [calendar] 1fr [posts] 2fr;
-    }
-  }
-
-  &__digitalClock {
-    grid-row: clock;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-
-    @media only screen and (min-width: 900px) {
-      display: none;
-    }
-  }
-
-  &__calendar {
-    display: none;
-
-    @media only screen and (min-width: 900px) {
-      display: grid;
-      grid-column: calendar;
-    }
-  }
-
-  &__calendarSticky {
-    position: initial;
-
-    @media only screen and (min-width: 900px) {
-      position: fixed;
     }
   }
 
@@ -78,12 +39,13 @@
     }
   }
 
+  &__post {
+    // display:
+  }
+
   &__postImage {
-    display: none;
-    @media only screen and (min-width: 900px) {
-      display: grid;
-      grid-column: images;
-    }
+    display: grid;
+    grid-column: images;
   }
 
   &__postImageSticky {

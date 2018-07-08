@@ -5,11 +5,10 @@ import moment from "moment";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import Spinner from "../../spinner";
-import DigitalClock from "../../digitalClock";
-import Calendar from "../../calendar";
 import Post from "../../blog/post";
 import PostImage from "../../blog/postImage";
 import createBem from "../../util/createBem";
+import withBreakpoints from "../../util/withBreakpoints";
 
 import messages from "./Blog.messages";
 import "./Blog.scss";
@@ -17,7 +16,7 @@ import "./Blog.scss";
 const bem = createBem("incognito-Blog");
 
 // TODO: Fix CSS Grid
-export default class BlogPage extends React.Component {
+export class Blog extends React.Component {
   state = {
     posts: [
       {
@@ -45,16 +44,17 @@ export default class BlogPage extends React.Component {
         image: "flower"
       }
     ],
-    date: moment(),
     image: "",
     loaded: false
   };
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loaded: true }), 1000);
+    this.fetchInitialData();
   }
 
-  onPostHover = ({ date, image }) => this.setState({ date, image });
+  fetchInitialData = () => {
+    setTimeout(() => this.setState({ loaded: true }), 1000);
+  };
 
   fetchMoreData = () => {
     setTimeout(() => {
@@ -86,23 +86,15 @@ export default class BlogPage extends React.Component {
   id = 0;
 
   render() {
+    const { breakpoints } = this.props;
+
     return (
       <div className={bem()}>
-        <div className={bem("placeholder")} />
-        <div className={bem("calendarWrapper")}>
-          <div className={bem("calendar")}>
-            <div className={bem("calendarSticky")}>
-              <Calendar date={this.state.date} id={bem("calendar")} />
-            </div>
-          </div>
-          {!this.state.loaded ? (
+        <div className={bem("postsWrapper")}>
+          {!this.state.loaded && (
             <Spinner>
               <FormattedMessage {...messages.initialLoad} />
             </Spinner>
-          ) : (
-            <div className={bem("digitalClock")}>
-              <DigitalClock date={this.state.date} />
-            </div>
           )}
           <Transition
             native
@@ -134,8 +126,9 @@ export default class BlogPage extends React.Component {
                       image={post.image}
                       // eslint-disable-next-line no-plusplus
                       key={this.id++}
-                      onPostHover={this.onPostHover}
-                      ariaLabelledby={bem("calendar")}
+                      className={bem("post")}
+                      showCalendar={breakpoints === "lg"}
+                      showDigitalClock={breakpoints === "sm"}
                     />
                   ))}
                 </InfiniteScroll>
@@ -143,10 +136,14 @@ export default class BlogPage extends React.Component {
             )}
           </Transition>
         </div>
-        <div className={bem("postImage")}>
-          <PostImage type={this.state.image} />
-        </div>
+        {breakpoints === "lg" && (
+          <div className={bem("postImage")}>
+            <PostImage type={this.state.image} />
+          </div>
+        )}
       </div>
     );
   }
 }
+
+export default withBreakpoints(Blog);
