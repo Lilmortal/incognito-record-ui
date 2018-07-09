@@ -6,9 +6,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import Spinner from "../../spinner";
 import Post from "../../blog/post";
-import PostImage from "../../blog/postImage";
+import PageImage from "../../PageImage";
 import createBem from "../../util/createBem";
-import withBreakpoints from "../../util/withBreakpoints";
 
 import messages from "./Blog.messages";
 import "./Blog.scss";
@@ -16,35 +15,31 @@ import "./Blog.scss";
 const bem = createBem("incognito-Blog");
 
 // TODO: Fix CSS Grid
-export class Blog extends React.Component {
+export default class Blog extends React.Component {
   state = {
     posts: [
       {
         date: moment("11/02/2017", "DD/MM/YYYY"),
         title: "Title 0",
-        post: "Post 0",
-        image: "docker"
+        post: "Post 0"
       },
       {
         date: moment("31/12/2017", "DD/MM/YYYY"),
         title: "Title 1",
-        post: "Post 1",
-        image: "flower"
+        post: "Post 1"
       },
       {
         date: moment("14/08/2020", "DD/MM/YYYY"),
         title: "Title 2",
-        post: "Post 2",
-        image: "docker"
+        post: "Post 2"
       },
       {
         date: moment("12/09/2021", "DD/MM/YYYY"),
         title: "Title 3",
-        post: "Post 3",
-        image: "flower"
+        post: "Post 3"
       }
     ],
-    image: "",
+    image: "Aws",
     loaded: false
   };
 
@@ -63,20 +58,17 @@ export class Blog extends React.Component {
           {
             date: moment("31/12/2017", "DD/MM/YYYY"),
             title: "Title 1",
-            post: "Post 1",
-            image: "flower"
+            post: "Post 1"
           },
           {
             date: moment("14/08/2020", "DD/MM/YYYY"),
             title: "Title 2",
-            post: "Post 2",
-            image: "docker"
+            post: "Post 2"
           },
           {
             date: moment("12/09/2021", "DD/MM/YYYY"),
             title: "Title 3",
-            post: "Post 3",
-            image: "flower"
+            post: "Post 3"
           }
         ])
       });
@@ -86,24 +78,24 @@ export class Blog extends React.Component {
   id = 0;
 
   render() {
-    const { breakpoints } = this.props;
-
     return (
       <div className={bem()}>
-        <div className={bem("postsWrapper")}>
-          {!this.state.loaded && (
-            <Spinner>
-              <FormattedMessage {...messages.initialLoad} />
-            </Spinner>
-          )}
-          <Transition
-            native
-            from={{ opacity: 0 }}
-            enter={{
-              opacity: this.state.loaded ? 1 : 0
-            }}
-          >
-            {({ opacity }) => (
+        {!this.state.loaded && (
+          <Spinner>
+            <FormattedMessage {...messages.initialLoad} />
+          </Spinner>
+        )}
+        <Transition
+          native
+          from={{ opacity: 0 }}
+          enter={{
+            opacity: this.state.loaded ? 1 : 0
+          }}
+        >
+          {({ opacity }) => (
+            <React.Fragment>
+              <PageImage image={this.state.image} title={this.state.image} />
+              <div className={bem("gradient")}>{this.state.image}</div>
               <animated.div className={bem("posts", this.state.loaded ? "" : "loading")} style={{ opacity }}>
                 <InfiniteScroll
                   dataLength={this.state.posts.length}
@@ -123,27 +115,17 @@ export class Blog extends React.Component {
                       title={post.title}
                       post={post.post}
                       date={post.date}
-                      image={post.image}
                       // eslint-disable-next-line no-plusplus
                       key={this.id++}
                       className={bem("post")}
-                      showCalendar={breakpoints === "lg"}
-                      showDigitalClock={breakpoints === "sm"}
                     />
                   ))}
                 </InfiniteScroll>
               </animated.div>
-            )}
-          </Transition>
-        </div>
-        {breakpoints === "lg" && (
-          <div className={bem("postImage")}>
-            <PostImage type={this.state.image} />
-          </div>
-        )}
+            </React.Fragment>
+          )}
+        </Transition>
       </div>
     );
   }
 }
-
-export default withBreakpoints(Blog);

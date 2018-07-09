@@ -1,0 +1,13 @@
+@import "../styles/styles";
+
+.incognito-PageImage {
+  width: 100%;
+  height: 80vh;
+
+  &--isAws {
+    background-image: url("./aws_image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: -150px;
+  }
+}

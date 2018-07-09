@@ -1,55 +1,41 @@
 @import "../../styles/styles";
 
 .incognito-Blog {
-  display: grid;
-  flex: 1 1 auto;
-  width: 80%;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 
-  @media only screen and (min-width: 900px) {
-    width: 100%;
-    margin: 0;
-    grid-template-columns: [blog] 70% [images] 2fr;
+  &__pageImage {
+    display: flex;
+    background-size: cover;
+
+    // small screen change to contain
   }
 
-  &__postsWrapper {
-    display: grid;
-    z-index: 1;
-    grid-template-rows: [clock] 100% [posts] 1fr;
-    padding-bottom: 50px;
-
-    @media only screen and (min-width: 900px) {
-      grid-template-rows: 0;
-      grid-template-columns: [calendar] 1fr [posts] 2fr;
-    }
+  &__gradient {
+    mix-blend-mode: lighten;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#fcfcfc, rgba(252, 252, 252, 0.85));
+    width: 100%;
+    height: 250px;
+    margin-top: -250px;
+    position: relative;
+    font-size: 5em;
+    line-height: 1.25em;
+    letter-spacing: 0.075em;
   }
 
   &__posts {
+    width: 50%;
+    margin: 0 auto;
+    padding-bottom: 50px;
     min-height: 100vh;
     visibility: visible;
-    grid-row: posts;
-
-    @media only screen and (min-width: 900px) {
-      grid-row: 0;
-      grid-column: posts;
-    }
 
     &--loading {
       visibility: hidden;
     }
-  }
-
-  &__post {
-    // display:
-  }
-
-  &__postImage {
-    display: grid;
-    grid-column: images;
-  }
-
-  &__postImageSticky {
-    position: fixed;
   }
 
   &__spinner {
