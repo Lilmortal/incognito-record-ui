@@ -10,9 +10,9 @@ import "./Header.scss";
 const bem = createBem("incognito-Header");
 
 const Header = ({ isHomePage }) => (
-  <header className={bem()}>
+  <header className={bem("", isHomePage ? "isHomePage" : "")}>
     <div className={bem("navigation")}>
-      <Navigation />
+      <Navigation isHomePage={isHomePage} />
     </div>
 
     {isHomePage && (

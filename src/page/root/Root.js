@@ -1,5 +1,8 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
+import routes from "../../config/routes";
+import Header from "../../header";
 import Footer from "../../footer";
 import createBem from "../../util/createBem";
 
@@ -9,17 +12,22 @@ import "./Root.scss";
 
 const bem = createBem("incognito-Root");
 
-const Root = () => (
-  <div className={bem()}>
-    <RootIntl>
-      <React.Fragment>
-        <Router />
-        <div className={bem("footer")}>
-          <Footer />
-        </div>
-      </React.Fragment>
-    </RootIntl>
-  </div>
-);
+const Root = ({ history }) => {
+  const isHomePage = history.location.pathname === routes.index;
 
-export default Root;
+  return (
+    <div className={bem()}>
+      <RootIntl>
+        <React.Fragment>
+          <Header isHomePage={isHomePage} />
+          <Router />
+          <div className={bem("footer")}>
+            <Footer />
+          </div>
+        </React.Fragment>
+      </RootIntl>
+    </div>
+  );
+};
+
+export default withRouter(Root);

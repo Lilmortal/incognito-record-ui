@@ -9,18 +9,20 @@ import "./Navigation.scss";
 
 const bem = createBem("incognito-Navigation");
 
-const Navigation = () => (
+const NavigationLink = props => <Link {...props} className={bem("link", props.isHomePage ? "inverse" : "")} />;
+
+const Navigation = ({ isHomePage }) => (
   <nav className={bem()}>
     <ul className={bem("links")}>
       <li>
-        <Link to={routes.index}>
+        <NavigationLink to={routes.index} isHomePage={isHomePage}>
           <FormattedMessage {...messages.index} />
-        </Link>
+        </NavigationLink>
       </li>
       <li>
-        <Link to={routes.about}>
+        <NavigationLink to={routes.about} isHomePage={isHomePage}>
           <FormattedMessage {...messages.about} />
-        </Link>
+        </NavigationLink>
       </li>
     </ul>
   </nav>
