@@ -1,9 +1,9 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import routes from "../../../config/routes";
-import BlogPage from "../../blog";
-import AboutPage from "../../about";
+import routes from '../../../config/routes';
+import BlogPage from '../../Blog';
+import AboutPage from '../../About';
 
 const Router = () => (
   <Switch>
