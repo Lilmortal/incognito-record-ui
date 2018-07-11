@@ -80,11 +80,6 @@ export default class Blog extends React.Component {
   render() {
     return (
       <div className={bem()}>
-        {!this.state.loaded && (
-          <Spinner>
-            <FormattedMessage {...messages.initialLoad} />
-          </Spinner>
-        )}
         <Transition
           native
           from={{ opacity: 0 }}
@@ -96,35 +91,40 @@ export default class Blog extends React.Component {
             <React.Fragment>
               <PageImage image={this.state.image} title={this.state.image} />
               <div className={bem('gradient')}>{this.state.image}</div>
-              <animated.div
-                className={bem('posts', this.state.loaded ? '' : 'loading')}
-                style={{ opacity }}
-              >
-                <InfiniteScroll
-                  dataLength={this.state.posts.length}
-                  next={this.fetchMoreData}
-                  hasMore
-                  loader={
-                    <div className={bem('spinner')}>
-                      <Spinner>
-                        <FormattedMessage {...messages.additionalLoad} />
-                      </Spinner>
-                    </div>
-                  }
-                  style={{ height: 'inherit', overflow: 'inherit' }}
-                >
-                  {this.state.posts.map(post => (
-                    <Post
-                      title={post.title}
-                      post={post.post}
-                      date={post.date}
-                      // eslint-disable-next-line no-plusplus
-                      key={this.id++}
-                      className={bem('post')}
-                    />
-                  ))}
-                </InfiniteScroll>
-              </animated.div>
+              <div className={bem('posts')}>
+                {!this.state.loaded ? (
+                  <Spinner>
+                    <FormattedMessage {...messages.initialLoad} />
+                  </Spinner>
+                ) : (
+                  <animated.div style={{ opacity }}>
+                    <InfiniteScroll
+                      dataLength={this.state.posts.length}
+                      next={this.fetchMoreData}
+                      hasMore
+                      loader={
+                        <div className={bem('spinner')}>
+                          <Spinner>
+                            <FormattedMessage {...messages.additionalLoad} />
+                          </Spinner>
+                        </div>
+                      }
+                      style={{ height: 'inherit', overflow: 'inherit' }}
+                    >
+                      {this.state.posts.map(post => (
+                        <Post
+                          title={post.title}
+                          post={post.post}
+                          date={post.date}
+                          // eslint-disable-next-line no-plusplus
+                          key={this.id++}
+                          className={bem('post')}
+                        />
+                      ))}
+                    </InfiniteScroll>
+                  </animated.div>
+                )}
+              </div>
             </React.Fragment>
           )}
         </Transition>
