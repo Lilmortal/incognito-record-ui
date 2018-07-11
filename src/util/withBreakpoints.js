@@ -1,15 +1,16 @@
-import React from "react";
+import React from 'react';
 
 const withBreakpoints = Component =>
   class BreakpointHOC extends React.Component {
     state = {
-      breakpoints: ""
+      breakpoints: '',
     };
 
     componentDidMount() {
       let timer;
       window.onresize = () => {
         clearTimeout(timer);
+        // TODO: Change this to a pub/sub pattern
         timer = setTimeout(() => {
           this.onDetermineBreakpoints();
         }, 250);
@@ -19,10 +20,10 @@ const withBreakpoints = Component =>
     }
 
     onDetermineBreakpoints = () => {
-      if (window.matchMedia("screen and (min-width: 900px)").matches) {
-        this.setState({ breakpoints: "lg" });
+      if (window.matchMedia('screen and (min-width: 900px)').matches) {
+        this.setState({ breakpoints: 'lg' });
       } else {
-        this.setState({ breakpoints: "sm" });
+        this.setState({ breakpoints: 'sm' });
       }
     };
 

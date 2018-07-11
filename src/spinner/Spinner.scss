@@ -1,4 +1,4 @@
-@import "../styles/styles";
+@import '../ui/styles';
 
 .incognito-Spinner {
   width: 244px;
@@ -23,7 +23,7 @@
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     display: block;
     width: 15px;
     height: 15px;
