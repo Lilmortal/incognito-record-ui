@@ -1,9 +1,9 @@
-@import "./color-palette";
+@import './color-palette';
 
 $bodyBackground: $black;
 
 $colorBannerBorder: $lightgray;
-$colorBannerBackground: $black;
+$colorBannerBackground: $white;
 
 $colorCategoriesBackground: $yellowGreen;
 $colorCategoriesTextHover: $darkSlateGray;
@@ -32,5 +32,5 @@ $colorTextfieldNoBorderText: $pureWhite;
 $colorTextfieldNoBorderBorder: $lightgoldenrodyellow;
 $colorTextfieldNoBorderFocus: $gold;
 
-$colorBodyBackground: $darkGrayishBlue;
-$colorBodyText: $lightWhite;
+$colorBodyBackground: $white;
+$colorBodyText: $darkSlateGray;

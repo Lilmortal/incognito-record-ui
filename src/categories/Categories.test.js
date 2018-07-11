@@ -1,8 +1,7 @@
-import React from "react";
-import { IntlProvider } from "react-intl";
-// import { Keyframes } from "react-spring";
-import { mount } from "enzyme";
-import Categories from "./Categories";
+import React from 'react';
+import { IntlProvider } from 'react-intl';
+import { mount } from 'enzyme';
+import Categories from './Categories';
 
 let defaultProps;
 
@@ -12,14 +11,14 @@ beforeEach(() => {
       {
         id: 0,
         key: 0,
-        text: "text1"
+        text: 'text1',
       },
       {
         id: 1,
         key: 1,
-        text: "text2"
-      }
-    ]
+        text: 'text2',
+      },
+    ],
   };
 });
 
@@ -34,7 +33,7 @@ const renderMount = props =>
     </IntlProvider>
   );
 
-it("should render categories", () => {
+it('should render categories', () => {
   jest.useFakeTimers();
   const categories = renderMount();
 
@@ -44,17 +43,17 @@ it("should render categories", () => {
   const result = new Promise(resolve =>
     resolve(
       categories
-        .find(".incognito-Categories")
-        .filterWhere(category => category.is("div"))
-        .prop("onMouseEnter")()
+        .find('.incognito-Categories')
+        .filterWhere(category => category.is('div'))
+        .prop('onMouseEnter')()
     ).then(() =>
       setTimeout(() => {
         expect(
           categories
-            .find(".incognito-Categories__category")
+            .find('.incognito-Categories__category')
             .first()
             .text()
-        ).toEqual("text1");
+        ).toEqual('text1');
       }, 200)
     )
   );

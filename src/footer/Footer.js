@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import Timer from "./timer";
+import Timer from './Timer';
 
-import createBem from "../util/createBem";
-import "./Footer.scss";
+import createBem from '../util/createBem';
+import './Footer.scss';
 
-const bem = createBem("incognito-Footer");
+const bem = createBem('incognito-Footer');
 
 const Footer = () => (
   <div className={bem()}>

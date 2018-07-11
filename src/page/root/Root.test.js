@@ -10,6 +10,12 @@ let defaultProps;
 
 beforeEach(() => {
   defaultProps = {};
+
+  beforeAll(() => {
+    Object.defineProperty(window, "matchMedia", {
+      value: jest.fn(() => ({ matches: true }))
+    });
+  });
 });
 
 const renderMount = (pathname = "/", props) =>

@@ -1,4 +1,4 @@
-@import "../../styles/styles";
+@import '../../ui/styles';
 
 .incognito-Navicon {
   position: fixed;
@@ -7,7 +7,7 @@
   right: 0;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0.25em;
     left: 0;

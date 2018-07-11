@@ -1,84 +1,76 @@
-import React from "react";
-import { FormattedMessage } from "react-intl";
-import { Transition, animated } from "react-spring";
-import moment from "moment";
-import InfiniteScroll from "react-infinite-scroll-component";
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import { Transition, animated } from 'react-spring';
+import moment from 'moment';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
-import Spinner from "../../spinner";
-import DigitalClock from "../../digitalClock";
-import Calendar from "../../calendar";
-import Post from "../../blog/post";
-import PostImage from "../../blog/postImage";
-import createBem from "../../util/createBem";
+import Spinner from '../../Spinner';
+import Post from '../../Post';
+import PageImage from '../../PageImage';
+import createBem from '../../util/createBem';
 
-import messages from "./Blog.messages";
-import "./Blog.scss";
+import messages from './Blog.messages';
+import './Blog.scss';
 
-const bem = createBem("incognito-Blog");
+const bem = createBem('incognito-Blog');
 
 // TODO: Fix CSS Grid
-export default class BlogPage extends React.Component {
+export default class Blog extends React.Component {
   state = {
     posts: [
       {
-        date: moment("11/02/2017", "DD/MM/YYYY"),
-        title: "Title 0",
-        post: "Post 0",
-        image: "docker"
+        date: moment('11/02/2017', 'DD/MM/YYYY'),
+        title: 'Title 0',
+        post: 'Post 0',
       },
       {
-        date: moment("31/12/2017", "DD/MM/YYYY"),
-        title: "Title 1",
-        post: "Post 1",
-        image: "flower"
+        date: moment('31/12/2017', 'DD/MM/YYYY'),
+        title: 'Title 1',
+        post: 'Post 1',
       },
       {
-        date: moment("14/08/2020", "DD/MM/YYYY"),
-        title: "Title 2",
-        post: "Post 2",
-        image: "docker"
+        date: moment('14/08/2020', 'DD/MM/YYYY'),
+        title: 'Title 2',
+        post: 'Post 2',
       },
       {
-        date: moment("12/09/2021", "DD/MM/YYYY"),
-        title: "Title 3",
-        post: "Post 3",
-        image: "flower"
-      }
+        date: moment('12/09/2021', 'DD/MM/YYYY'),
+        title: 'Title 3',
+        post: 'Post 3',
+      },
     ],
-    date: moment(),
-    image: "",
-    loaded: false
+    image: 'Aws',
+    loaded: false,
   };
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loaded: true }), 1000);
+    this.fetchInitialData();
   }
 
-  onPostHover = ({ date, image }) => this.setState({ date, image });
+  fetchInitialData = () => {
+    setTimeout(() => this.setState({ loaded: true }), 1000);
+  };
 
   fetchMoreData = () => {
     setTimeout(() => {
       this.setState({
         posts: this.state.posts.concat([
           {
-            date: moment("31/12/2017", "DD/MM/YYYY"),
-            title: "Title 1",
-            post: "Post 1",
-            image: "flower"
+            date: moment('31/12/2017', 'DD/MM/YYYY'),
+            title: 'Title 1',
+            post: 'Post 1',
           },
           {
-            date: moment("14/08/2020", "DD/MM/YYYY"),
-            title: "Title 2",
-            post: "Post 2",
-            image: "docker"
+            date: moment('14/08/2020', 'DD/MM/YYYY'),
+            title: 'Title 2',
+            post: 'Post 2',
           },
           {
-            date: moment("12/09/2021", "DD/MM/YYYY"),
-            title: "Title 3",
-            post: "Post 3",
-            image: "flower"
-          }
-        ])
+            date: moment('12/09/2021', 'DD/MM/YYYY'),
+            title: 'Title 3',
+            post: 'Post 3',
+          },
+        ]),
       });
     }, 1000);
   };
@@ -88,64 +80,54 @@ export default class BlogPage extends React.Component {
   render() {
     return (
       <div className={bem()}>
-        <div className={bem("placeholder")} />
-        <div className={bem("calendarWrapper")}>
-          <div className={bem("calendar")}>
-            <div className={bem("calendarSticky")}>
-              <Calendar date={this.state.date} id={bem("calendar")} />
-            </div>
-          </div>
-          {!this.state.loaded ? (
-            <Spinner>
-              <FormattedMessage {...messages.initialLoad} />
-            </Spinner>
-          ) : (
-            <div className={bem("digitalClock")}>
-              <DigitalClock date={this.state.date} />
-            </div>
-          )}
-          <Transition
-            native
-            from={{ opacity: 0 }}
-            enter={{
-              opacity: this.state.loaded ? 1 : 0
-            }}
-          >
-            {({ opacity }) => (
-              <animated.div className={bem("posts", this.state.loaded ? "" : "loading")} style={{ opacity }}>
+        {!this.state.loaded && (
+          <Spinner>
+            <FormattedMessage {...messages.initialLoad} />
+          </Spinner>
+        )}
+        <Transition
+          native
+          from={{ opacity: 0 }}
+          enter={{
+            opacity: this.state.loaded ? 1 : 0,
+          }}
+        >
+          {({ opacity }) => (
+            <React.Fragment>
+              <PageImage image={this.state.image} title={this.state.image} />
+              <div className={bem('gradient')}>{this.state.image}</div>
+              <animated.div
+                className={bem('posts', this.state.loaded ? '' : 'loading')}
+                style={{ opacity }}
+              >
                 <InfiniteScroll
                   dataLength={this.state.posts.length}
                   next={this.fetchMoreData}
                   hasMore
                   loader={
-                    <div className={bem("spinner")}>
+                    <div className={bem('spinner')}>
                       <Spinner>
                         <FormattedMessage {...messages.additionalLoad} />
                       </Spinner>
                     </div>
                   }
-                  style={{ height: "inherit", overflow: "inherit" }}
+                  style={{ height: 'inherit', overflow: 'inherit' }}
                 >
                   {this.state.posts.map(post => (
                     <Post
                       title={post.title}
                       post={post.post}
                       date={post.date}
-                      image={post.image}
                       // eslint-disable-next-line no-plusplus
                       key={this.id++}
-                      onPostHover={this.onPostHover}
-                      ariaLabelledby={bem("calendar")}
+                      className={bem('post')}
                     />
                   ))}
                 </InfiniteScroll>
               </animated.div>
-            )}
-          </Transition>
-        </div>
-        <div className={bem("postImage")}>
-          <PostImage type={this.state.image} />
-        </div>
+            </React.Fragment>
+          )}
+        </Transition>
       </div>
     );
   }

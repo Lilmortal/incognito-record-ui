@@ -1,15 +1,16 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-import Header from "../../header";
-import Footer from "../../footer";
-import createBem from "../../util/createBem";
-import routes from "../../config/routes";
-import RootIntl from "./intl";
-import Router from "./router";
-import "./Root.scss";
+import routes from '../../config/routes';
+import Header from '../../Header';
+import Footer from '../../Footer';
+import createBem from '../../util/createBem';
 
-const bem = createBem("incognito-Root");
+import RootIntl from './intl';
+import Router from './router';
+import './Root.scss';
+
+const bem = createBem('incognito-Root');
 
 const Root = ({ history }) => {
   const isHomePage = history.location.pathname === routes.index;
@@ -20,7 +21,7 @@ const Root = ({ history }) => {
         <React.Fragment>
           <Header isHomePage={isHomePage} />
           <Router />
-          <div className={bem("footer")}>
+          <div className={bem('footer')}>
             <Footer />
           </div>
         </React.Fragment>

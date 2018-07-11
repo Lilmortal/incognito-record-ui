@@ -1,0 +1,35 @@
+@import '../ui/styles';
+
+.incognito-Post {
+  &__title {
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid $colorBannerBorder;
+    background-color: white;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  &__body {
+    display: flex;
+    padding: 0 20px;
+    flex-direction: column;
+  }
+
+  &__post {
+    width: 100%;
+    min-height: 500px;
+    padding: 30px 15px;
+    box-shadow: none;
+    transition: box-shadow 0.5s;
+  }
+
+  &__digitalClock {
+    grid-row: clock;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+}

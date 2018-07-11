@@ -1,93 +1,41 @@
-@import "../../styles/styles";
+@import '../../ui/styles';
 
 .incognito-Blog {
-  display: grid;
-  flex: 1 1 auto;
-  width: 80%;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 
-  @media only screen and (min-width: 900px) {
+  &__pageImage {
+    display: flex;
+    background-size: cover;
+
+    // small screen change to contain
+  }
+
+  &__gradient {
+    mix-blend-mode: lighten;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#fcfcfc, rgba(252, 252, 252, 0.85));
     width: 100%;
-    margin: 0;
-    grid-template-columns: [placeholder] 1fr [blog] 70% [images] 2fr;
-  }
-
-  @media only screen and (min-width: 1890px) {
-    grid-template-columns: [placeholder] 1fr [blog] 50% [images] 2fr;
-  }
-
-  &__placeholder {
-    display: none;
-    @media only screen and (min-width: 900px) {
-      display: block;
-    }
-  }
-
-  &__calendarWrapper {
-    display: grid;
-    z-index: 1;
-    grid-template-rows: [clock] 100% [posts] 1fr;
-    padding-bottom: 50px;
-
-    @media only screen and (min-width: 900px) {
-      grid-template-rows: 0;
-      grid-template-columns: [calendar] 1fr [posts] 2fr;
-    }
-  }
-
-  &__digitalClock {
-    grid-row: clock;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-
-    @media only screen and (min-width: 900px) {
-      display: none;
-    }
-  }
-
-  &__calendar {
-    display: none;
-
-    @media only screen and (min-width: 900px) {
-      display: grid;
-      grid-column: calendar;
-    }
-  }
-
-  &__calendarSticky {
-    position: initial;
-
-    @media only screen and (min-width: 900px) {
-      position: fixed;
-    }
+    height: 250px;
+    margin-top: -250px;
+    position: relative;
+    font-size: 5em;
+    line-height: 1.25em;
+    letter-spacing: 0.075em;
   }
 
   &__posts {
+    width: 50%;
+    margin: 0 auto;
+    padding-bottom: 50px;
     min-height: 100vh;
     visibility: visible;
-    grid-row: posts;
-
-    @media only screen and (min-width: 900px) {
-      grid-row: 0;
-      grid-column: posts;
-    }
 
     &--loading {
       visibility: hidden;
     }
-  }
-
-  &__postImage {
-    display: none;
-    @media only screen and (min-width: 900px) {
-      display: grid;
-      grid-column: images;
-    }
-  }
-
-  &__postImageSticky {
-    position: fixed;
   }
 
   &__spinner {
