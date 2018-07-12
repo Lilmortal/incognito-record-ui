@@ -15,9 +15,7 @@ const Search = ({ id }) => (
       type="noBorder"
       placeholder="What post am I looking for..."
     />
-    {/* Maybe we don't need this icon at all, it might break accessibility but it reduces 
-      clutter and less work to maintain what it looks like on a very small device */}
-    <div className={bem('icon')} />
+    <div className={bem('searchIcon')} />
   </div>
 );
 

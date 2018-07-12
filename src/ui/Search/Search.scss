@@ -3,14 +3,16 @@
 .incognito-Search {
   display: flex;
   align-items: center;
+  position: relative;
 
-  &__icon {
+  &__searchIcon {
     background-image: url('./search.png');
+    position: absolute;
+    right: 0;
     width: 30px;
     height: 30px;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-left: 20px;
     cursor: pointer;
   }
 }
