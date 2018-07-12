@@ -15,7 +15,7 @@ const bem = createBem("incognito-About");
 export default class About extends React.Component {
   state = {
     contents: [],
-    date: moment("24/07/2018", "DD/MM/YYYY")
+    date: moment("24/07/2018", "DD/MM/YYYY"),
   };
 
   componentDidMount() {
@@ -26,7 +26,7 @@ export default class About extends React.Component {
         // intersectionRatio is needed because Edge does not support isIntersecting
         if (isIntersecting || intersectionRatio > 0) {
           this.setState({
-            contents: { ...this.state.contents, [entry.target.id]: true }
+            contents: { ...this.state.contents, [entry.target.id]: true },
           });
         }
       });
@@ -42,7 +42,15 @@ export default class About extends React.Component {
     this.observer = new window.IntersectionObserver(cb);
   };
 
-  pushContentRefs = ref => this.observer !== null && ref !== null && this.observer.observe(ref);
+  pushContentRefs = ref =>
+    this.observer !== undefined &&
+    this.observer !== null &&
+    ref !== undefined &&
+    this.observer.observe(ref);
+
+  updateDate = date => {
+    this.setState({ date });
+  };
 
   render() {
     return (
@@ -57,10 +65,14 @@ export default class About extends React.Component {
             {...messages.aboutMeContent}
             values={{
               link: (
-                <a rel="noopener noreferrer" target="_blank" href="https://github.com/Lilmortal/incognito-record-ui">
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href="https://github.com/Lilmortal/incognito-record-ui"
+                >
                   https://github.com/Lilmortal/incognito-record-ui
                 </a>
-              )
+              ),
             }}
           />
         </Content>
@@ -85,7 +97,9 @@ export default class About extends React.Component {
 
         <Content
           id={3}
-          title={<FormattedMessage {...messages.howAmIGoingToAchieveThisTitle} />}
+          title={
+            <FormattedMessage {...messages.howAmIGoingToAchieveThisTitle} />
+          }
           onRefObserve={this.pushContentRefs}
           isIntersecting={this.state.contents[3]}
         >
@@ -99,23 +113,32 @@ export default class About extends React.Component {
           isIntersecting={this.state.contents[4]}
         >
           <div className={bem("deadlineContents")}>
-            <Calendar date={this.state.date} className={bem("calendarDeadlines")} />
+            <Calendar
+              date={this.state.date}
+              className={bem("calendarDeadlines")}
+            />
             <div className={bem("buttons")}>
               <Button
                 className={bem("button")}
-                onClick={() => this.setState({ date: moment("24/07/2018", "DD/MM/YYYY") })}
+                onClick={() =>
+                  this.updateDate(moment("24/07/2018", "DD/MM/YYYY"))
+                }
               >
                 <FormattedMessage {...messages.frontEndButtonText} />
               </Button>
               <Button
                 className={bem("button")}
-                onClick={() => this.setState({ date: moment("24/08/2018", "DD/MM/YYYY") })}
+                onClick={() =>
+                  this.updateDate(moment("12/02/2018", "DD/MM/YYYY"))
+                }
               >
                 <FormattedMessage {...messages.backEndButtonText} />
               </Button>
               <Button
                 className={bem("button")}
-                onClick={() => this.setState({ date: moment("12/01/2019", "DD/MM/YYYY") })}
+                onClick={() =>
+                  this.updateDate(moment("02/12/2019", "DD/MM/YYYY"))
+                }
               >
                 <FormattedMessage {...messages.devOpsButtonText} />
               </Button>
