@@ -1,4 +1,4 @@
-@import '../../ui/styles';
+@import "../../ui/styles";
 
 .incognito-About {
   display: flex;
@@ -9,5 +9,20 @@
 
   & .incognito-Content:last-child {
     border-bottom: 0;
+  }
+
+  &__calendarDeadlines {
+    flex: 2 0 auto;
+  }
+
+  &__deadlineContents {
+    display: flex;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    justify-content: space-evenly;
   }
 }

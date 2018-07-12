@@ -3,7 +3,7 @@ import { Transition, Keyframes, animated, config } from "react-spring";
 import moment from "moment";
 
 import delay from "../util/delay";
-import createBem from "../util/createBem";
+import { createBem } from "../util/bem";
 import "./Calendar.scss";
 
 const bem = createBem("incognito-Calendar");
@@ -117,10 +117,14 @@ export default class Calendar extends React.PureComponent {
   });
 
   render() {
-    const { id } = this.props;
+    const { id, className } = this.props;
 
     return (
-      <div className={bem()} aria-label={`${this.currentDate} ${this.currentMonthInText} ${this.currentYear}`} id={id}>
+      <div
+        className={`${bem()} ${className}`}
+        aria-label={`${this.currentDate} ${this.currentMonthInText} ${this.currentYear}`}
+        id={id}
+      >
         <Transition
           native
           from={{ opacity: this.isCurrentYearChanged ? 0 : 1 }}

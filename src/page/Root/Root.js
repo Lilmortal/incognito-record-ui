@@ -1,10 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { Transition, animated } from "react-spring";
 
 import routes from "../../config/routes";
 import Header from "../../Header";
 import Footer from "../../Footer";
-import createBem from "../../util/createBem";
+import { createBem } from "../../util/bem";
 
 import RootIntl from "./intl";
 import Router from "./router";
@@ -20,7 +21,13 @@ const Root = ({ history }) => {
       <RootIntl>
         <React.Fragment>
           <Header isHomePage={isHomePage} />
-          <Router />
+          <Transition native from={{ opacity: 0 }} to={{ opacity: 1 }}>
+            {({ opacity }) => (
+              <animated.div style={{ opacity }}>
+                <Router />
+              </animated.div>
+            )}
+          </Transition>
           <div className={bem("footer")}>
             <Footer />
           </div>

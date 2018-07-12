@@ -1,7 +1,7 @@
 import React from "react";
 import { Transition } from "react-spring";
 
-import createBem from "../../util/createBem";
+import { createBem } from "../../util/bem";
 import "./Timer.scss";
 
 const bem = createBem("incognito-Timer");
