@@ -1,6 +1,6 @@
 import React from "react";
 
-import createBem from "../util/createBem";
+import { createBem } from "../util/bem";
 import "./Content.scss";
 
 const bem = createBem("incognito-Content");

@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 
-import createBem from "../util/createBem";
+import { createBem } from "../util/bem";
 import "./DigitalClock.scss";
 
 const bem = createBem("incognito-DigitalClock");
