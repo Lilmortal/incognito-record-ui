@@ -5,19 +5,15 @@ $bodyBackground: $black;
 $colorBannerBorder: $lightgray;
 $colorBannerBackground: $white;
 
-$colorCategoriesBackground: $yellowGreen;
-$colorCategoriesTextHover: $darkSlateGray;
-
-$colorDigitalClockBackground: $darkGrayishBlue;
-$colorDigitalClockBorder: $darkSlateGray;
-
-$colorDigitalClockBorder: $lightWhite;
-$colorDigitalClockText: $lightWhite;
+$colorCategoriesText: $halfWhite;
+$colorCategoriesTextHover: $pureWhite;
+$colorCategoriesBackground: $darkGrayishBlue;
 
 $colorSpinnerText: $white;
 $colorSpinnerBackground: $black;
 $colorSpinnerLoadingBackground: $pureWhite;
 
+$colorPostBackground: $pureWhite;
 $colorPostBoxShadow: $darkGray;
 
 $colorContentBorder: $halfWhite;
@@ -25,8 +21,10 @@ $colorContentCaret: $pureWhite;
 
 $colorNaviconBorder: $pureWhite;
 
-$colorNavigationText: $lightWhite;
-$colorNavigationBorder: $lightWhite;
+$colorNavigationText: $black;
+$colorNavigationBorderHover: $black;
+$colorNavigationTextInverse: $lightWhite;
+$colorNavigationBorderHoverInverse: $lightWhite;
 
 $colorTextfieldNoBorderText: $pureWhite;
 $colorTextfieldNoBorderBorder: $lightgoldenrodyellow;

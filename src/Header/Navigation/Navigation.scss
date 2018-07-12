@@ -13,18 +13,18 @@
   &__link {
     padding: 10px 30px;
     text-decoration: none;
-    color: black;
+    color: $colorNavigationText;
 
     &:hover {
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid $colorNavigationBorderHover;
       transition: border-bottom 200ms ease-in;
     }
 
     &--inverse {
-      color: $colorNavigationText;
+      color: $colorNavigationTextInverse;
 
       &:hover {
-        border-bottom: 2px solid $colorNavigationBorder;
+        border-bottom: 2px solid $colorNavigationBorderHoverInverse;
         transition: border-bottom 200ms ease-in;
       }
     }

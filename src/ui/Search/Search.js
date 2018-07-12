@@ -17,7 +17,7 @@ const Search = ({ id }) => (
     />
     {/* Maybe we don't need this icon at all, it might break accessibility but it reduces 
       clutter and less work to maintain what it looks like on a very small device */}
-    {/* <div className={bem("icon")} /> */}
+    <div className={bem('icon')} />
   </div>
 );
 
