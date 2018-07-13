@@ -8,6 +8,7 @@
     "test:ci": "jest",
     "start": "webpack-dev-server --open --config ./config/webpack.dev.js",
     "build": "webpack --config ./config/webpack.prod.js",
+    "deploy": "yarn build && aws s3 sync dist/ s3://incognito-record-ui --delete",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "stylelint": "stylelint '**/*.scss'"
   },
