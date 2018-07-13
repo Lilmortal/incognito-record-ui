@@ -134,7 +134,7 @@ export default class Calendar extends React.Component {
           )}
         </Transition>
         <div className={bem('dateSlider')} aria-hidden>
-          <this.BorderContainer
+          {/* <this.BorderContainer
             native
             state={this.props.loaded ? 'show' : 'initial'}
           >
@@ -150,7 +150,11 @@ export default class Calendar extends React.Component {
                 }}
               />
             )}
-          </this.BorderContainer>
+          </this.BorderContainer> */}
+          <div
+            className={bem('dateSliderBorderTop')}
+            style={{ height: 0, borderBottom: '200px solid black' }}
+          />
           <Transition
             native
             from={{
@@ -196,7 +200,11 @@ export default class Calendar extends React.Component {
               </React.Fragment>
             )}
           </Transition>
-          <this.BorderContainer
+          <div
+            className={bem('dateSliderBorderBottom')}
+            style={{ height: 0, borderTop: '200px solid black' }}
+          />
+          {/* <this.BorderContainer
             native
             state={this.props.loaded ? 'show' : 'initial'}
           >
@@ -212,7 +220,7 @@ export default class Calendar extends React.Component {
                 }}
               />
             )}
-          </this.BorderContainer>
+          </this.BorderContainer> */}
         </div>
       </div>
     );

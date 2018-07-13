@@ -1,4 +1,4 @@
-@import "../../ui/styles";
+@import '../../ui/styles';
 
 .incognito-About {
   display: flex;
@@ -22,7 +22,6 @@
   &__buttons {
     display: flex;
     flex-direction: column;
-    flex: 1 0 auto;
     justify-content: space-evenly;
   }
 }
