@@ -1,17 +1,16 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { Transition, animated } from "react-spring";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-import routes from "../../config/routes";
-import Header from "../../Header";
-import Footer from "../../Footer";
-import { createBem } from "../../util/bem";
+import routes from '../../config/routes';
+import Header from '../../Header';
+import Footer from '../../Footer';
+import { createBem } from '../../util/bem';
 
-import RootIntl from "./intl";
-import Router from "./router";
-import "./Root.scss";
+import RootIntl from './intl';
+import Router from './router';
+import './Root.scss';
 
-const bem = createBem("incognito-Root");
+const bem = createBem('incognito-Root');
 
 const Root = ({ history }) => {
   const isHomePage = history.location.pathname === routes.index;
@@ -21,14 +20,8 @@ const Root = ({ history }) => {
       <RootIntl>
         <React.Fragment>
           <Header isHomePage={isHomePage} />
-          <Transition native from={{ opacity: 0 }} to={{ opacity: 1 }}>
-            {({ opacity }) => (
-              <animated.div style={{ opacity }}>
-                <Router />
-              </animated.div>
-            )}
-          </Transition>
-          <div className={bem("footer")}>
+          <Router />
+          <div className={bem('footer')}>
             <Footer />
           </div>
         </React.Fragment>

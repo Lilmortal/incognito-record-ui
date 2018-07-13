@@ -1,24 +1,25 @@
-import React from "react";
-import { FormattedMessage } from "react-intl";
-import moment from "moment";
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import moment from 'moment';
 
-import Button from "../../ui/Button";
-import Content from "../../Content";
-import Calendar from "../../Calendar";
-import { createBem } from "../../util/bem";
+import Button from '../../ui/Button';
+import Content from '../../Content';
+import Calendar from '../../Calendar';
+import { createBem } from '../../util/bem';
 
-import messages from "./About.messages";
-import "./About.scss";
+import messages from './About.messages';
+import './About.scss';
 
-const bem = createBem("incognito-About");
+const bem = createBem('incognito-About');
 
 export default class About extends React.Component {
   state = {
+    loaded: false,
     contents: [],
-    date: moment("24/07/2018", "DD/MM/YYYY"),
+    date: moment('24/07/2018', 'DD/MM/YYYY'),
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.intersectionObserve(entries => {
       entries.forEach(entry => {
         const { isIntersecting, intersectionRatio } = entry;
@@ -31,11 +32,14 @@ export default class About extends React.Component {
         }
       });
     });
+
+    this.loadedTimer = setTimeout(() => this.setState({ loaded: true }), 0);
   }
 
   componentWillUnmount() {
     this.observer.disconnect();
     this.observer = null;
+    clearTimeout(this.loadedTimer);
   }
 
   intersectionObserve = cb => {
@@ -112,32 +116,33 @@ export default class About extends React.Component {
           onRefObserve={this.pushContentRefs}
           isIntersecting={this.state.contents[4]}
         >
-          <div className={bem("deadlineContents")}>
+          <div className={bem('deadlineContents')}>
             <Calendar
               date={this.state.date}
-              className={bem("calendarDeadlines")}
+              loaded={this.state.loaded}
+              className={bem('calendarDeadlines')}
             />
-            <div className={bem("buttons")}>
+            <div className={bem('buttons')}>
               <Button
-                className={bem("button")}
+                className={bem('button')}
                 onClick={() =>
-                  this.updateDate(moment("24/07/2018", "DD/MM/YYYY"))
+                  this.updateDate(moment('24/07/2018', 'DD/MM/YYYY'))
                 }
               >
                 <FormattedMessage {...messages.frontEndButtonText} />
               </Button>
               <Button
-                className={bem("button")}
+                className={bem('button')}
                 onClick={() =>
-                  this.updateDate(moment("12/02/2018", "DD/MM/YYYY"))
+                  this.updateDate(moment('12/02/2018', 'DD/MM/YYYY'))
                 }
               >
                 <FormattedMessage {...messages.backEndButtonText} />
               </Button>
               <Button
-                className={bem("button")}
+                className={bem('button')}
                 onClick={() =>
-                  this.updateDate(moment("02/12/2019", "DD/MM/YYYY"))
+                  this.updateDate(moment('02/12/2019', 'DD/MM/YYYY'))
                 }
               >
                 <FormattedMessage {...messages.devOpsButtonText} />
