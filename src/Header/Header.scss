@@ -4,17 +4,24 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 30px;
+  padding: 10px;
   position: relative;
+  background: $colorHeaderBackgroundMobile;
+  color: $colorHeaderTextMobile;
+  width: 100%;
+
+  @include tablet {
+    padding: 30px;
+    background: none;
+  }
 
   &--isHomePage {
-    position: absolute;
-  }
-  &__navigation {
-    margin-bottom: 2em;
+    justify-content: space-around;
+    position: relative;
 
-    @media only screen and (min-width: 900px) {
-      margin: 0;
+    @include tablet {
+      justify-content: flex-start;
+      position: absolute;
     }
   }
 
@@ -22,14 +29,14 @@
   &__sideBar {
     display: none;
 
-    @media only screen and (min-width: 900px) {
+    @include desktop {
       display: block;
     }
   }
 
   // TODO: use withNavigation HOC to replace this
   &__search {
-    @media only screen and (min-width: 900px) {
+    @include desktop {
       display: none;
     }
   }

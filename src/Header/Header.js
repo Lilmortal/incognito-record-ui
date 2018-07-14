@@ -11,9 +11,7 @@ const bem = createBem('incognito-Header');
 
 const Header = ({ isHomePage }) => (
   <header className={bem('', isHomePage ? 'isHomePage' : '')}>
-    <div className={bem('navigation')}>
-      <Navigation isHomePage={isHomePage} />
-    </div>
+    <Navigation isHomePage={isHomePage} />
 
     {isHomePage && (
       <React.Fragment>

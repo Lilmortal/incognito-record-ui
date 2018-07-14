@@ -2,6 +2,11 @@
 
 .incognito-Navigation {
   font-size: 1.3em;
+  padding: 1em;
+
+  @include tablet {
+    padding: 0;
+  }
 
   &__links {
     list-style: none;
