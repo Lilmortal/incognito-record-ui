@@ -4,6 +4,7 @@
   width: 100%;
   height: 80vh;
 
+  // TODO: Move this image to S3 and reference it there
   &--isAws {
     background-image: url('./aws_image.jpg');
     background-repeat: no-repeat;

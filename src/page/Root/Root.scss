@@ -19,6 +19,7 @@ body {
   background-color: $colorBodyBackground;
   color: $colorBodyText;
 
+  // TODO: use withNavigation HOC to replace this
   &__footer {
     display: none;
     @media only screen and (min-width: 900px) {

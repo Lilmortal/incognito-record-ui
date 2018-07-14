@@ -16,7 +16,7 @@
     margin: 0 auto;
   }
 
-  &__datesWrapper {
+  &__datesContainer {
     line-height: 3em;
     max-height: 3em;
     overflow-y: hidden;
@@ -36,7 +36,7 @@
     font-family: Orbitron, sans-serif;
   }
 
-  &__monthsWrapper {
+  &__monthsContainer {
     line-height: 3em;
     max-height: 3em;
     overflow-y: hidden;

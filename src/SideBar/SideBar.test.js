@@ -1,24 +1,24 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { mount } from 'enzyme';
-import Categories from './Categories';
+import SideBar from './SideBar';
 
 let defaultProps;
 
 beforeEach(() => {
   defaultProps = {
-    categories: [
+    options: [
       {
         id: 0,
         key: 0,
-        text: 'text1',
+        text: 'text1'
       },
       {
         id: 1,
         key: 1,
-        text: 'text2',
-      },
-    ],
+        text: 'text2'
+      }
+    ]
   };
 });
 
@@ -29,28 +29,28 @@ afterEach(() => {
 const renderMount = props =>
   mount(
     <IntlProvider locale="en">
-      <Categories {...defaultProps} {...props} />
+      <SideBar {...defaultProps} {...props} />
     </IntlProvider>
   );
 
-it('should render categories', () => {
+it('should render sideBar', () => {
   jest.useFakeTimers();
-  const categories = renderMount();
+  const sideBar = renderMount();
 
-  categories.update();
+  sideBar.update();
 
   // TODO: Fix this test
   const result = new Promise(resolve =>
     resolve(
-      categories
-        .find('.incognito-Categories')
-        .filterWhere(category => category.is('div'))
+      sideBar
+        .find('.incognito-SideBar')
+        .filterWhere(option => option.is('div'))
         .prop('onMouseEnter')()
     ).then(() =>
       setTimeout(() => {
         expect(
-          categories
-            .find('.incognito-Categories__category')
+          sideBar
+            .find('.incognito-SideBar__option')
             .first()
             .text()
         ).toEqual('text1');

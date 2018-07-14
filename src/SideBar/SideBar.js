@@ -1,16 +1,16 @@
-import React from "react";
-import { FormattedMessage } from "react-intl";
-import { Keyframes, animated, config } from "react-spring";
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import { Keyframes, animated, config } from 'react-spring';
 
-import delay from "../util/delay";
-import { createBem } from "../util/bem";
-import Search from "../ui/Search";
-import messages from "./Categories.messages";
-import "./Categories.scss";
+import delay from '../util/delay';
+import { createBem } from '../util/bem';
+import Search from '../ui/Search';
+import messages from './SideBar.messages';
+import './SideBar.scss';
 
-const bem = createBem("incognito-Categories");
+const bem = createBem('incognito-SideBar');
 
-const Container = Keyframes.Spring({
+const OptionsContainer = Keyframes.Spring({
   show: {
     to: {
       containerXPosition: 0,
@@ -48,57 +48,53 @@ const Options = Keyframes.Trail({
   }
 });
 
-export default class Categories extends React.PureComponent {
+export default class SideBar extends React.PureComponent {
   state = {
-    toggle: false
+    show: false
   };
 
   handleMouseHover = () => {
-    this.setState({ toggle: true });
+    this.setState({ show: true });
   };
 
   handleMouseLeave = () => {
-    this.setState({ toggle: false });
+    this.setState({ show: false });
   };
 
   render() {
-    const { categories } = this.props;
+    const { options } = this.props;
 
     return (
       <animated.div className={bem()} onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseLeave}>
-        <Container native state={this.state.toggle ? "show" : "hide"}>
+        <OptionsContainer native state={this.state.show ? 'show' : 'hide'}>
           {({ containerXPosition, containerOpacity }) => (
             <animated.div
-              className={bem("categoriesWrapper")}
+              className={bem('optionsContainer')}
               style={{
                 opacity: containerOpacity,
                 transform: containerXPosition.interpolate(x => `translateX(${x}%)`)
               }}
             >
-              <Search id="categorySearch" />
-              <h2 className={bem("categoriesLabel")}>
+              <Search id="optionsSearch" />
+              <h2 className={bem('optionsLabel')}>
                 <FormattedMessage {...messages.label} />
               </h2>
-              <Options
-                native
-                keys={categories.map(category => category.key)}
-                state={this.state.toggle ? "show" : "hide"}
-              >
-                {categories.map(category => ({ optionsXPosition, optionsOpacity }) => (
+              <Options native keys={options.map(option => option.key)} state={this.state.show ? 'show' : 'hide'}>
+                {options.map(option => ({ optionsXPosition, optionsOpacity }) => (
                   <animated.div
-                    className={bem("category")}
+                    className={bem('option')}
                     style={{
                       opacity: optionsOpacity,
                       transform: optionsXPosition.interpolate(x => `translateX(${x}%)`)
                     }}
                   >
-                    {category.text}
+                    {option.text}
                   </animated.div>
                 ))}
               </Options>
             </animated.div>
           )}
-        </Container>
+        </OptionsContainer>
       </animated.div>
     );
   }

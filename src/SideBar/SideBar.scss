@@ -1,28 +1,28 @@
 @import '../ui/styles';
 
-.incognito-Categories {
+.incognito-SideBar {
   height: 100%;
   position: fixed;
   top: 0;
   right: 0;
   z-index: $topTier;
 
-  &__categoriesWrapper {
+  &__optionsContainer {
     height: inherit;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     min-width: 100px;
-    color: $colorCategoriesText;
-    background-color: $colorCategoriesBackground;
+    color: $colorSideBarText;
+    background-color: $colorSideBarBackground;
     padding: 0 1em;
   }
 
-  &__category {
+  &__options {
     &:hover {
       cursor: pointer;
-      color: $colorCategoriesTextHover;
+      color: $colorSideBarTextHover;
     }
   }
 }

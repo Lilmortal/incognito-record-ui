@@ -14,7 +14,6 @@ import './Blog.scss';
 
 const bem = createBem('incognito-Blog');
 
-// TODO: Fix CSS Grid
 export default class Blog extends React.Component {
   state = {
     posts: [
@@ -44,14 +43,14 @@ export default class Blog extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchInitialData();
+    this.onFetchInitialData();
   }
 
   componentWillUnmount() {
     clearTimeout(this.loadedTimer);
   }
 
-  fetchInitialData = () => {
+  onFetchInitialData = () => {
     this.loadedTimer = setTimeout(() => this.setState({ loaded: true }), 1000);
   };
 

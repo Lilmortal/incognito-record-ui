@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 
-import { createBem } from "../util/bem";
-import "./Content.scss";
+import { createBem } from '../util/bem';
+import './Content.scss';
 
-const bem = createBem("incognito-Content");
+const bem = createBem('incognito-Content');
 
 const Content = ({ title, children, onRefObserve, id, isIntersecting }) => (
   <div className={bem()}>
-    <div className={bem("titleWrapper")}>
-      <h2 className={bem("title", isIntersecting ? "isIntersecting" : "")} ref={onRefObserve} id={id}>
+    <div className={bem('titleContainer')}>
+      <h2 className={bem('title', isIntersecting ? 'isIntersecting' : '')} ref={onRefObserve} id={id}>
         {title}
       </h2>
     </div>
-    <div className={bem("body")}>{children}</div>
+    <div className={bem('body')}>{children}</div>
   </div>
 );
 

@@ -18,7 +18,8 @@
     }
   }
 
-  &__categories {
+  // TODO: use withNavigation HOC to replace this
+  &__sideBar {
     display: none;
 
     @media only screen and (min-width: 900px) {
@@ -26,6 +27,7 @@
     }
   }
 
+  // TODO: use withNavigation HOC to replace this
   &__search {
     @media only screen and (min-width: 900px) {
       display: none;
