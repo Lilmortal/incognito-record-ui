@@ -4,11 +4,20 @@
   padding: 0.6em;
   font-size: 1.1em;
   border-radius: 5px;
+  outline: 0;
 
   &:hover {
     cursor: pointer;
     box-shadow: 0 0.5em 0.5em -0.4em $colorButtonBoxShadowHover;
     transform: translateY(-0.25em);
     transition: 0.25s;
+  }
+
+  &--isSelected {
+    box-shadow: 0 0.5em 0.5em -0.4em $colorButtonBoxShadowSelected;
+
+    &:hover {
+      box-shadow: 0 0.5em 0.5em -0.4em $colorButtonBoxShadowSelected;
+    }
   }
 }

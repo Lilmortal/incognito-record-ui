@@ -15,8 +15,9 @@ const bem = createBem('incognito-About');
 export default class About extends React.Component {
   state = {
     loaded: false,
-    contents: [],
-    date: moment('24/07/2018', 'DD/MM/YYYY')
+    intersectedContents: [],
+    deadlineContentsDate: moment('24/07/2018', 'DD/MM/YYYY'),
+    deadlineContentsButtonSelectedId: 0
   };
 
   componentWillMount() {
@@ -27,7 +28,7 @@ export default class About extends React.Component {
         // intersectionRatio is needed because Edge does not support isIntersecting
         if (isIntersecting || intersectionRatio > 0) {
           this.setState({
-            contents: { ...this.state.contents, [entry.target.id]: true }
+            intersectedContents: { ...this.state.intersectedContents, [entry.target.id]: true }
           });
         }
       });
@@ -50,7 +51,14 @@ export default class About extends React.Component {
     this.observer !== undefined && this.observer !== null && ref !== undefined && this.observer.observe(ref);
 
   onUpdateDate = date => {
-    this.setState({ date });
+    this.setState({ deadlineContentsDate: date });
+  };
+
+  onUpdateDeadlineContentsButtonSelected = id => this.setState({ deadlineContentsButtonSelectedId: id });
+
+  onDeadlineContentsButtonClick = (id, date) => {
+    this.onUpdateDate(date);
+    this.onUpdateDeadlineContentsButtonSelected(id);
   };
 
   render() {
@@ -60,7 +68,7 @@ export default class About extends React.Component {
           id={0}
           title={<FormattedMessage {...messages.aboutMeTitle} />}
           onRefObserve={this.onPushContentRefs}
-          isIntersecting={this.state.contents[0]}
+          isIntersecting={this.state.intersectedContents[0]}
         >
           <FormattedMessage
             {...messages.aboutMeContent}
@@ -78,7 +86,7 @@ export default class About extends React.Component {
           id={1}
           title={<FormattedMessage {...messages.whyAmIDoingThisTitle} />}
           onRefObserve={this.onPushContentRefs}
-          isIntersecting={this.state.contents[1]}
+          isIntersecting={this.state.intersectedContents[1]}
         >
           <FormattedMessage {...messages.whyAmIDoingThisContent} />
         </Content>
@@ -87,7 +95,7 @@ export default class About extends React.Component {
           id={2}
           title={<FormattedMessage {...messages.whatAmITryingToAchieveTitle} />}
           onRefObserve={this.onPushContentRefs}
-          isIntersecting={this.state.contents[2]}
+          isIntersecting={this.state.intersectedContents[2]}
         >
           <FormattedMessage {...messages.whatAmITryingToAchieveContent} />
         </Content>
@@ -96,7 +104,7 @@ export default class About extends React.Component {
           id={3}
           title={<FormattedMessage {...messages.howAmIGoingToAchieveThisTitle} />}
           onRefObserve={this.onPushContentRefs}
-          isIntersecting={this.state.contents[3]}
+          isIntersecting={this.state.intersectedContents[3]}
         >
           <FormattedMessage {...messages.howAmIGoingToAchieveThisContent} />
         </Content>
@@ -105,18 +113,34 @@ export default class About extends React.Component {
           id={4}
           title={<FormattedMessage {...messages.whatIsMyDeadlineTitle} />}
           onRefObserve={this.onPushContentRefs}
-          isIntersecting={this.state.contents[4]}
+          isIntersecting={this.state.intersectedContents[4]}
         >
           <div className={bem('deadlineContents')}>
-            <Calendar date={this.state.date} loaded={this.state.loaded} className={bem('calendarDeadlines')} />
+            <Calendar
+              date={this.state.deadlineContentsDate}
+              loaded={this.state.loaded}
+              className={bem('calendarDeadlines')}
+            />
             <div className={bem('buttons')}>
-              <Button className={bem('button')} onClick={() => this.onUpdateDate(moment('24/07/2018', 'DD/MM/YYYY'))}>
+              <Button
+                className={bem('button')}
+                isSelected={this.state.deadlineContentsButtonSelectedId === 0}
+                onClick={() => this.onDeadlineContentsButtonClick(0, moment('24/07/2018', 'DD/MM/YYYY'))}
+              >
                 <FormattedMessage {...messages.frontEndButtonText} />
               </Button>
-              <Button className={bem('button')} onClick={() => this.onUpdateDate(moment('12/02/2018', 'DD/MM/YYYY'))}>
+              <Button
+                className={bem('button')}
+                isSelected={this.state.deadlineContentsButtonSelectedId === 1}
+                onClick={() => this.onDeadlineContentsButtonClick(1, moment('12/02/2018', 'DD/MM/YYYY'))}
+              >
                 <FormattedMessage {...messages.backEndButtonText} />
               </Button>
-              <Button className={bem('button')} onClick={() => this.onUpdateDate(moment('02/12/2019', 'DD/MM/YYYY'))}>
+              <Button
+                className={bem('button')}
+                isSelected={this.state.deadlineContentsButtonSelectedId === 2}
+                onClick={() => this.onDeadlineContentsButtonClick(2, moment('02/12/2019', 'DD/MM/YYYY'))}
+              >
                 <FormattedMessage {...messages.devOpsButtonText} />
               </Button>
             </div>

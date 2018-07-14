@@ -5,8 +5,8 @@ import './Button.scss';
 
 const bem = createBem('incognito-Button');
 
-const Button = ({ onClick, className, children }) => (
-  <button className={`${bem()} ${className}`} onClick={onClick}>
+const Button = ({ onClick, className, children, isSelected }) => (
+  <button className={`${bem('', isSelected ? 'isSelected' : '')} ${className}`} onClick={onClick}>
     {children}
   </button>
 );
