@@ -6,8 +6,6 @@
   align-items: center;
   padding: 10px;
   position: relative;
-  background: $colorHeaderBackgroundMobile;
-  color: $colorHeaderTextMobile;
   width: 100%;
 
   @include tablet {
@@ -16,10 +14,13 @@
   }
 
   &--isHomePage {
+    background: $colorHeaderBackgroundMobile;
+    color: $colorHeaderTextMobile;
     justify-content: space-around;
     position: relative;
 
     @include tablet {
+      background: none;
       justify-content: flex-start;
       position: absolute;
     }
