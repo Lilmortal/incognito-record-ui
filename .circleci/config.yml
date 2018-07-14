@@ -37,6 +37,7 @@ jobs:
       - run: yarn test:ci
 
       # dev
+      -  run: sudo apt-get update && sudo apt-get install -y python
       - run: sudo curl -O https://bootstrap.pypa.io/get-pip.py
       - run: sudo python get-pip.py
       - run: sudo pip install awscli --upgrade
