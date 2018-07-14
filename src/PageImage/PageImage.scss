@@ -12,7 +12,7 @@
       content: url('./aws_image.jpg');
     }
 
-    @include tablet {
+    @include desktop {
       display: none;
     }
   }
@@ -28,7 +28,7 @@
       background-repeat: no-repeat;
     }
 
-    @include tablet {
+    @include desktop {
       display: block;
     }
   }
