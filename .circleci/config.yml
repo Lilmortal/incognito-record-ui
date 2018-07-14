@@ -8,9 +8,6 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
-        aws_auth:
-          aws_access_key_id: $AWS_ACCESS_KEY
-          aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
           
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -38,8 +35,10 @@ jobs:
         
       # run tests
       - run: yarn test:ci
+  deploy:
+    docker:
+      - image: circleci/node:7.10
 
-      # dev
       - run: sudo apt-get update && sudo apt-get install -y awscli
       - run: aws configure
       - run: 
