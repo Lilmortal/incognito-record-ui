@@ -24,6 +24,10 @@
       }
     }
   }
+
+  &__body {
+    white-space: pre-line;
+  }
 }
 
 @keyframes typing {

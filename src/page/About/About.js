@@ -125,23 +125,30 @@ export default class About extends React.Component {
               <Button
                 className={bem('button')}
                 isSelected={this.state.deadlineContentsButtonSelectedId === 0}
-                onClick={() => this.onDeadlineContentsButtonClick(0, moment('24/07/2018', 'DD/MM/YYYY'))}
+                onClick={() => this.onDeadlineContentsButtonClick(0, moment('14/07/2018', 'DD/MM/YYYY'))}
               >
                 <FormattedMessage {...messages.frontEndButtonText} />
               </Button>
               <Button
                 className={bem('button')}
                 isSelected={this.state.deadlineContentsButtonSelectedId === 1}
-                onClick={() => this.onDeadlineContentsButtonClick(1, moment('12/02/2018', 'DD/MM/YYYY'))}
+                onClick={() => this.onDeadlineContentsButtonClick(1, moment('22/07/2018', 'DD/MM/YYYY'))}
               >
                 <FormattedMessage {...messages.backEndButtonText} />
               </Button>
               <Button
                 className={bem('button')}
                 isSelected={this.state.deadlineContentsButtonSelectedId === 2}
-                onClick={() => this.onDeadlineContentsButtonClick(2, moment('02/12/2019', 'DD/MM/YYYY'))}
+                onClick={() => this.onDeadlineContentsButtonClick(2, moment('5/08/2018', 'DD/MM/YYYY'))}
               >
                 <FormattedMessage {...messages.devOpsButtonText} />
+              </Button>
+              <Button
+                className={bem('button')}
+                isSelected={this.state.deadlineContentsButtonSelectedId === 3}
+                onClick={() => this.onDeadlineContentsButtonClick(3, moment('5/09/2018', 'DD/MM/YYYY'))}
+              >
+                <FormattedMessage {...messages.algorithmsButtonText} />
               </Button>
             </div>
           </div>
