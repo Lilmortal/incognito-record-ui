@@ -1,6 +1,7 @@
 @import '../../ui/styles';
 
 $mobileGradientHeight: 50px;
+$tabletGradientHeight: 70px;
 $gradientHeight: 150px;
 
 .incognito-Blog {
@@ -22,6 +23,12 @@ $gradientHeight: 150px;
     letter-spacing: 0.075em;
 
     @include tablet {
+      height: $tabletGradientHeight;
+      margin-top: -$tabletGradientHeight;
+      font-size: 2em;
+    }
+
+    @include desktop {
       height: $gradientHeight;
       margin-top: -$gradientHeight;
       font-size: 5em;
