@@ -19,7 +19,7 @@
     justify-content: space-around;
     position: relative;
 
-    @include tablet {
+    @include desktop {
       background: none;
       justify-content: flex-start;
       position: absolute;
