@@ -28,7 +28,7 @@ export default {
     defaultMessage: `
     Gain a thorough understanding of software development in general; at the moment, focusing particularly on the web. This includes system design which I am heavily focusing on at the moment; and performances, particularly Big O notations (time and space complexity). On the web, front end, back end, deployment, and some database skills. I have wrote down a list of concepts in my own room that I started few years ago, I am intending to finish it.
     
-    The first to get it out of the way is I do not have much experiences in any of the cloud features, e.g. AWS. I have basic experiences in AWS S3, Cloudfront, Route 53, EC2, DynamoDB, and RDS. The more advanced topics I can catch up on in my 9-5 work.
+    The first to get it out of the way is I do not have much experiences in any of the cloud features, e.g. AWS. I have basic experiences in AWS S3, Cloudfront, Route 53, EC2, DynamoDB, and RDS. The more advanced topics I can catch up on in my 9-5 work. In the coming weeks, I will be writing about CNames, Alias records, EBS as well as EFS.
 
     I still lack basic understanding of networking in general, (e.g. subnets etc). AWS VPC, VPN etc; as well as Cloudformation or Terraform.`
   },
