@@ -1,8 +1,7 @@
 import React from 'react';
-import { Transition, Keyframes, animated, config } from 'react-spring';
+import { Transition, animated } from 'react-spring';
 import moment from 'moment';
 
-import delay from '../util/delay';
 import { createBem } from '../util/bem';
 import './Calendar.scss';
 
@@ -85,28 +84,6 @@ export default class Calendar extends React.Component {
     return this.prevYear !== this.currentYear;
   }
 
-  BorderContainer = Keyframes.Transition({
-    initial: {
-      to: {
-        borderOpacity: 0,
-        borderHeight: 0,
-        height: 200
-      },
-      config: config.slow
-    },
-    show: async call => {
-      await delay(500);
-      await call({
-        to: {
-          borderOpacity: 1,
-          borderHeight: this.props.loaded ? 200 : 0,
-          height: 0
-        },
-        config: config.slow
-      });
-    }
-  });
-
   render() {
     const { id, className } = this.props;
 
@@ -129,25 +106,7 @@ export default class Calendar extends React.Component {
           )}
         </Transition>
         <div className={bem('dateSlider')} aria-hidden>
-          {/* TODO: Fix intersection observer screwing up the animation on Calendar border */}
-          {/* <this.BorderContainer
-            native
-            state={this.props.loaded ? 'show' : 'initial'}
-          >
-            {({ borderHeight, height, borderOpacity }) => (
-              <animated.div
-                className={bem('dateSliderBorderTop')}
-                style={{
-                  opacity: borderOpacity,
-                  height: height.interpolate(length => `${length}px`),
-                  borderBottom: borderHeight.interpolate(
-                    length => `${length}px solid black`
-                  ),
-                }}
-              />
-            )}
-          </this.BorderContainer> */}
-          <div className={bem('dateSliderBorderTop')} style={{ height: 0, borderBottom: '200px solid black' }} />
+          <div className={bem('dateSliderBorderTop')} />
           <Transition
             native
             from={{
@@ -189,25 +148,7 @@ export default class Calendar extends React.Component {
               </React.Fragment>
             )}
           </Transition>
-          <div className={bem('dateSliderBorderBottom')} style={{ height: 0, borderTop: '200px solid black' }} />
-          {/* TODO: Fix intersection observer screwing up the animation on Calendar border */}
-          {/* <this.BorderContainer
-            native
-            state={this.props.loaded ? 'show' : 'initial'}
-          >
-            {({ borderHeight, height, borderOpacity }) => (
-              <animated.div
-                className={bem('dateSliderBorderBottom')}
-                style={{
-                  opacity: borderOpacity,
-                  height: height.interpolate(length => `${length}px`),
-                  borderTop: borderHeight.interpolate(
-                    length => `${length}px solid black`
-                  ),
-                }}
-              />
-            )}
-          </this.BorderContainer> */}
+          <div className={bem('dateSliderBorderBottom')} />
         </div>
       </div>
     );

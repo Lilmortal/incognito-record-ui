@@ -62,5 +62,9 @@ export default {
   algorithmsButtonText: {
     id: 'incognito.About.algorithmsButtonText',
     defaultMessage: 'Algorithms and wrapping up'
+  },
+  finalCountdownTitle: {
+    id: 'incognito.About.finalCountdownTitle',
+    defaultMessage: 'Countdown till my deadline'
   }
 };

@@ -5,6 +5,7 @@ import moment from 'moment';
 import Button from '../../ui/Button';
 import Content from '../../Content';
 import Calendar from '../../Calendar';
+import CountdownTimer from '../../CountdownTimer';
 import { createBem } from '../../util/bem';
 
 import messages from './About.messages';
@@ -62,6 +63,8 @@ export default class About extends React.Component {
   };
 
   render() {
+    const { id } = this.props;
+
     return (
       <div className={bem()}>
         <Content
@@ -83,10 +86,10 @@ export default class About extends React.Component {
         </Content>
 
         <Content
-          id={1}
+          id={`${id}__whyAmIDoingThis`}
           title={<FormattedMessage {...messages.whyAmIDoingThisTitle} />}
           onRefObserve={this.onPushContentRefs}
-          isIntersecting={this.state.intersectedContents[1]}
+          isIntersecting={this.state.intersectedContents[`${id}__whyAmIDoingThis`]}
         >
           <FormattedMessage {...messages.whyAmIDoingThisContent} />
         </Content>
@@ -152,6 +155,15 @@ export default class About extends React.Component {
               </Button>
             </div>
           </div>
+        </Content>
+
+        <Content
+          id={5}
+          title={<FormattedMessage {...messages.finalCountdownTitle} />}
+          onRefObserve={this.onPushContentRefs}
+          isIntersecting={this.state.intersectedContents[5]}
+        >
+          <CountdownTimer deadlineDateTime={Date.parse('2018-12-31T00:00:00')} />
         </Content>
       </div>
     );

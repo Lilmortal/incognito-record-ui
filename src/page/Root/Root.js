@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 
 import routes from '../../config/routes';
 import Header from '../../Header';
-import Footer from '../../Footer';
 import { createBem } from '../../util/bem';
 
 import RootIntl from './intl';
@@ -21,9 +20,6 @@ const Root = ({ history }) => {
         <React.Fragment>
           <Header isHomePage={isHomePage} />
           <Router />
-          <div className={bem('footer')}>
-            <Footer />
-          </div>
         </React.Fragment>
       </RootIntl>
     </div>
