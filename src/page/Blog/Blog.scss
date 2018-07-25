@@ -9,7 +9,7 @@ $gradientHeight: 150px;
   flex-direction: column;
 
   &__scroller {
-    animation: 1s fadeIn ease-in;
+    animation: $fadeInAnimation;
   }
 
   &__gradient {
@@ -57,19 +57,5 @@ $gradientHeight: 150px;
 
   &__spinner {
     position: relative;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0.01;
-  }
-
-  66% {
-    opacity: 0.01;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
