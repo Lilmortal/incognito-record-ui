@@ -53,11 +53,11 @@ export default class SideBar extends React.PureComponent {
     show: false
   };
 
-  handleMouseHover = () => {
+  onHandleMouseHover = () => {
     this.setState({ show: true });
   };
 
-  handleMouseLeave = () => {
+  onHandleMouseLeave = () => {
     this.setState({ show: false });
   };
 
@@ -65,7 +65,7 @@ export default class SideBar extends React.PureComponent {
     const { options } = this.props;
 
     return (
-      <animated.div className={bem()} onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseLeave}>
+      <animated.div className={bem()} onMouseEnter={this.onHandleMouseHover} onMouseLeave={this.onHandleMouseLeave}>
         <OptionsContainer native state={this.state.show ? 'show' : 'hide'}>
           {({ containerXPosition, containerOpacity }) => (
             <animated.div

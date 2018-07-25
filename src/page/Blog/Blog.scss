@@ -8,6 +8,10 @@ $gradientHeight: 150px;
   display: flex;
   flex-direction: column;
 
+  &__scroller {
+    animation: 1s fadeIn ease-in;
+  }
+
   &__gradient {
     mix-blend-mode: lighten;
     display: flex;
@@ -53,5 +57,19 @@ $gradientHeight: 150px;
 
   &__spinner {
     position: relative;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.01;
+  }
+
+  66% {
+    opacity: 0.01;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
