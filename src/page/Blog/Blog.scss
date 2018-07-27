@@ -1,6 +1,6 @@
 @import '../../ui/styles';
 
-$mobileGradientHeight: 50px;
+$mobileGradientHeight: 150px;
 $tabletGradientHeight: 70px;
 $gradientHeight: 150px;
 
@@ -13,20 +13,19 @@ $gradientHeight: 150px;
   }
 
   &__gradient {
-    mix-blend-mode: lighten;
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(#fcfcfc, rgba(252, 252, 252, 0.85));
     width: 100%;
     height: $mobileGradientHeight;
-    margin-top: -$mobileGradientHeight;
     position: relative;
     font-size: 2em;
     line-height: 1.25em;
     letter-spacing: 0.075em;
 
     @include tablet {
+      mix-blend-mode: lighten;
       height: $tabletGradientHeight;
       margin-top: -$tabletGradientHeight;
       font-size: 2em;
