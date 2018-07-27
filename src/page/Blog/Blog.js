@@ -1,19 +1,9 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import moment from 'moment';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
-import Spinner from '../../Spinner';
-import Post from '../../Post';
-import PageImage from '../../PageImage';
-import { createBem } from '../../util/bem';
+import Blog from '../../Blog';
 
-import messages from './Blog.messages';
-import './Blog.scss';
-
-const bem = createBem('incognito-Blog');
-
-export default class Blog extends React.Component {
+export default class BlogPage extends React.Component {
   state = {
     posts: [
       {
@@ -38,7 +28,7 @@ export default class Blog extends React.Component {
       }
     ],
     image: 'Aws',
-    loaded: false
+    isLoaded: false
   };
 
   componentDidMount() {
@@ -50,10 +40,10 @@ export default class Blog extends React.Component {
   }
 
   onFetchInitialData = () => {
-    this.loadedTimer = setTimeout(() => this.setState({ loaded: true }), 1000);
+    this.loadedTimer = setTimeout(() => this.setState({ isLoaded: true }), 1000);
   };
 
-  fetchMoreData = () => {
+  onFetchMoreData = () => {
     setTimeout(() => {
       this.setState({
         posts: this.state.posts.concat([
@@ -80,45 +70,8 @@ export default class Blog extends React.Component {
   id = 0;
 
   render() {
-    return (
-      <div className={bem()}>
-        <PageImage image={this.state.image} title={this.state.image} />
-        <div className={bem('gradient')}>{this.state.image}</div>
-        <div className={bem('posts')}>
-          {!this.state.loaded ? (
-            <Spinner>
-              <FormattedMessage {...messages.initialLoad} />
-            </Spinner>
-          ) : (
-            <div className={bem('scroller')}>
-              <InfiniteScroll
-                dataLength={this.state.posts.length}
-                next={this.fetchMoreData}
-                hasMore
-                loader={
-                  <div className={bem('spinner')}>
-                    <Spinner>
-                      <FormattedMessage {...messages.additionalLoad} />
-                    </Spinner>
-                  </div>
-                }
-                style={{ height: 'inherit', overflow: 'inherit' }}
-              >
-                {this.state.posts.map(post => (
-                  <Post
-                    title={post.title}
-                    post={post.post}
-                    date={post.date}
-                    // eslint-disable-next-line no-plusplus
-                    key={this.id++}
-                    className={bem('post')}
-                  />
-                ))}
-              </InfiniteScroll>
-            </div>
-          )}
-        </div>
-      </div>
-    );
+    const { isLoaded, image, posts } = this.state;
+
+    return <Blog isLoaded={isLoaded} image={image} posts={posts} onFetchMoreData={this.onFetchMoreData} />;
   }
 }

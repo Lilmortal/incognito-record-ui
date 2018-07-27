@@ -1,4 +1,5 @@
 export default {
-  index: "/",
-  about: "/about"
+  index: '/',
+  about: '/about',
+  admin: '/admin'
 };
