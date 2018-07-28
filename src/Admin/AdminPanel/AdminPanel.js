@@ -10,16 +10,26 @@ import './AdminPanel.scss';
 
 const bem = createBem('incognito-AdminPanel');
 
-const AdminPanel = ({ className }) => (
+const mapCodeToMessage = {
+  loginFailure: 'You have failed to login.'
+};
+
+const AdminPanel = ({ className, messageCode, onLogout }) => (
   <div className={combineClassNames(bem(), className)}>
     <div className={bem('panel')}>
-      <h1>Admin Panel</h1>
+      <div className={bem('heading')}>
+        <h1>Admin Panel</h1>
+        <Button onClick={onLogout}>Log out</Button>
+      </div>
+      <div className={bem('message')}>{mapCodeToMessage[messageCode]}</div>
       <div className={bem('formWrapper')}>
         <TextArea label="Add new post" />
         <Button className={bem('button')}>Add post</Button>
       </div>
       <div className={bem('formWrapper')}>
-        <TextField label="Enter which post ID you want updated" htmlFor="updatePost" />
+        <div className={bem('updatePostTextField')}>
+          <TextField label="Enter which post ID you want updated" htmlFor="updatePost" />
+        </div>
         <TextArea />
         <Button className={bem('button')}>Update post</Button>
       </div>

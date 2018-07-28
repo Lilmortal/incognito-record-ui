@@ -10,11 +10,15 @@ import './Admin.scss';
 
 const bem = createBem('incognito-Admin');
 
-const Admin = ({ isLoggedIn }) => (
+const Admin = ({ isLoggedIn, messageCode, onLogout }) => (
   <div className={bem()}>
     <div className={bem('background')} />
     <div className={bem('panelWrapper')}>
-      {!isLoggedIn ? <LoginPanel className={bem('panel')} /> : <AdminPanel className={bem('panel')} />}
+      {!isLoggedIn ? (
+        <LoginPanel className={bem('panel')} messageCode={messageCode} />
+      ) : (
+        <AdminPanel className={bem('panel')} messageCode={messageCode} onLogout={onLogout} />
+      )}
     </div>
   </div>
 );

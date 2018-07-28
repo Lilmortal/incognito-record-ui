@@ -11,11 +11,17 @@
 
     @include desktop {
       padding: 100px;
-      width: auto;
+      width: 50%;
+      max-width: 700px;
     }
   }
 
   &__submission {
     padding: 20px 0 0 0;
+  }
+
+  &__message {
+    color: red;
+    padding: 10px 0;
   }
 }

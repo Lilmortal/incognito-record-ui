@@ -2,6 +2,10 @@ import React from 'react';
 
 import Admin from '../../Admin';
 
-const AdminPage = () => <Admin isLoggedIn={false} />;
+export default class AdminPage extends React.Component {
+  onLogout = () => {};
 
-export default AdminPage;
+  render() {
+    return <Admin isLoggedIn onLogout={this.onLogout} messageCode="loginFailure" />;
+  }
+}

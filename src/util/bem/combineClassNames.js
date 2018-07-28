@@ -1,4 +1,4 @@
-const combineClassNames = (firstClassName, secondClassName) =>
-  `${firstClassName} ${secondClassName !== null ? secondClassName : ""}`;
+const combineClassNames = (firstClassName, ...additionalClassNames) =>
+  `${firstClassName} ${additionalClassNames.map(className => (className !== undefined ? className : '')).join(' ')}`;
 
 export default combineClassNames;
