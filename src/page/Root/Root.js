@@ -12,13 +12,14 @@ import './Root.scss';
 const bem = createBem('incognito-Root');
 
 const Root = ({ history }) => {
-  const isHomePage = history.location.pathname === routes.index;
+  const isAbsolute = history.location.pathname === routes.index || history.location.pathname === routes.admin;
+  const showSideBar = history.location.pathname === routes.index;
 
   return (
     <div className={bem()}>
       <RootIntl>
         <React.Fragment>
-          <Header isHomePage={isHomePage} />
+          <Header isAbsolute={isAbsolute} showSideBar={showSideBar} />
           <Router />
         </React.Fragment>
       </RootIntl>

@@ -9,11 +9,11 @@ import './Header.scss';
 
 const bem = createBem('incognito-Header');
 
-const Header = ({ isHomePage }) => (
-  <header className={bem('', isHomePage ? 'isHomePage' : '')}>
-    <Navigation isHomePage={isHomePage} />
+const Header = ({ isAbsolute, showSideBar }) => (
+  <header className={bem('', isAbsolute ? 'isAbsolute' : '')}>
+    <Navigation isAbsolute={isAbsolute} />
 
-    {isHomePage && (
+    {showSideBar && (
       <React.Fragment>
         <div className={bem('search')}>
           <Search id="headerSearch" />

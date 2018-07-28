@@ -1,24 +1,37 @@
 @import '../styles';
 
 .incognito-TextField {
-  width: 100%;
+  &__textFieldWrapper {
+    display: flex;
+    flex-direction: column;
+  }
 
   &__label {
     display: inline-block;
     margin-bottom: 5px;
   }
 
-  &--noBorder {
-    outline: 0;
-    border: 0;
-    background-color: transparent;
-    color: $colorTextfieldNoBorderText;
-    font-size: 1.3em;
-    border-bottom: 1px solid $colorTextfieldNoBorderBorder;
-    transition: border-bottom 0.5s ease-out;
+  &__textField {
+    width: 21em;
+    max-width: 100%;
 
-    &:focus {
-      border-bottom: 1px solid $colorTextfieldNoBorderFocus;
+    &--default {
+      font-size: 1.3em;
+      padding: 0.2em;
+    }
+
+    &--noBorder {
+      outline: 0;
+      border: 0;
+      background-color: transparent;
+      color: $colorTextfieldNoBorderText;
+      font-size: 1.3em;
+      border-bottom: 1px solid $colorTextfieldNoBorderBorder;
+      transition: border-bottom 0.5s ease-out;
+
+      &:focus {
+        border-bottom: 1px solid $colorTextfieldNoBorderFocus;
+      }
     }
   }
 }

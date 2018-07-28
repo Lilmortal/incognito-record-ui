@@ -6,19 +6,19 @@ import './TextField.scss';
 
 const bem = createBem('incognito-TextField');
 
-const TextField = ({ label, htmlFor, type, placeholder, intl, ...props }) => {
+const TextField = ({ label, htmlFor, type = 'default', placeholder, intl, ...props }) => {
   const renderType = {
     noBorder: 'noBorder',
-    default: ''
+    default: 'default'
   };
 
   return (
-    <div {...props}>
-      <label htmlFor={htmlFor}>
+    <div className={bem()} {...props}>
+      <label htmlFor={htmlFor} className={bem('textFieldWrapper')}>
         <span className={bem('label')}>{label}</span>
         <input
           type="text"
-          className={bem('', renderType[type] || '')}
+          className={bem('textField', renderType[type] || 'default')}
           id={htmlFor}
           placeholder={placeholder && intl.formatMessage(placeholder)}
         />

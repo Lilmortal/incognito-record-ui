@@ -9,16 +9,16 @@ import './Navigation.scss';
 
 const bem = createBem('incognito-Navigation');
 
-const Navigation = ({ isHomePage }) => (
+const Navigation = ({ isAbsolute }) => (
   <nav className={bem()}>
     <ul className={bem('links')}>
       <li>
-        <Link to={routes.index} className={bem('link', isHomePage ? 'inverse' : '')}>
+        <Link to={routes.index} className={bem('link', isAbsolute ? 'inverse' : '')}>
           <FormattedMessage {...messages.index} />
         </Link>
       </li>
       <li>
-        <Link to={routes.about} className={bem('link', isHomePage ? 'inverse' : '')}>
+        <Link to={routes.about} className={bem('link', isAbsolute ? 'inverse' : '')}>
           <FormattedMessage {...messages.about} />
         </Link>
       </li>

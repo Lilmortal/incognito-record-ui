@@ -9,8 +9,8 @@ import AdminPage from '../../Admin';
 const Router = () => (
   <Switch>
     <Route path={routes.about} component={AboutPage} exact />
+    <Route path={routes.admin} component={AdminPage} exact />
     <Route path={routes.index} component={BlogPage} />
-    <Route path={routes.admin} component={AdminPage} />
   </Switch>
 );
 

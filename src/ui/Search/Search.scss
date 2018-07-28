@@ -5,6 +5,10 @@
   align-items: center;
   position: relative;
 
+  &__searchField {
+    width: 100%;
+  }
+
   &__searchIcon {
     background-image: url('./search.png');
     position: absolute;

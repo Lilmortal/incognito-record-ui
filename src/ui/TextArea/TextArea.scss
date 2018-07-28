@@ -1,0 +1,18 @@
+@import '../styles';
+
+.incognito-TextArea {
+  &__textAreaWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+
+  &__textArea {
+    min-height: 200px;
+    font-size: 1.3em;
+  }
+}

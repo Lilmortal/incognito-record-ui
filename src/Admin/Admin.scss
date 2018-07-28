@@ -2,4 +2,31 @@
 
 .incognito-Admin {
   display: flex;
+  flex: 1;
+
+  &__background {
+    background-image: url('./aws_image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    filter: blur(3px);
+    min-height: 100%;
+    position: fixed;
+  }
+
+  &__panelWrapper {
+    display: flex;
+    z-index: $middleTier;
+    margin: 5em 0 0 0;
+    width: 100%;
+    position: absolute;
+  }
+
+  &__panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

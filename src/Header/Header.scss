@@ -8,12 +8,13 @@
   padding-bottom: 40px;
   position: relative;
   width: 100%;
+  z-index: $middleTier;
 
   @include tablet {
     background: none;
   }
 
-  &--isHomePage {
+  &--isAbsolute {
     background: $colorHeaderBackgroundMobile;
     color: $colorHeaderTextMobile;
     justify-content: space-around;
@@ -37,6 +38,8 @@
 
   // TODO: use withNavigation HOC to replace this
   &__search {
+    max-width: 90%;
+
     @include desktop {
       display: none;
     }
