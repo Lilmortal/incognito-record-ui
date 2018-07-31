@@ -6,6 +6,6 @@ export default class AdminPage extends React.Component {
   onLogout = () => {};
 
   render() {
-    return <Admin isLoggedIn onLogout={this.onLogout} messageCode="loginFailure" />;
+    return <Admin isLoggedIn={false} onLogout={this.onLogout} />;
   }
 }
